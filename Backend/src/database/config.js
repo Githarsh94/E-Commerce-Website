@@ -1,7 +1,8 @@
 const { Sequelize } = require("sequelize");
 const dotenv = require("dotenv");
-dotenv.config();
 
+dotenv.config();
+// console.log(process.env.SQL_PASSWORD);
 const sequelize = new Sequelize("ecomm", "root", process.env.SQL_PASSWORD, {
   host: "localhost",
   dialect: "mysql",

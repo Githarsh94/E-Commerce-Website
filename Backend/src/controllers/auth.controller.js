@@ -1,12 +1,15 @@
-const { User, Address, Payment } = require('../models');
+// const { User, Address, Payment } = require('../models');
+const User = require('../models/user');
+const Address = require('../models/address');
+const Payment = require('../models/payment');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 exports.signup = async (req, res) => {
     try {
         const { name, email, password, role, address, payment } = req.body;
-
+        // console.log(User+"hello");
         const user = await User.create({ name, email, password, role });
-
         await Address.create({ userId: user.id, ...address });
         await Payment.create({ userId: user.id, ...payment });
 
@@ -23,8 +26,9 @@ exports.signin = async (req, res) => {
         const { email, password } = req.body;
 
         const user = await User.findOne({ where: { email } });
-
-        if (!user || await bcrypt.compare(password, user.password)) {
+        // console.log(user);
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (!user || !passwordMatch) {
             return res.status(401).json({ error: 'Invalid email or password' });
         }
 
