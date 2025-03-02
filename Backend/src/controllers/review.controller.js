@@ -1,4 +1,4 @@
-const { Review } = require('../models');
+const Review = require('../models/review');
 
 exports.addReview = async (req, res) => {
     try {
