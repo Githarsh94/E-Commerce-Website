@@ -7,6 +7,16 @@ const User = sequelize.define("user", {
   email: { type: DataTypes.STRING, unique: true, allowNull: false },
   password: { type: DataTypes.STRING, allowNull: false },
   role: { type: DataTypes.ENUM("customer", "admin"), defaultValue: "customer" },
+  address: {
+    type: DataTypes.JSON,
+    allowNull: false,
+    defaultValue: {
+      street: "",
+      city: "",
+      state: "",
+      zipCode: ""
+    }
+  }
 });
 
 // Hook to hash the password before saving the user

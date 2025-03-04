@@ -8,7 +8,6 @@ const Payment = require("./payment");
 const ProductCategory = require("./productCategory");
 const Review = require("./review");
 const Shipment = require("./shipment");
-const Address = require("./address");
 
 const syncDB = async () => {
   await sequelize.sync({ alter: true});
