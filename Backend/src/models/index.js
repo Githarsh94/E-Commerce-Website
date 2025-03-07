@@ -10,7 +10,7 @@ const Review = require("./review");
 const Shipment = require("./shipment");
 
 const syncDB = async () => {
-  await sequelize.sync({ alter: true});
+  await sequelize.sync({ alter: true });
   console.log("Database synchronized");
 };
 
