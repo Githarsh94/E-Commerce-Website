@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Electronics",
+        "image": "https://images.unsplash.com/photo-1593344484962-796055d4a3a4?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGVsZWN0cm9uaWNzfGVufDB8fDB8fHww",
+        "description": "Latest gadgets and devices"
+    },
+    {
+        "id": 2,
+        "name": "Fashion",
+        "image": "https://example.com/fashion.jpg",
+        "description": "Trendy clothing and accessories"
+    },
+    {
+        "id": 3,
+        "name": "Home & Kitchen",
+        "image": "https://example.com/home-kitchen.jpg",
+        "description": "Essentials for your home"
+    },
+    {
+        "id": 4,
+        "name": "Sports & Outdoors",
+        "image": "https://example.com/sports-outdoors.jpg",
+        "description": "Gear for your adventures"
+    },
+    {
+        "id": 5,
+        "name": "Books",
+        "image": "https://example.com/books.jpg",
+        "description": "A wide range of books"
+    },
+    {
+        "id": 6,
+        "name": "Beauty & Health",
+        "image": "https://example.com/beauty-health.jpg",
+        "description": "Products for your well-being"
+    },
+    {
+        "id": 7,
+        "name": "Toys & Games",
+        "image": "https://example.com/toys-games.jpg",
+        "description": "Fun for all ages"
+    }
+]
