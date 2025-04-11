@@ -1,0 +1,334 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: Telma-Regular;
+  src: url(/public/fonts/Telma_Complete/Fonts/OTF/Telma-Regular.otf);
+}
+
+@font-face {
+  font-family: Supreme-Regular;
+  src: url(/public/fonts/Supreme_Complete/Fonts/OTF/Supreme-Regular.otf);
+}
+
+#nav-parent {
+  height: 5vw;
+  width: 100%;
+  /* margin-top: 1.5vw; */
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+}
+
+#nav-parent h1 {
+  width: 20%;
+  padding: 1vw;
+  font-size: 2.5vw;
+  font-weight: 500;
+  letter-spacing: 2px;
+  font-family: Telma-Regular;
+}
+
+#nav-parent h2 {
+  position: absolute;
+  top: 11%;
+  left: 14%;
+  font-weight: 500;
+}
+
+#nav-parent h3 {
+  font-size: 0.8vw;
+  font-family: Supreme-Regular;
+  position: absolute;
+  bottom: 4%;
+  left: 9%;
+}
+
+#nav-parent h4 {
+  padding: 2vw;
+  height: 100%;
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: aqua; */
+  border-right: 2px solid #2e2e2e;
+  cursor: pointer;
+  font-size: 1.5vw;
+  font-weight: 400;
+}
+
+#nav-parent h5 {
+  cursor: pointer;
+  font-size: 2.5vw;
+  font-weight: 400;
+}
+
+#nav-parent h4:nth-last-of-type(1) {
+  border-right: none;
+
+}
+
+#nav-parent h4:nth-last-of-type(1) {
+  /* border-right: none; */
+  width: 22%;
+}
+
+#nav-parent h4:nth-last-of-type(3) {
+  border-right: none;
+  width: 10%;
+}
+
+#nav-parent h4:nth-last-of-type(4) {
+  /* border-right: none; */
+  width: 10%;
+}
+
+#nav-parent input {
+  height: 2.5vw;
+  width: 40vw;
+  padding: 0.5vw;
+  border-radius: 2vw;
+  border: none;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  outline: none;
+  margin-right: 2vw;
+}
+
+#blurBackground {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 0;
+  /* padding: 4vw; */
+}
+
+#blurBackground video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: blur(5px);
+}
+
+#footer {
+  height: 10%;
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  /* padding: 3vw 3vw; */
+  /* font-family: 'Arial', sans-serif; */
+  position: fixed;
+  bottom: 0;
+}
+
+.footer-container {
+  height: 60%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* gap: 3vw; */
+
+}
+
+.footer-section {
+  height: 100%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1vw 2vw;
+}
+
+.footer-section h2 {
+  font-family: Telma-Regular;
+  letter-spacing: 2px;
+  letter-spacing: 4px;
+}
+
+.footer-section p {
+  font-size: 0.6vw;
+  letter-spacing: 2px;
+  font-family: Supreme-Regular;
+}
+
+.footer-section-Details {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 2vw;
+  font-weight: 400;
+}
+
+.footer-section-Details h4 {
+  font-family: Supreme-Regular;
+  letter-spacing: 2px;
+  font-weight: 200;
+}
+
+.footer-bottom {
+  height: 40%;
+  border-top: 1px solid #444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* flex-wrap: wrap; */
+  font-family: Supreme-Regular;
+  letter-spacing: 2px;
+}
+
+.social-icons a {
+  color: #ddd;
+  margin: 0 0.5vw;
+  font-size: 1.5vw;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #f5a623;
+}
+
+
+
+#page5 {
+  height: 100%;
+  width: 100%;
+  padding: 5vw 4vw;
+  /* position: absolute; */
+  position: relative;
+  /* top: 5vw; */
+  /* left: 5vw; */
+  /* margin-top: 5vw; */
+  padding: 5vw 2vw;
+}
+
+#page5>h1 {
+  text-align: center;
+  font-size: 3vw;
+  font-family: Supreme-Regular;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 5vh;
+  text-decoration: underline;
+}
+
+.elem {
+  height: 15vh;
+  width: 100%;
+  border-top: 2px solid #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vw 2vw;
+  position: relative;
+  transition: all ease-in 0.7s;
+}
+
+.elem img {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+  transition: all ease-in 0.7s;
+  opacity: 0;
+  left: 12%;
+}
+
+.elem:nth-last-child(1) {
+  border-bottom: 2px solid #000;
+}
+
+.elem:nth-last-child(odd) img {
+  left: 40%;
+}
+
+.elem:hover {
+  background-color: #e6e6e6;
+  opacity: 0.5;
+}
+
+.elem:hover img {
+  opacity: 1;
+  left: 30%;
+}
+
+.elem h4 {
+  font-size: 1.5vw;
+  font-weight: 500;
+  text-transform: uppercase;
+  width: 6%;
+  font-family: sans;
+}
+
+.elem-part2 {
+  width: 45%;
+}
+
+.elem-part2 h1 {
+  font-size: 2.2vw;
+  font-weight: 500;
+}
+
+.elem-part2 h5 {
+  font-size: 0.8vw;
+  font-weight: 600;
+  text-transform: uppercase;
+}

@@ -1,2 +1,10 @@
 /Backend/node_modules
 /Backend/.env
+
+
+/Frontend/node_modules
+/Frontend/.env
+/Frontend/build
+/Frontend/.DS_Store
+/Frontend/public/favicon.ico
+/Frontend/public/manifest.json
