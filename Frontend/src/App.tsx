@@ -4,6 +4,7 @@ import Home from './Components/Home';
 import Footer from './Components/footer';
 import Nav from './Components/Nav';
 import Background from './Components/Background';
+import Card from './Components/Cards';
 
 function App() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
@@ -19,7 +20,6 @@ function App() {
       <Nav />
       <Background />
       {isHomeVisible && <Home />}
-
       <Footer />
     </div>
   );

@@ -1,3 +1,5 @@
+import 'remixicon/fonts/remixicon.css';
+
 function Nav() {
     return (
         <nav>
@@ -10,6 +12,7 @@ function Nav() {
                 <input type="text" placeholder="Search for items,brands and grocery" />
                 <h4>About</h4>
                 <h4>Contact Us</h4>
+                <i className="ri-login-circle-fill"></i>
             </div>
             
         </nav>

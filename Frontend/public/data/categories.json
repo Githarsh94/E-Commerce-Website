@@ -8,37 +8,37 @@
     {
         "id": 2,
         "name": "Fashion",
-        "image": "https://example.com/fashion.jpg",
+        "image": "https://images.unsplash.com/photo-1557777586-f6682739fcf3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGZhc2hpb258ZW58MHx8MHx8fDA%3D",
         "description": "Trendy clothing and accessories"
     },
     {
         "id": 3,
         "name": "Home & Kitchen",
-        "image": "https://example.com/home-kitchen.jpg",
+        "image": "https://images.unsplash.com/photo-1514237487632-b60bc844a47d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aG9tZSUyMGFuZCUyMGtpdGNoZW58ZW58MHx8MHx8fDA%3D",
         "description": "Essentials for your home"
     },
     {
         "id": 4,
         "name": "Sports & Outdoors",
-        "image": "https://example.com/sports-outdoors.jpg",
+        "image": "https://plus.unsplash.com/premium_photo-1736980236568-23db0ccd016c?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8c3BvcnRzYSUyMGFuZCUyMG91dGRvb3J8ZW58MHx8MHx8fDA%3D",
         "description": "Gear for your adventures"
     },
     {
         "id": 5,
         "name": "Books",
-        "image": "https://example.com/books.jpg",
+        "image": "https://images.unsplash.com/photo-1610116306796-6fea9f4fae38?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "description": "A wide range of books"
     },
     {
         "id": 6,
         "name": "Beauty & Health",
-        "image": "https://example.com/beauty-health.jpg",
+        "image": "https://images.unsplash.com/photo-1686831758227-1802d0ba5eda?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNraW5jYXJlJTIwcHJvZHVjeXxlbnwwfHwwfHx8MA%3D%3D",
         "description": "Products for your well-being"
     },
     {
         "id": 7,
         "name": "Toys & Games",
-        "image": "https://example.com/toys-games.jpg",
+        "image": "https://images.unsplash.com/photo-1637667798459-0c3276ca3033?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "description": "Fun for all ages"
     }
 ]

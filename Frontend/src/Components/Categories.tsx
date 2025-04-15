@@ -35,13 +35,15 @@ function Categories() {
             {categoriesData.map((category) => (
                 <div className="elem" key={category.id}>
                     <img src={category.image} alt={category.name}></img>
-                    <h4>{category.name}</h4>
+                    <h2>{category.name}</h2>
                     <div className="elem-part2">
-                        <h1>{category.description}</h1>
+                        <h3>{category.description}</h3>
                         <h5>25th March 2020</h5>
                     </div>
                 </div>
             ))}
+
+            
         </div>
     );
 }

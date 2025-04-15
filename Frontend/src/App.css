@@ -44,6 +44,10 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 @font-face {
   font-family: Telma-Regular;
   src: url(/public/fonts/Telma_Complete/Fonts/OTF/Telma-Regular.otf);
@@ -52,6 +56,11 @@
 @font-face {
   font-family: Supreme-Regular;
   src: url(/public/fonts/Supreme_Complete/Fonts/OTF/Supreme-Regular.otf);
+}
+
+@font-face {
+  font-family: Britney_Regular;
+  src: url(/public/fonts/Britney_Complete/Fonts/OTF/Britney-Regular.otf);
 }
 
 #nav-parent {
@@ -113,15 +122,21 @@
   font-size: 2.5vw;
   font-weight: 400;
 }
-
+/* 
 #nav-parent h4:nth-last-of-type(1) {
   border-right: none;
-
 }
 
 #nav-parent h4:nth-last-of-type(1) {
-  /* border-right: none; */
   width: 22%;
+} */
+
+#nav-parent h4:nth-last-of-type(1) {
+  width: 14%;
+}
+
+#nav-parent h4:nth-last-of-type(2) {
+  width: 10%;
 }
 
 #nav-parent h4:nth-last-of-type(3) {
@@ -132,6 +147,14 @@
 #nav-parent h4:nth-last-of-type(4) {
   /* border-right: none; */
   width: 10%;
+}
+
+#nav-parent i{
+  font-size: 3vw;
+  color: #fff;
+  /* margin-right: 1vw; */
+  width: 10%;
+  cursor: pointer;
 }
 
 #nav-parent input {
@@ -250,22 +273,30 @@
   height: 100%;
   width: 100%;
   padding: 5vw 4vw;
-  /* position: absolute; */
   position: relative;
-  /* top: 5vw; */
-  /* left: 5vw; */
-  /* margin-top: 5vw; */
   padding: 5vw 2vw;
 }
 
 #page5>h1 {
   text-align: center;
   font-size: 3vw;
-  font-family: Supreme-Regular;
-  font-weight: 900;
+  font-family: Britney_Regular;
+  font-weight: 500;
   text-transform: uppercase;
   margin-bottom: 5vh;
+  width: fit-content;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#page5>h1:hover {
   text-decoration: underline;
+  color: pink; /* A soft pink */
+  font-size: 3.5vw;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1.1) rotate(-4deg);
+  text-shadow: 3px 3px 10px rgba(255, 105, 180, 0.5), 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .elem {
@@ -278,6 +309,7 @@
   padding: 1vw 2vw;
   position: relative;
   transition: all ease-in 0.7s;
+  cursor: pointer;
 }
 
 .elem img {
@@ -301,8 +333,9 @@
 }
 
 .elem:hover {
-  background-color: transparent;
-  /* opacity: 0.5; */
+  background-color: pink;
+  opacity: 0.9;
+  color: #000;
 }
 
 .elem:hover img {
@@ -310,25 +343,145 @@
   left: 30%;
 }
 
-.elem h4 {
-  font-size: 1.5vw;
+.elem h2 {
+  font-family: Supreme_Regular;
+  font-size: 2.2vw;
   font-weight: 500;
   text-transform: uppercase;
   width: 6%;
-  font-family: sans;
+  letter-spacing: 2px;
 }
 
 .elem-part2 {
   width: 45%;
 }
 
-.elem-part2 h1 {
+.elem-part2 h3 {
   font-size: 2.2vw;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .elem-part2 h5 {
   font-size: 0.8vw;
   font-weight: 600;
   text-transform: uppercase;
+}
+
+#card-section {
+  width: 100vw;
+  padding: 4vw 2vw;
+}
+
+.category-card {
+  width: 100%;
+  position: relative;
+}
+
+.card-category-diff {
+  overflow: hidden;
+  margin-bottom: 4vw;
+  white-space: nowrap;
+}
+
+.card-category-diff:nth-last-child(1) {
+  margin-bottom: 0;
+}
+
+.card-category-diff > h2 {
+  width: fit-content;
+  font-family: Britney_Regular;
+  font-size: 3vw;
+  font-weight: 500;
+  margin-bottom: 1vw;
+  text-align: start;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  /* text-decoration: underline; */
+}
+
+.card-category-diff > h2:hover {
+  text-decoration: underline;
+  color: pink; /* A soft pink */
+  font-size: 3.5vw;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1.1) rotate(-4deg);
+  text-shadow: 3px 3px 10px rgba(255, 105, 180, 0.5), 0 0 5px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+
+.card-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll 10s linear infinite;
+}
+
+.card {
+  height: 60vh;
+  display: inline-block;
+  vertical-align: top;
+  width: 22vw;
+  margin-right: 1vw;
+  border: 2px solid #000;
+  padding: 1vw;
+  border-radius: 1vw;
+  background-color: transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.card img {
+  height: 70%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10%;
+  object-position: center;
+}
+
+.card h5 {
+  text-align: right;
+}
+
+.card > h5:first-of-type {
+  text-align: left;
+}
+
+.card > h5:nth-of-type(2) {
+  text-align: right;
+}
+
+.card p {
+  display: flex;
+  height: auto;
+  width: 100%;
+  white-space: normal;
+  text-align: start;
+  font-size: 1vw;
+  font-weight: 600;
+  /* overflow: scroll; */
+  margin-bottom: 1vw;
+}
+
+.card:hover {
+  height: 65vh;
+  width: 23vw;
+  background-color: #000;
+  color: #fff;
+  transition: all ease-in 0.5s;
+  z-index: 2;
+}
+
+.card h3{
+  font-family: Britney_Regular;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
