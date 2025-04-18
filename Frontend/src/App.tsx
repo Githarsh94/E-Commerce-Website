@@ -5,21 +5,38 @@ import Footer from './Components/footer';
 import Nav from './Components/Nav';
 import Background from './Components/Background';
 import Card from './Components/Cards';
+import Cart from './Components/Cart';
 
 function App() {
-  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
-  const [isFooterVisible, setIsFooterVisible] = useState(false);
-  const [isHomeVisible, setIsHomeVisible] = useState(true);
+  const [activeComponent, setActiveComponent] = useState('home');
 
-  const handleFooterToggle = () => {
-    setIsHeaderVisible(!isHeaderVisible);
-    setIsFooterVisible(!isFooterVisible);
+  const handleComponentChange = (component: string) => {
+    setActiveComponent(component);
   };
+
+  const renderComponent = () => {
+    switch (activeComponent) {
+      case 'home':
+        return <div>
+          <Background url="/videoplayback.mp4" />
+          <Home />
+        </div>;
+      case 'cart':
+        return <div>
+          <Background url="/86.jpg" />
+          <Cart items={[]} onRemove={() => { }} />
+        </div>;
+      case 'card':
+        return <Card />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="App">
-      <Nav />
-      <Background />
-      {isHomeVisible && <Home />}
+      <Nav handleComponentChange={handleComponentChange} />
+      {renderComponent()}
       <Footer />
     </div>
   );

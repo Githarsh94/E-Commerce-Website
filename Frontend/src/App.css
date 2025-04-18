@@ -44,7 +44,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   overflow: hidden;
 }
 
@@ -85,7 +86,7 @@ html, body {
 }
 
 #nav-parent h1 {
-  width: 20%;
+  width: 15vw;
   padding: 0.5vw;
   font-size: 2.5vw;
   font-weight: 500;
@@ -96,8 +97,9 @@ html, body {
 #nav-parent h2 {
   position: absolute;
   top: 10.5%;
-  left: 15.5%;
+  left: 13.2%;
   font-weight: 500;
+  font-size: 1.5vw
 }
 
 #nav-parent h3 {
@@ -105,7 +107,7 @@ html, body {
   font-family: Supreme-Regular;
   position: absolute;
   bottom: 4%;
-  left: 11%;
+  left: 8.8%;
 }
 
 #nav-parent h4 {
@@ -174,7 +176,7 @@ html, body {
   width: 8%;
 }
 
-#nav-parent i{
+#nav-parent i {
   font-size: 3vw;
   color: #fff;
   /* margin-right: 1vw; */
@@ -315,7 +317,8 @@ html, body {
 
 #page5>h1:hover {
   text-decoration: underline;
-  color: pink; /* A soft pink */
+  color: pink;
+  /* A soft pink */
   font-size: 3.5vw;
   transition: all 0.3s ease-in-out;
   transform: scale(1.1) rotate(-4deg);
@@ -411,7 +414,7 @@ html, body {
   margin-bottom: 0;
 }
 
-.card-category-diff > h2 {
+.card-category-diff>h2 {
   width: fit-content;
   font-family: Britney_Regular;
   font-size: 3vw;
@@ -424,9 +427,10 @@ html, body {
   /* text-decoration: underline; */
 }
 
-.card-category-diff > h2:hover {
+.card-category-diff>h2:hover {
   text-decoration: underline;
-  color: rgba(255, 192, 203, 0.914); /* A soft pink */
+  color: rgba(255, 192, 203, 0.914);
+  /* A soft pink */
   font-size: 3.5vw;
   transition: all 0.3s ease-in-out;
   transform: scale(1.1) rotate(-4deg);
@@ -457,11 +461,15 @@ html, body {
   border-radius: 16px;
   box-sizing: border-box;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  background: rgba(255, 255, 255, 0.1);
+  /* Semi-transparent background */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px); /* Increased blur for better effect */
-  -webkit-backdrop-filter: blur(10px); /* Webkit support */
-  transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+  backdrop-filter: blur(10px);
+  /* Increased blur for better effect */
+  -webkit-backdrop-filter: blur(10px);
+  /* Webkit support */
+  transition: all 0.3s ease-in-out;
+  /* Smooth transition for hover effects */
 }
 
 .card img {
@@ -477,11 +485,11 @@ html, body {
   text-align: right;
 }
 
-.card > h5:first-of-type {
+.card>h5:first-of-type {
   text-align: left;
 }
 
-.card > h5:nth-of-type(2) {
+.card>h5:nth-of-type(2) {
   text-align: right;
 }
 
@@ -506,7 +514,7 @@ html, body {
   z-index: 2;
 }
 
-.card h3{
+.card h3 {
   font-family: Britney_Regular;
 }
 
@@ -514,6 +522,7 @@ html, body {
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -531,6 +540,18 @@ html, body {
   z-index: 2;
 }
 
-.cursor-bubble:on-click{
-  
+
+
+.cart {
+  width: fit-content;
+  position: relative;
+  /* margin-top: 10vw; */
+  margin-top: 10%;
+  background-color: #000;
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  /* top: 50%;
+  left: 50%; */
 }
