@@ -1,6 +1,5 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/config");
-const bcrypt = require("bcrypt");
 
 const User = sequelize.define("user", {
   name: { type: DataTypes.STRING, allowNull: false },
@@ -17,12 +16,6 @@ const User = sequelize.define("user", {
       zipCode: ""
     }
   }
-});
-
-// Hook to hash the password before saving the user
-User.beforeCreate(async (user) => {
-  const salt = await bcrypt.genSalt(10);
-  user.password = await bcrypt.hash(user.password, salt);
 });
 
 module.exports = User;

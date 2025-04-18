@@ -7,7 +7,11 @@ exports.addReview = async (req, res) => {
         if (!product) {
             return res.status(404).json({ error: 'Product not found' });
         }
-        const review = await Review.create({ userId: req.user.id, productId: req.body.productId, ...req.body });
+        const alreadyReviewed = await Review.findOne({ where: { userId: req.user.id, ProductId: req.body.productId } });
+        if (alreadyReviewed) {
+            return res.status(400).json({ error: 'You have already reviewed this product' });
+        }
+        const review = await Review.create({ userId: req.user.id, ProductId: req.body.productId, content: req.body.comment, rating: req.body.rating });
         res.status(201).json(review);
     } catch (error) {
         res.status(500).json({ error: error.message });

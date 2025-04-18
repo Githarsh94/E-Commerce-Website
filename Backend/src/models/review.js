@@ -1,27 +1,26 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../database/config");
-const User = require("./user"); // Assuming you have a User model defined
-const Product = require("./product"); // Assuming you have a Product model defined
+const { DataTypes } = require('sequelize');
+const sequelize = require('../database/config');
 
-const Review = sequelize.define("review", {
-  rating: { type: DataTypes.INTEGER, allowNull: false },
-  comment: { type: DataTypes.TEXT },
-  userId: {
+const Review = sequelize.define('Review', {
+  id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: User,
-      key: 'id'
-    }
+    autoIncrement: true,
+    primaryKey: true,
   },
-  productId: {
+  content: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  rating: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    references: {
-      model: Product,
-      key: 'id'
-    }
-  }
+  },
+  ProductId: {
+    type: DataTypes.INTEGER,
+    allowNull: true, // Ensure it matches the foreign key constraint
+  },
+}, {
+  timestamps: true,
 });
 
 module.exports = Review;

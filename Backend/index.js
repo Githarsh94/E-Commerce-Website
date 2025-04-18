@@ -1,5 +1,5 @@
 const express = require("express");
-const {syncDB } = require("./src/models/index");
+const { syncDB } = require("./src/models/index");
 const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
@@ -10,6 +10,10 @@ const authRoutes = require('./src/routes/auth.routes');
 const reviewRoutes = require('./src/routes/review.routes');
 const orderRoutes = require('./src/routes/order.routes');
 const categoryRoutes = require('./src/routes/category.routes');
+const cartRoutes = require('./src/routes/cart.routes');
+const wishlistRoutes = require('./src/routes/wishlist.routes');
+const shipmentRoutes = require('./src/routes/shipment.routes');
+const paymentRoutes = require('./src/routes/payment.routes');
 
 app.use(express.json());
 
@@ -18,6 +22,10 @@ app.use('/api/categories', categoryRoutes); // Admin CRUD for categories
 app.use('/api/products', productRoutes); // Admin CRUD for products
 app.use('/api/reviews', reviewRoutes);   // Add/edit reviews
 app.use('/api/orders', orderRoutes);     // Place/cancel orders
+app.use('/api/cart', cartRoutes);
+app.use('/api/wishlist', wishlistRoutes);
+app.use('/api/shipment', shipmentRoutes);
+app.use('/api/payment', paymentRoutes);
 
 const startServer = async () => {
   await syncDB();
@@ -25,5 +33,4 @@ const startServer = async () => {
 };
 
 startServer();
-
 
