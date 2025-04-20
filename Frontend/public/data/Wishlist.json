@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "productName": "Wireless Bluetooth Headphones",
+        "price": "$59.99",
+        "imageUrl": "/images/headphones.jpg",
+        "addedDate": "2025-03-01"
+    },
+    {
+        "id": 2,
+        "productName": "Smart Fitness Watch",
+        "price": "$129.99",
+        "imageUrl": "/images/fitness-watch.jpg",
+        "addedDate": "2025-02-02"
+    },
+    {
+        "id": 3,
+        "productName": "Portable Phone Charger",
+        "price": "$19.99",
+        "imageUrl": "/images/phone-charger.jpg",
+        "addedDate": "2025-01-03"
+    }
+]

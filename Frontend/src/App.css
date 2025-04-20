@@ -262,6 +262,7 @@ body {
   justify-content: space-between;
   margin-right: 2vw;
   font-weight: 400;
+  cursor: pointer;
 }
 
 .footer-section-Details h4 {
@@ -540,18 +541,352 @@ body {
   z-index: 2;
 }
 
-
-
 .cart {
-  width: fit-content;
+  height: auto;
+  width: 80vw;
   position: relative;
-  /* margin-top: 10vw; */
-  margin-top: 10%;
-  background-color: #000;
-  color: #fff;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  /* top: 50%;
-  left: 50%; */
+  /* background-color: rgb(255, 34, 0); */
+  margin: 25vh auto;
+  padding: 2vw;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.2px);
+  -webkit-backdrop-filter: blur(8.2px);
+  border: 1px solid rgba(255, 255, 255, 0.59);
+}
+
+.cart>h2{
+  font-family: Supreme-Regular;
+  font-size: 3vw;
+  font-weight: 500;
+  margin-bottom: 2vh;
+  color: #19350c;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+
+.cart-item{
+  height:fit-content;
+  width: 100%;
+  /* background-color: #19350c; */
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  border-bottom: 2px solid #5a585855;
+  margin-bottom: 1vh;
+  gap: 2vw;
+}
+.cart-item:first-of-type {
+  border-top: 2px solid #5a585855;
+}
+
+.cart-elem-part1{
+  height: 10vh;
+  width: 10vw;
+}
+.cart-elem-part1 img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+.cart-elem-part2{
+  height: 10vh;
+  width: 30vw;
+  /* background-color: burlywood; */
+  text-align: start;
+}
+
+.cart-elem-part2 h2{
+  font-size: 1.5vw;
+  font-weight: 600;
+  color: #19350c;
+}
+
+.cart-elem-part2 h4{
+  font-size: 1vw;
+  font-weight: 400;
+  color: #19350c;
+}
+
+.cart-elem-part2-last h4:last-of-type{
+  cursor: pointer;
+}
+
+.cart-elem-part2-last{
+  height: 4vh;
+  width: 30vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon-btn {
+  height: 2vw;
+  width: 2vw;
+  border: 1px solid #19350c;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2vw;
+  color: #19350c;
+}
+
+.icon-btn:hover {
+  color: #CA5655;
+}
+
+.quantity {
+  font-size: 1.2vw;
+  margin: 0 0.8vw;
+  font-weight: 600;
+  color: #19350c;
+}
+
+.remove-btn {
+  cursor: pointer;
+  color: #a32222;
+}
+
+.remove-btn:hover {
+  text-decoration: underline;
+}
+
+.wishlist-wrapper{
+  height: 2.5vw;
+  width: 2.5vw;
+  border: 2px solid #000000de;
+  position: fixed;
+  top: 14vh;
+  right: 2vw;
+  border-radius: 10px;
+  background-color: #ffffffbe;
+  z-index: 3;
+}
+
+.wishlist-wrapper i{
+  font-size: 2vw;
+  color: rgba(255, 0, 0, 0.795);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.wishlist {
+  height: auto;
+  width: 80vw;
+  position: relative;
+  margin: 25vh auto;
+  padding: 2vw;
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.2px);
+  -webkit-backdrop-filter: blur(8.2px);
+  border: 1px solid rgba(255, 255, 255, 0.59);
+  opacity: 0;
+  /* z-index: 10; */
+}
+
+.wishlist > h2 {
+  font-family: Supreme-Regular;
+  font-size: 3vw;
+  font-weight: 500;
+  margin-bottom: 2vh;
+  color: #19350c;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+
+.wishlist-item {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #5a585855;
+  margin-bottom: 1vh;
+  gap: 2vw;
+}
+.wishlist-item:first-of-type {
+  border-top: 2px solid #5a585855;
+}
+
+.wishlist-elem-part1 {
+  height: 10vh;
+  width: 10vw;
+}
+.wishlist-elem-part1 img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+.wishlist-elem-part2 {
+  height: 10vh;
+  width: 30vw;
+  text-align: start;
+}
+
+.wishlist-elem-part2 h2 {
+  font-size: 1.5vw;
+  font-weight: 600;
+  color: #19350c;
+}
+
+.wishlist-elem-part2 p,
+.wishlist-elem-part2 h4 {
+  font-size: 1vw;
+  font-weight: 400;
+  color: #19350c;
+}
+
+.wishlist-elem-part2-last {
+  height: 4vh;
+  width: 30vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Set height to 100% to provide space for the video */
+  background-color: transparent;
+  /* z-index: 1; Ensure the loader appears above all other content */
+}
+
+.loader-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%; /* Initially set height to 0% */
+  object-fit: cover;
+  z-index: -1; /* Keep video in the background */
+  animation: videoSlide 4s ease-out forwards; /* Add animation */
+}
+
+@keyframes videoSlide {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%; /* Expand to full height */
+  }
+}
+
+.loader-overlay {
+  position: absolute;
+  bottom: 30%; /* Center the overlay vertically */
+  left: 50%; /* Center the overlay horizontally */
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: 19350C; /* Red color for the text */
+  font-size: 2rem;
+  font-weight: bold;
+  z-index: 2; /* Overlay should be above video */
+}
+
+.loader-overlay h1 {
+  font-family: BespokeStencil_Complete;
+  font-size: 3vw;
+  font-weight: 800;
+  color: #19350c;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.about {
+  position: relative;
+  height: fit-content;
+  max-width: 80vw;
+  margin: 25vh auto;
+  padding: 2rem;
+  background-color: transparent; /* Semi-transparent background */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333333e6;
+  animation: dropIn 3s ease-in-out forwards;
+}
+
+.about h1 {
+  font-size: 3.5vw;
+  margin-bottom: 1.5rem;
+  color: #481718;
+}
+
+.about p {
+  font-size: 1.5vw;
+  font-weight: 600;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: #CA5655;
+}
+
+/* Drop-in animation */
+@keyframes dropIn {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.contact {
+  position: relative;
+  height: fit-content;
+  max-width: 80vw;
+  margin: 25vh auto;
+  padding: 2rem;
+  background-color: transparent;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333333e6;
+  animation: dropIn 3s ease-in-out forwards;
+}
+
+.contact h1 {
+  font-size: 3.5vw;
+  margin-bottom: 1.5rem;
+  color: #481718; /* You can match the tone with your theme */
+}
+
+.contact p {
+  font-size: 1.5vw;
+  font-weight: 600;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: #CA5655; /* Match your accent or brand color */
+}
+
+.contact strong{
+  color: #0000eed1
+}
+
+/* Drop-in animation already declared in your global CSS */
+@keyframes dropIn {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
