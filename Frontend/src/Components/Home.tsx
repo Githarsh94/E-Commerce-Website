@@ -1,7 +1,6 @@
-import {useLenis} from '../hooks/useLenis';
+import { useLenis } from '../hooks/useLenis';
 import Categories from './Categories';
-import Card from './Cards';
-import React from 'react';
+import Cards from './Cards';
 import CursorBubble from './CursorBubble';
 import Wishlist from './Wishlist';
 function Home() {
@@ -10,7 +9,7 @@ function Home() {
         <div>
             <Wishlist />
             <CursorBubble />
-            <Card/>
+            <Cards />
             <Categories />
         </div>
     );

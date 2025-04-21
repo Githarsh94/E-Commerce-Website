@@ -15,9 +15,9 @@ const Loader: React.FC<LoaderProps> = ({ onComplete }) => {
           setTimeout(() => onComplete(), 500);
           return 100;
         }
-        return prev + 1;
+        return prev + 1; // Increase progress increment to speed up the loader
       });
-    }, 30);
+    }, 10); // Decrease interval time to speed up the loader
 
     return () => clearInterval(interval);
   }, [onComplete]);
@@ -25,7 +25,7 @@ const Loader: React.FC<LoaderProps> = ({ onComplete }) => {
   return (
     <div className="loader-container">
       <video autoPlay muted loop className="loader-video">
-        <source src="/LoaderVideo.mp4" type="video/mp4" />
+        <source src="/loaderVideo.mp4" type="video/mp4" />
       </video>
       <div className="loader-overlay">
         <h1>Loading... {progress}%</h1>

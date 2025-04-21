@@ -23,6 +23,10 @@ const Product = sequelize.define('Product', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  image_url: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
   categoryId: {
     type: DataTypes.INTEGER,
     allowNull: true, // Allow NULL values to resolve the conflict

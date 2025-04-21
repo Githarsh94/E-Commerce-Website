@@ -83,31 +83,31 @@
         "category": "Home Appliances",
         "products": [
             {
-            "id": 11,
-            "name": "Vacuum Cleaner",
-            "price": 149.99,
-            "description": "Powerful and efficient vacuum cleaner for home use. Keeps your space clean and dust-free with ease.",
-            "image": "https://plus.unsplash.com/premium_photo-1664372899236-9d0654e2507f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dmFjY3VtJTIwY2xlYW5lcnxlbnwwfHwwfHx8MA%3D%3D"
+                "id": 11,
+                "name": "Vacuum Cleaner",
+                "price": 149.99,
+                "description": "Powerful and efficient vacuum cleaner for home use. Keeps your space clean and dust-free with ease.",
+                "image": "https://plus.unsplash.com/premium_photo-1664372899236-9d0654e2507f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dmFjY3VtJTIwY2xlYW5lcnxlbnwwfHwwfHx8MA%3D%3D"
             },
             {
-            "id": 12,
-            "name": "Microwave Oven",
-            "price": 99.99,
-            "description": "Compact microwave oven with multiple settings. Perfect for quick and easy meal preparation.",
-            "image": "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWljcm93YXZlJTIwb3ZlbnxlbnwwfHwwfHx8MA%3D%3D"
+                "id": 12,
+                "name": "Microwave Oven",
+                "price": 99.99,
+                "description": "Compact microwave oven with multiple settings. Perfect for quick and easy meal preparation.",
+                "image": "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWljcm93YXZlJTIwb3ZlbnxlbnwwfHwwfHx8MA%3D%3D"
             },
             {
-            "id": 13,
-            "name": "Air Conditioner",
-            "price": 299.99,
-            "description": "Energy-efficient air conditioner for comfortable living. Keeps your home cool during hot days.",
-            "image": "https://images.unsplash.com/photo-1603335730747-ca17baa3aac2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGFpciUyMGNvbmRpdGlvbmVyfGVufDB8fDB8fHww"
+                "id": 13,
+                "name": "Air Conditioner",
+                "price": 299.99,
+                "description": "Energy-efficient air conditioner for comfortable living. Keeps your home cool during hot days.",
+                "image": "https://images.unsplash.com/photo-1603335730747-ca17baa3aac2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGFpciUyMGNvbmRpdGlvbmVyfGVufDB8fDB8fHww"
             },
             {
-            "id": 14,
-            "name": "Refrigerator",
-            "price": 499.99,
-            "description": "Spacious refrigerator with modern features. Keeps your food fresh and organized.",
+                "id": 14,
+                "name": "Refrigerator",
+                "price": 499.99,
+                "description": "Spacious refrigerator with modern features. Keeps your food fresh and organized.",
                 "image": "https://images.unsplash.com/photo-1630459065645-549fe5a56db4?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmVmcmlnZXJhdG9yfGVufDB8fDB8fHww"
             },
             {

@@ -494,16 +494,27 @@ body {
   text-align: right;
 }
 
+.card h4 {
+  color: #132892;
+  font-size: 1vw;
+  font-weight: bolder;
+  border: 1px solid #000;
+  border-radius: 1vw;
+  width: 10vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .card p {
   display: flex;
   height: auto;
   width: 100%;
   white-space: normal;
   text-align: start;
-  font-size: 1vw;
-  font-weight: 600;
+  font-size: 0.8vw;
+  font-weight: 500;
   /* overflow: scroll; */
-  margin-bottom: 1vw;
+  margin-bottom: 0.5vw;
 }
 
 .card:hover {
@@ -538,7 +549,7 @@ body {
   pointer-events: none;
   transform: translate(-50%, -50%);
   transition: transform 0.5s ease-out;
-  z-index: 2;
+  z-index: 5;
 }
 
 .cart {
@@ -546,7 +557,7 @@ body {
   width: 80vw;
   position: relative;
   /* background-color: rgb(255, 34, 0); */
-  margin: 25vh auto;
+  margin: 10vh auto;
   padding: 2vw;
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.24);
@@ -557,7 +568,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.59);
 }
 
-.cart>h2{
+.cart>h2 {
   font-family: Supreme-Regular;
   font-size: 3vw;
   font-weight: 500;
@@ -567,8 +578,8 @@ body {
   text-decoration: underline;
 }
 
-.cart-item{
-  height:fit-content;
+.cart-item {
+  height: 18vh;
   width: 100%;
   /* background-color: #19350c; */
   display: flex;
@@ -578,15 +589,17 @@ body {
   margin-bottom: 1vh;
   gap: 2vw;
 }
+
 .cart-item:first-of-type {
   border-top: 2px solid #5a585855;
 }
 
-.cart-elem-part1{
+.cart-elem-part1 {
   height: 10vh;
   width: 10vw;
 }
-.cart-elem-part1 img{
+
+.cart-elem-part1 img {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -594,30 +607,30 @@ body {
   border-radius: 50%;
 }
 
-.cart-elem-part2{
+.cart-elem-part2 {
   height: 10vh;
   width: 30vw;
   /* background-color: burlywood; */
   text-align: start;
 }
 
-.cart-elem-part2 h2{
+.cart-elem-part2 h2 {
   font-size: 1.5vw;
   font-weight: 600;
   color: #19350c;
 }
 
-.cart-elem-part2 h4{
+.cart-elem-part2 h4 {
   font-size: 1vw;
   font-weight: 400;
   color: #19350c;
 }
 
-.cart-elem-part2-last h4:last-of-type{
+.cart-elem-part2-last h4:last-of-type {
   cursor: pointer;
 }
 
-.cart-elem-part2-last{
+.cart-elem-part2-last {
   height: 4vh;
   width: 30vw;
   display: flex;
@@ -655,7 +668,7 @@ body {
   text-decoration: underline;
 }
 
-.wishlist-wrapper{
+.wishlist-wrapper {
   height: 2.5vw;
   width: 2.5vw;
   border: 2px solid #000000de;
@@ -667,7 +680,7 @@ body {
   z-index: 3;
 }
 
-.wishlist-wrapper i{
+.wishlist-wrapper i {
   font-size: 2vw;
   color: rgba(255, 0, 0, 0.795);
   cursor: pointer;
@@ -690,7 +703,7 @@ body {
   /* z-index: 10; */
 }
 
-.wishlist > h2 {
+.wishlist>h2 {
   font-family: Supreme-Regular;
   font-size: 3vw;
   font-weight: 500;
@@ -709,6 +722,7 @@ body {
   margin-bottom: 1vh;
   gap: 2vw;
 }
+
 .wishlist-item:first-of-type {
   border-top: 2px solid #5a585855;
 }
@@ -717,6 +731,7 @@ body {
   height: 10vh;
   width: 10vw;
 }
+
 .wishlist-elem-part1 img {
   height: 100%;
   width: 100%;
@@ -758,7 +773,8 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; /* Set height to 100% to provide space for the video */
+  height: 100%;
+  /* Set height to 100% to provide space for the video */
   background-color: transparent;
   /* z-index: 1; Ensure the loader appears above all other content */
 }
@@ -768,31 +784,40 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 0%; /* Initially set height to 0% */
+  height: 0%;
+  /* Initially set height to 0% */
   object-fit: cover;
-  z-index: -1; /* Keep video in the background */
-  animation: videoSlide 4s ease-out forwards; /* Add animation */
+  z-index: -1;
+  /* Keep video in the background */
+  animation: videoSlide 1.6s ease-out forwards;
+  /* Add animation */
 }
 
 @keyframes videoSlide {
   0% {
     height: 0%;
   }
+
   100% {
-    height: 100%; /* Expand to full height */
+    height: 100%;
+    /* Expand to full height */
   }
 }
 
 .loader-overlay {
   position: absolute;
-  bottom: 30%; /* Center the overlay vertically */
-  left: 50%; /* Center the overlay horizontally */
+  bottom: 30%;
+  /* Center the overlay vertically */
+  left: 50%;
+  /* Center the overlay horizontally */
   transform: translate(-50%, -50%);
   text-align: center;
-  color: 19350C; /* Red color for the text */
+  color: 19350C;
+  /* Red color for the text */
   font-size: 2rem;
   font-weight: bold;
-  z-index: 2; /* Overlay should be above video */
+  z-index: 2;
+  /* Overlay should be above video */
 }
 
 .loader-overlay h1 {
@@ -811,7 +836,8 @@ body {
   max-width: 80vw;
   margin: 25vh auto;
   padding: 2rem;
-  background-color: transparent; /* Semi-transparent background */
+  background-color: transparent;
+  /* Semi-transparent background */
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -840,6 +866,7 @@ body {
     transform: translateY(-100%);
     opacity: 0;
   }
+
   100% {
     transform: translateY(0);
     opacity: 1;
@@ -864,7 +891,8 @@ body {
 .contact h1 {
   font-size: 3.5vw;
   margin-bottom: 1.5rem;
-  color: #481718; /* You can match the tone with your theme */
+  color: #481718;
+  /* You can match the tone with your theme */
 }
 
 .contact p {
@@ -872,10 +900,11 @@ body {
   font-weight: 600;
   line-height: 1.8;
   margin-bottom: 1rem;
-  color: #CA5655; /* Match your accent or brand color */
+  color: #CA5655;
+  /* Match your accent or brand color */
 }
 
-.contact strong{
+.contact strong {
   color: #0000eed1
 }
 
@@ -885,6 +914,7 @@ body {
     transform: translateY(-100%);
     opacity: 0;
   }
+
   100% {
     transform: translateY(0);
     opacity: 1;

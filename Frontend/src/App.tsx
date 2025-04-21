@@ -31,11 +31,11 @@ function App() {
         return (
           <div>
             <Background url="Cart.mp4" />
-            <Cart 
-              items={[]} 
-              onRemove={() => { }} 
-              onAdd={() => { }} 
-              onDecrease={() => { }} 
+            <Cart
+              items={[]}
+              onRemove={() => { }}
+              onAdd={() => { }}
+              onDecrease={() => { }}
             />
           </div>
         );

@@ -20,7 +20,6 @@ export const useLenis = () => {
 
     return () => {
       lenis.destroy();
-      console.log("leniis initialized");
     };
   }, []);
 };

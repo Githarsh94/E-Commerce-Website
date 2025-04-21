@@ -1,9 +1,11 @@
 const express = require("express");
+const cors = require("cors");
 const { syncDB } = require("./src/models/index");
 const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
 
+app.use(cors());
 
 const productRoutes = require('./src/routes/product.routes');
 const authRoutes = require('./src/routes/auth.routes');
@@ -33,4 +35,3 @@ const startServer = async () => {
 };
 
 startServer();
-

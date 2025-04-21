@@ -38,12 +38,52 @@ exports.removeFromCart = async (req, res) => {
         if (!cartItem) {
             return res.status(403).json({ error: 'Item not found' });
         }
-        if (cartItem.userId !== req.user.id) {
-            return res.status(403).json({ error: 'Unauthorized' });
-        }
+        // if (cartItem.userId !== req.user.id) {
+        //     return res.status(403).json({ error: 'Unauthorized' });
+        // }
         await cartItem.destroy();
         res.status(200).json({ message: 'Item removed from cart' });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
+
+exports.decreaseQuantity = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const cartItem = await Cart.findByPk(id);
+        if (!cartItem) {
+            return res.status(403).json({ error: 'Item not found' });
+        }
+        if (cartItem.quantity <= 1) {
+            return res.status(400).json({ error: 'Quantity must be greater than 0' });
+        }
+        cartItem.quantity -= 1;
+        await cartItem.save();
+        res.status(200).json(cartItem);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+exports.increaseQuantity = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const cartItem = await Cart.findByPk(id);
+        if (!cartItem) {
+            return res.status(403).json({ error: 'Item not found' });
+        }
+        const product = await Product.findByPk(cartItem.productId);
+        if (!product) {
+            return res.status(403).json({ error: 'Product not found' });
+        }
+        if (cartItem.quantity >= product.stock) {
+            return res.status(400).json({ error: 'Insufficient stock' });
+        }
+        cartItem.quantity += 1;
+        await cartItem.save();
+        res.status(200).json(cartItem);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
