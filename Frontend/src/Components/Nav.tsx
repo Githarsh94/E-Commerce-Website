@@ -14,9 +14,14 @@ const SignedOut = SignedOutComponent as FC<{ children?: React.ReactNode }>;
 
 interface NavProps {
   handleComponentChange: (component: string) => void;
+  onSearch: (searchTerm: string) => void;
 }
 
-function Nav({ handleComponentChange }: NavProps) {
+function Nav({ handleComponentChange, onSearch }: NavProps) {
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onSearch(e.target.value);
+  };
+
   return (
     <nav>
       <div id="nav-parent">
@@ -25,7 +30,11 @@ function Nav({ handleComponentChange }: NavProps) {
         <h3>Makes Easy</h3>
         <h4 onClick={() => handleComponentChange('home')}>Home</h4>
         <h4 onClick={() => handleComponentChange('cart')}>Cart</h4>
-        <input type="text" placeholder="Search for items, brands and grocery" />
+        <input
+          type="text"
+          placeholder="Search for items, brands and grocery"
+          onChange={handleSearchInputChange}
+        />
         <h4 onClick={() => handleComponentChange('about')}>About</h4>
         <h4 onClick={() => handleComponentChange('contact')}>Contact Us</h4>
 

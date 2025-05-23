@@ -3,13 +3,18 @@ import Categories from './Categories';
 import Cards from './Cards';
 import CursorBubble from './CursorBubble';
 import Wishlist from './Wishlist';
-function Home() {
+
+interface HomeProps {
+    searchTerm: string;
+}
+
+function Home({ searchTerm }: HomeProps) {
     useLenis();
     return (
         <div>
             <Wishlist />
             <CursorBubble />
-            <Cards />
+            <Cards searchTerm={searchTerm} />
             <Categories />
         </div>
     );

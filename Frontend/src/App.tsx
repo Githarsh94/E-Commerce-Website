@@ -13,9 +13,14 @@ import Contact from './Components/Contact';
 function App() {
   const [activeComponent, setActiveComponent] = useState('home');
   const [loadingComplete, setLoadingComplete] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleComponentChange = (component: string) => {
     setActiveComponent(component);
+  };
+
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
   };
 
   const renderComponent = () => {
@@ -24,7 +29,7 @@ function App() {
         return (
           <div>
             <Background url="/videoplayback.mp4" />
-            <Home />
+            <Home searchTerm={searchTerm} />
           </div>
         );
       case 'cart':
@@ -39,8 +44,6 @@ function App() {
             />
           </div>
         );
-      case 'card':
-        return <Card />;
       case 'about':
         return (
           <div>
@@ -66,7 +69,7 @@ function App() {
         <Loader onComplete={() => setLoadingComplete(true)} />
       ) : (
         <>
-          <Nav handleComponentChange={handleComponentChange} />
+          <Nav handleComponentChange={handleComponentChange} onSearch={handleSearch} />
           {renderComponent()}
           <Footer />
         </>

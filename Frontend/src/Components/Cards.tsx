@@ -13,8 +13,13 @@ interface CategoryData {
     products: Product[];
 }
 
-function Cards() {
+interface CardsProps {
+    searchTerm: string;
+}
+
+function Cards({ searchTerm }: CardsProps) {
     const [categories, setCategories] = useState<CategoryData[]>([]);
+    const [allCategories, setAllCategories] = useState<CategoryData[]>([]);
 
     useEffect(() => {
         const fetchCategoriesAndProducts = async () => {
@@ -35,9 +40,11 @@ function Cards() {
                         })
                     );
 
+                    setAllCategories(categoriesWithProducts);
                     setCategories(categoriesWithProducts);
                 } else {
                     console.error("Invalid categories data format");
+                    setAllCategories([]);
                     setCategories([]);
                 }
             } catch (error) {
@@ -47,6 +54,30 @@ function Cards() {
 
         fetchCategoriesAndProducts();
     }, []);
+
+    // Filter products based on search term
+    useEffect(() => {
+        if (!searchTerm) {
+            setCategories(allCategories);
+            return;
+        }
+
+        const term = searchTerm.toLowerCase().trim();
+
+        const filteredCategories = allCategories.map(categoryData => {
+            const filteredProducts = categoryData.products.filter(product =>
+                product.name.toLowerCase().includes(term) ||
+                product.description.toLowerCase().includes(term)
+            );
+
+            return {
+                ...categoryData,
+                products: filteredProducts
+            };
+        }).filter(categoryData => categoryData.products.length > 0);
+
+        setCategories(filteredCategories);
+    }, [searchTerm, allCategories]);
 
     const addToCart = async (productId: number) => {
         try {
@@ -76,6 +107,11 @@ function Cards() {
     return (
         <div id="card-section">
             <h1>Card Section</h1>
+            {categories.length === 0 && searchTerm && (
+                <div className="no-results">
+                    <p>No products found matching "{searchTerm}"</p>
+                </div>
+            )}
             <div className="category-card">
                 {categories.map((categoryData, index) => (
                     <div className="card-category-diff" key={index}>
