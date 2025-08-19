@@ -1,7 +1,6 @@
 import { useLenis } from '../hooks/useLenis';
 import Categories from './Categories';
 import Cards from './Cards';
-import CursorBubble from './CursorBubble';
 import Wishlist from './Wishlist';
 
 interface HomeProps {
@@ -13,7 +12,6 @@ function Home({ searchTerm }: HomeProps) {
     return (
         <div>
             <Wishlist />
-            <CursorBubble />
             <Cards searchTerm={searchTerm} />
             <Categories />
         </div>

@@ -22,6 +22,6 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src","vite-env.d.ts"
+    "src"
   ]
 }

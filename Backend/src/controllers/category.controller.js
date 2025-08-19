@@ -1,4 +1,5 @@
 const Category = require('../models/category');
+const Product = require('../models/product');
 
 exports.addCategory = async (req, res) => {
     try {
@@ -49,9 +50,12 @@ exports.updateCategory = async (req, res) => {
 
 exports.getAllCategories = async (req, res) => {
     try {
+        // Simple test first - just get categories without products
         const categories = await Category.findAll();
+        
         res.status(200).json(categories);
     } catch (error) {
-        res.status(500).json({ error: 'Failed to retrieve categories' });
+        console.error('Error fetching categories:', error);
+        res.status(500).json({ error: 'Failed to retrieve categories', details: error.message });
     }
 };

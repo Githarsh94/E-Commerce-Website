@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 
+interface CategoryData {
+    category: string;
+    products: any[];
+}
 
 interface Category {
-    id: number;
     name: string;
     description: string;
     image: string;
@@ -19,8 +22,14 @@ function Categories() {
                 }
                 return response.json();
             })
-            .then((data) => {
-                setCategoriesData(data);
+            .then((data: CategoryData[]) => {
+                // Transform the data to match what we need for categories display
+                const transformedCategories: Category[] = data.map((item, index) => ({
+                    name: item.category,
+                    description: `Explore our ${item.category.toLowerCase()} collection with ${item.products.length} amazing products`,
+                    image: item.products[0]?.image_url || `https://images.unsplash.com/photo-151${1000000 + index}7171634-5f897ff02aa9?w=400&h=300&fit=crop`
+                }));
+                setCategoriesData(transformedCategories);
             })
             .catch((error) => {
                 console.error("Error fetching categories data:", error);
@@ -32,8 +41,8 @@ function Categories() {
     return (
         <div id="page5">
             <h1>Categories</h1>
-            {categoriesData.map((category) => (
-                <div className="elem" key={category.id}>
+            {categoriesData.map((category, index) => (
+                <div className="elem" key={index}>
                     <img src={category.image} alt={category.name}></img>
                     <h2>{category.name}</h2>
                     <div className="elem-part2">

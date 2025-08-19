@@ -1,44 +1,134 @@
 [
-    {
+  {
+    "category": "Electronics",
+    "products": [
+      {
         "id": 1,
-        "name": "Electronics",
-        "image": "https://images.unsplash.com/photo-1593344484962-796055d4a3a4?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGVsZWN0cm9uaWNzfGVufDB8fDB8fHww",
-        "description": "Latest gadgets and devices"
-    },
-    {
+        "name": "Smartphone",
+        "description": "Latest smartphone with advanced features",
+        "price": 699,
+        "image_url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=400&fit=crop"
+      },
+      {
         "id": 2,
-        "name": "Fashion",
-        "image": "https://images.unsplash.com/photo-1557777586-f6682739fcf3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGZhc2hpb258ZW58MHx8MHx8fDA%3D",
-        "description": "Trendy clothing and accessories"
-    },
-    {
+        "name": "Laptop",
+        "description": "High-performance laptop for work and gaming",
+        "price": 1299,
+        "image_url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=300&h=400&fit=crop"
+      },
+      {
         "id": 3,
-        "name": "Home & Kitchen",
-        "image": "https://images.unsplash.com/photo-1514237487632-b60bc844a47d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aG9tZSUyMGFuZCUyMGtpdGNoZW58ZW58MHx8MHx8fDA%3D",
-        "description": "Essentials for your home"
-    },
-    {
+        "name": "Wireless Headphones",
+        "description": "Premium noise-cancelling headphones",
+        "price": 299,
+        "image_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=400&fit=crop"
+      },
+      {
         "id": 4,
-        "name": "Sports & Outdoors",
-        "image": "https://plus.unsplash.com/premium_photo-1736980236568-23db0ccd016c?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8c3BvcnRzYSUyMGFuZCUyMG91dGRvb3J8ZW58MHx8MHx8fDA%3D",
-        "description": "Gear for your adventures"
-    },
-    {
+        "name": "Smart Watch",
+        "description": "Fitness tracking and smart notifications",
+        "price": 399,
+        "image_url": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=400&fit=crop"
+      }
+    ]
+  },
+  {
+    "category": "Fashion",
+    "products": [
+      {
         "id": 5,
-        "name": "Books",
-        "image": "https://images.unsplash.com/photo-1610116306796-6fea9f4fae38?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "description": "A wide range of books"
-    },
-    {
+        "name": "Designer Jacket",
+        "description": "Stylish winter jacket for all occasions",
+        "price": 199,
+        "image_url": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop"
+      },
+      {
         "id": 6,
-        "name": "Beauty & Health",
-        "image": "https://images.unsplash.com/photo-1686831758227-1802d0ba5eda?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNraW5jYXJlJTIwcHJvZHVjeXxlbnwwfHwwfHx8MA%3D%3D",
-        "description": "Products for your well-being"
-    },
-    {
+        "name": "Running Shoes",
+        "description": "Comfortable running shoes with great support",
+        "price": 129,
+        "image_url": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=400&fit=crop"
+      },
+      {
         "id": 7,
-        "name": "Toys & Games",
-        "image": "https://images.unsplash.com/photo-1637667798459-0c3276ca3033?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "description": "Fun for all ages"
-    }
+        "name": "Designer Handbag",
+        "description": "Elegant handbag for everyday use",
+        "price": 249,
+        "image_url": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=300&h=400&fit=crop"
+      },
+      {
+        "id": 8,
+        "name": "Sunglasses",
+        "description": "UV protection with stylish design",
+        "price": 89,
+        "image_url": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=400&fit=crop"
+      }
+    ]
+  },
+  {
+    "category": "Home & Kitchen",
+    "products": [
+      {
+        "id": 9,
+        "name": "Coffee Machine",
+        "description": "Professional espresso machine for home use",
+        "price": 449,
+        "image_url": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=300&h=400&fit=crop"
+      },
+      {
+        "id": 10,
+        "name": "Air Fryer",
+        "description": "Healthy cooking with less oil",
+        "price": 159,
+        "image_url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=300&h=400&fit=crop"
+      },
+      {
+        "id": 11,
+        "name": "Dining Set",
+        "description": "Modern dining table with 4 chairs",
+        "price": 799,
+        "image_url": "https://images.unsplash.com/photo-1449247709967-d4461a6a6103?w=300&h=400&fit=crop"
+      },
+      {
+        "id": 12,
+        "name": "Smart Thermostat",
+        "description": "Energy-efficient climate control",
+        "price": 199,
+        "image_url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=400&fit=crop"
+      }
+    ]
+  },
+  {
+    "category": "Sports & Fitness",
+    "products": [
+      {
+        "id": 13,
+        "name": "Yoga Mat",
+        "description": "Premium non-slip yoga mat",
+        "price": 39,
+        "image_url": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=300&h=400&fit=crop"
+      },
+      {
+        "id": 14,
+        "name": "Dumbbell Set",
+        "description": "Adjustable weight dumbbells",
+        "price": 299,
+        "image_url": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=400&fit=crop"
+      },
+      {
+        "id": 15,
+        "name": "Fitness Tracker",
+        "description": "Monitor your daily activity and health",
+        "price": 149,
+        "image_url": "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=300&h=400&fit=crop"
+      },
+      {
+        "id": 16,
+        "name": "Resistance Bands",
+        "description": "Full-body workout resistance band set",
+        "price": 29,
+        "image_url": "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=300&h=400&fit=crop"
+      }
+    ]
+  }
 ]

@@ -16,6 +16,8 @@
     "react-dom": "^19.1.0",
     "react-scripts": "5.0.1",
     "remixicon": "^4.6.0",
+    "sheryjs": "^1.0.0-beta.0.1.8",
+    "three": "^0.179.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
