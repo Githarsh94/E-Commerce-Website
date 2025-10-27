@@ -1,0 +1,267 @@
+.main{
+    height: 60vh;
+    width: 100vw;
+    background-color: #F4EFE6;
+    padding: 2% 5%;
+    display: flex;
+    gap: 2vw;
+    align-items: center;
+}
+
+.part1{
+    height: 100%;
+    width: 50%;
+    /* background-color: pink; */
+    /* display: flex; */
+    border: 1px solid #000000d0;
+    position: relative;
+}
+
+.part1-image{
+    height: 100%;
+    width: 90%;
+    position: absolute;
+    /* padding:5vw; */
+    /* background-color: #9a2d2d; */
+}
+
+.part1-image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    /* object-position: top; */
+}
+
+.part1-text{
+    height: 100%;
+    width: 50%;
+    padding: 2vw 0vw;
+    line-height: 3vw;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    float: right;
+    margin-top: 2vw;
+}
+
+.part1-text h4{
+    font-size: 1.8vw;
+    font-weight: 400;
+    text-align: center;
+}
+
+.part1-text h2{
+    font-size: 3vw;
+    font-weight: 400;
+    /* text-align: center; */
+    letter-spacing: 2px;
+}
+
+.part1-text h3{
+    font-size: 1.2vw;
+    font-weight: 400;
+    text-align: center;
+}
+
+.part1-text button{
+    padding: 0.75vw 1.3vw;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+    text-align: center;
+    display: block; 
+    margin: 0 auto; 
+    border-radius: 2vw;
+}
+
+.part2{
+    height: 100%;
+    width: 50%;
+    /* background-color: salmon; */
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.part2-two{
+    height: 50%;
+    width: 100%;
+    /* background-color: aqua; */
+    display: flex;
+    gap: 2vw;
+    
+}
+
+.part2-two-first{
+    height: 100%;
+    width: 50%;
+    /* background-color: darkgreen; */
+    padding: 1vw;
+    border: 1px solid #000000d0;
+    position: relative;
+    overflow: hidden;
+}
+
+.part2-two-first h4{
+    width: 5vw;
+    color: #F4EFE6;
+    background-color: #111111c8;
+    display: inline-block; /* make background hug the text */
+    padding: 0.2vw 0.4vw;
+    border-radius: 0.6vw;
+    font-size: 1vw;
+    /* z-index: 2; */
+}
+
+.part2-two-first h2{
+    font-size: 1.8vw;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.part2-two-first h3{
+    font-size: 1.2vw;
+    font-weight: 600;
+    margin-top: 1vw;
+    text-decoration: underline;
+}
+.part2-two-first-image{
+    position: absolute;
+    height: 100%;
+    width: 60%;
+    /* background-color: aquamarine; */
+    top: 0;
+    right: 0;
+}
+
+.part2-two-first-image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    /* object-position: center; */
+}
+
+.part2-two-second{
+    height: 100%;
+    width: 50%;
+    /* background-color: pink; */
+    border: 1px solid #000000d0;
+    padding: 1vw;
+    position: relative;
+    overflow: hidden;
+}
+
+.part2-two-second h4{
+    width: 5vw;
+    color: #F4EFE6;
+    background-color: #111111c8;
+    display: inline-block; /* make background hug the text */
+    padding: 0.2vw 0.4vw;
+    border-radius: 0.6vw;
+    font-size: 1vw;
+    /* z-index: 2; */
+}
+
+.part2-two-second h2{
+    font-size: 1.5vw;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.part2-two-second h3{
+    font-size: 1.2vw;
+    font-weight: 600;
+    margin-top: 1vw;
+    text-decoration: underline;
+}
+.part2-two-second-image{
+    position: absolute;
+    height: 100%;
+    width: 60%;
+    /* background-color: aquamarine; */
+    top: 0;
+    right: 0;
+}
+
+.part2-two-second-image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    /* object-position: center; */
+}
+
+.part2-one{
+    height: 50%;
+    width: 100%;
+    /* background-color: burlywood; */
+    border: 1px solid #000000d0;
+    padding: 1vw;
+    position: relative;
+    overflow: hidden;
+    float: right;
+    display: flex;
+}
+
+.part2-one-main-text{
+    height: 100%;
+    width: 40%;
+    /* background-color: beige; */
+}
+
+.part2-one h3{
+    font-size: 1.75vw;
+    font-weight: 500;
+}
+
+.part2-one h2{
+    font-size: 2.6vw;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+#min{
+    font-size: 1.3vw;
+    font-weight: 500;
+}
+
+#shop{
+    font-size: 1.2vw;
+    font-weight: 600;
+    margin-top: 1vw;
+    text-decoration: underline;
+}
+
+.part2-one-image{
+    height: 100%;
+    width: 60%;
+    /* background-color: aquamarine; */
+    display: flex;
+    justify-content: space-between;
+    gap: 2vw;
+}
+
+.backpack{
+    height: 100%;
+    width: 50%;
+}
+
+.backpack img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.part2-one-image-text{
+    height: 100%;
+    width: 50%;
+}
+
+.part2-one-image-text p{
+    font-size: 2vw;
+    font-weight: 600;
+}

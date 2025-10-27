@@ -1,0 +1,134 @@
+/* Shared auth styles from former auth.css (inlined) */
+:root {
+    --purple-1: #6b46c1;
+    --purple-2: #8b5cf6;
+    --bg: #f3eefe;
+    --muted: #6b7280;
+}
+
+.auth-page {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    /* background-color: pink; */
+}
+
+.auth-card {
+    /* width: 90vw;  */
+    min-width: 30%;
+    padding: 1rem;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    gap: 8px;
+    background-color: transparent;
+}
+
+.auth-left {
+    width: 48%;
+    position: relative;
+    padding: 34px 28px;
+    display: flex;
+    align-items: center;
+    /* enforce dark/navy base so image and color are visible */
+    /* background-color: #ddd !important; */
+}
+
+.left-gradient {
+    width: 100%;
+    height: 420px;
+    border-radius: 14px;
+    position: relative;
+    box-shadow: inset 0 -8px 20px rgba(0, 0, 0, 0.06);
+    /* base color; decorative image applied inline in JSX to avoid css-loader resolution */
+    background-color: #ddd !important;
+    background-size: cover;
+    background-position: top;
+    /* background-blend-mode: multiply; */
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Role toggle styles (same as signin) */
+.role-group{
+    display:flex;
+    gap:8px;
+    margin-top:6px;
+}
+.role-option{
+    padding:8px 12px;
+    border-radius:8px;
+    border:1px solid rgba(0,0,0,0.06);
+    background:#fff;
+    cursor:pointer;
+    font-weight:600;
+    color:var(--muted);
+}
+.role-option.active{
+    /* active state should use the dark navy color */
+    background-color: #212842 !important;
+    color: #fff;
+    border-color: rgba(0,0,0,0.08);
+}
+
+.role-option:focus{ outline: 3px solid rgba(33,40,66,0.18); }
+
+.auth-card h2 {
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+}
+
+.auth-form input,
+.auth-form select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px
+}
+
+
+.navi {
+    cursor: pointer;
+    color: #315a85;
+    display: inline-block;
+    /* allow margin centering if needed */
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+h4 {
+    font-weight: 400;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+.auth-form h4 .navi {
+    margin-left: 6px;
+    /* small spacing from preceding text */
+}
+
+.auth-submit {
+    padding: 8px 12px;
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.navi {
+    cursor: pointer;
+    color: #315a85;
+}
+
+h4 {
+    font-weight: 400;
+    text-align: center;
+}

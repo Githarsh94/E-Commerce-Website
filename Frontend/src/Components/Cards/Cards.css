@@ -1,0 +1,274 @@
+/* Cards and Search Results styles previously in App.css */
+.search-results-container {
+  padding: 8vh 4vw 4vh 4vw;
+  min-height: 100vh;
+  color: white;
+}
+
+.search-results-header {
+  text-align: center;
+  margin-bottom: 4vh;
+}
+
+.search-results-header h1 {
+  font-size: 3vw;
+  font-weight: 600;
+  margin-bottom: 1vh;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.search-results-header p {
+  font-size: 1.2vw;
+  color: #ddd;
+  margin: 0;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.5vw;
+  color: #fff;
+  margin-top: 5vh;
+}
+
+.no-results {
+  text-align: center;
+  margin-top: 8vh;
+}
+
+.no-results h2 {
+  font-size: 2.5vw;
+  color: #fff;
+  margin-bottom: 2vh;
+}
+
+.no-results p {
+  font-size: 1.2vw;
+  color: #ccc;
+}
+
+.search-results-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1vw;
+  margin-top: 4vh;
+  padding: 0 2vw;
+}
+
+.search-results-grid .card {
+  height: 60vh;
+  display: inline-block;
+  vertical-align: top;
+  width: 22vw;
+  margin-right: 1vw;
+  border: 2px solid rgb(27, 26, 26);
+  padding: 1vw;
+  border-radius: 16px;
+  box-sizing: border-box;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease-in-out, transform 0.2s ease-out;
+}
+
+.search-results-grid .card:hover {
+  height: 65vh;
+  width: 23vw;
+  background-color: #000;
+  color: #fff;
+  transition: all ease-in 0.5s;
+  z-index: 2;
+  transform: scale(1.02);
+  position: relative;
+}
+
+.search-results-grid .card img {
+  height: 70%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10%;
+  object-position: center;
+  border: 1px solid #000;
+}
+
+.search-results-grid .card h5 {
+  text-align: right;
+}
+
+.search-results-grid .card>h5:first-of-type {
+  text-align: left;
+}
+
+.search-results-grid .card>h5:nth-of-type(2) {
+  text-align: right;
+}
+
+.search-results-grid .card h4 {
+  color: #132892;
+  font-size: 1vw;
+  font-weight: bolder;
+  border: 1px solid #000;
+  border-radius: 1vw;
+  width: 10vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-results-grid .card:hover h4 {
+  color: #fff !important;
+  background-color: #132892 !important;
+  border-color: #fff !important;
+}
+
+.search-results-grid .card p {
+  display: flex;
+  height: auto;
+  width: 100%;
+  white-space: normal;
+  text-align: start;
+  font-size: 0.8vw;
+  font-weight: 500;
+  margin-bottom: 0.5vw;
+}
+
+.search-results-grid .card h3 {
+  font-family: Britney_Regular;
+}
+
+.search-results-grid .card .wishlist-btn {
+  color: #132892;
+  font-size: 0.9vw;
+  font-weight: bolder;
+  border: 1px solid #132892;
+  border-radius: 1vw;
+  width: 10vw;
+  margin: 0.5vw auto 0 auto;
+  background: transparent;
+  padding: 0.3vw 0.5vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.2;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.search-results-grid .card:hover .wishlist-btn {
+  color: #fff !important;
+  border-color: #fff !important;
+  background-color: #132892 !important;
+}
+
+.search-results-grid .card .wishlist-btn.active {
+  background: transparent;
+  color: rgba(255, 0, 0, 0.8);
+  border-color: rgba(255, 0, 0, 0.8);
+}
+
+.search-results-grid .card:hover .wishlist-btn.active {
+  background-color: rgba(255, 0, 0, 0.8) !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+@media (max-width: 1200px) {
+  .search-results-header h1 {
+    font-size: 4vw;
+  }
+  
+  .search-results-header p {
+    font-size: 1.5vw;
+  }
+  
+  .search-results-grid .card {
+    width: 28vw;
+    height: 55vh;
+  }
+  
+  .search-results-grid .card:hover {
+    width: 29vw;
+    height: 60vh;
+  }
+  
+  .search-results-grid .card h4,
+  .search-results-grid .card .wishlist-btn {
+    font-size: 1.2vw;
+    width: 12vw;
+  }
+  
+  .search-results-grid .card .wishlist-btn {
+    font-size: 1vw;
+    margin-top: 0.5vw;
+  }
+  
+  .search-results-grid .card p {
+    font-size: 1vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-results-container {
+    padding: 80px 15px 30px 15px;
+  }
+  
+  .search-results-grid {
+    gap: 15px;
+    padding: 0 10px;
+  }
+  
+  .search-results-grid .card {
+    width: 45vw;
+    height: 50vh;
+    margin-right: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .search-results-grid .card:hover {
+    width: 46vw;
+    height: 55vh;
+  }
+  
+  .search-results-header h1 {
+    font-size: 24px;
+  }
+  
+  .search-results-header p {
+    font-size: 16px;
+  }
+  
+  .search-results-grid .card h4,
+  .search-results-grid .card .wishlist-btn {
+    font-size: 12px;
+    width: 80px;
+    padding: 8px;
+  }
+  
+  .search-results-grid .card .wishlist-btn {
+    font-size: 10px;
+    margin-top: 8px;
+  }
+  
+  .search-results-grid .card p {
+    font-size: 10px;
+  }
+  
+  .search-results-grid .card h3 {
+    font-size: 14px;
+  }
+  
+  .no-results h2 {
+    font-size: 20px;
+  }
+  
+  .no-results p {
+    font-size: 14px;
+  }
+}

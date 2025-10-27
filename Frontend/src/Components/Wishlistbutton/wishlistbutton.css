@@ -1,0 +1,56 @@
+.wishlist-wrapper {
+  position: fixed;
+  top: 14vh;
+  right: 2vw;
+  height: 2.5vw;
+  width: 2.5vw;
+  border: 2px solid #ada9a9de;
+  border-radius: 10px;
+  background-color: #f4efe6;
+  z-index: 1000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect for floating button */
+.wishlist-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Heart Icon */
+.ri-heart-fill {
+  font-size: 2vw;
+  color: rgba(255, 0, 0, 0.795);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Heart Hover */
+.ri-heart-fill:hover {
+  color: #ff0000;
+  transform: scale(1.2);
+}
+
+/* Wishlist Count Badge */
+.wishlist-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff4757;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8vw;
+  font-weight: bold;
+  border: 1px solid white;
+}

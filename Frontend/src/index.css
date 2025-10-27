@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Ensure SweetAlert2 popups sit above app overlays */
+.swal2-container {
+  z-index: 100000 !important;
+}
+
+.swal2-popup {
+  z-index: 100001 !important;
+}

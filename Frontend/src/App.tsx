@@ -1,102 +1,84 @@
-import { useState } from 'react';
-import './App.css';
-import Home from './Components/Home';
-import Footer from './Components/footer';
-import Nav from './Components/Nav';
-import Background from './Components/Background';
-import Cart from './Components/Cart';
-import Loader from './Components/Loader';
-import About from './Components/About';
-import Contact from './Components/Contact';
-import SearchResults from './Components/SearchResults';
-import ErrorBoundary from './Components/ErrorBoundary';
-import { WishlistProvider } from './context/WishlistContext';
-import { CartProvider } from './context/CartContext';
+import React, { useEffect, useState } from 'react'
+import { useLenis } from './hooks/useLenis';
+import AppRoutes from './Routing/Routes';
+import ErrorBoundary from './Components/ErrorBoundary/ErrorBoundary';
+import Loader from './Components/Loader/Loader';
+import Nav from './Components/Nav/Nav';
+import Footer from './Components/Footer/Footer';
+import SearchResults from './Components/SearchResults/SearchResults';
+import { useLocation } from 'react-router-dom';
 
-function App() {
-  const [activeComponent, setActiveComponent] = useState('home');
-  const [loadingComplete, setLoadingComplete] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+const App = () => {
+  useLenis();
 
-  const handleComponentChange = (component: string) => {
-    setActiveComponent(component);
-    // Reset search when navigating to other components
-    if (component !== 'search') {
-      setSearchTerm('');
+  // Placeholder handlers for Nav props
+  const handleComponentChange = () => {};
+  const onSearch = () => {};
+
+  const location = useLocation();
+
+  const isLoaderRoute = location.pathname === '/';
+
+  const [loading, setLoading] = useState(true);
+  const [percent, setPercent] = useState<number>(0);
+
+  // Load downloaded fonts from public/fonts at runtime using FontFace API
+  useEffect(() => {
+    try {
+      const telma = new FontFace('Telma-Regular', "url('/fonts/Telma_Complete/Fonts/OTF/Telma-Light.otf') format('opentype')");
+      const cabinet = new FontFace('Cabinet-Medium', "url('/fonts/CabinetGrotesk_Complete/Fonts/OTF/CabinetGrotesk-Medium.otf') format('opentype')");
+
+      telma.load().then((loaded) => {
+        document.fonts.add(loaded);
+      }).catch(() => {});
+
+      cabinet.load().then((loaded) => {
+        document.fonts.add(loaded);
+      }).catch(() => {});
+    } catch (err) {
+      // FontFace API not supported or load failed — fallback to CSS font-face if desired
     }
-  };
+  }, []);
 
-  const handleSearch = (term: string) => {
-    setSearchTerm(term);
-    // If search term is provided and user presses enter or selects a product, show search results
-    if (term.trim()) {
-      setActiveComponent('search');
-    }
-  };
+  // Animate an initial loader on every full page load / refresh and hide when complete.
+  useEffect(() => {
+    let id: any = null;
+    setPercent(0);
+    id = setInterval(() => {
+      setPercent((p) => {
+        const step = Math.floor(Math.random() * 12) + 6; // random-ish progress
+        const np = Math.min(100, p + step);
+        return np;
+      });
+    }, 120);
 
-  const renderComponent = () => {
-    switch (activeComponent) {
-      case 'home':
-        return (
-          <ErrorBoundary>
-            <Background url="/videoplayback.mp4" />
-            <Home searchTerm="" />
-          </ErrorBoundary>
-        );
-      case 'search':
-        return (
-          <ErrorBoundary>
-            <Background url="/videoplayback.mp4" />
-            <SearchResults searchTerm={searchTerm} />
-          </ErrorBoundary>
-        );
-      case 'cart':
-        return (
-          <ErrorBoundary>
-            <Background url="Cart.mp4" />
-            <Cart />
-          </ErrorBoundary>
-        );
-      case 'about':
-        return (
-          <ErrorBoundary>
-            <Background url="/About.mp4" />
-            <About />
-          </ErrorBoundary>
-        );
-      case 'contact':
-        return (
-          <ErrorBoundary>
-            <Background url="/Contact.mp4" />
-            <Contact />
-          </ErrorBoundary>
-        );
-      default:
-        return null;
+    return () => clearInterval(id);
+  }, []);
+
+  // When percent reaches 100 hide loader
+  useEffect(() => {
+    if (percent >= 100) {
+      const t = setTimeout(() => setLoading(false), 220);
+      return () => clearTimeout(t);
     }
-  };
+    return undefined;
+  }, [percent]);
+
+  // Safe render: ToastContainer can sometimes be undefined if the package failed to load
+
+  if (loading) return <Loader percent={percent} />;
 
   return (
-    <CartProvider>
-      <WishlistProvider>
-        <div className="App">
-          {!loadingComplete ? (
-            <Loader onComplete={() => setLoadingComplete(true)} />
-          ) : (
-            <>
-              <ErrorBoundary>
-                <Nav handleComponentChange={handleComponentChange} onSearch={handleSearch} />
-              </ErrorBoundary>
-              {renderComponent()}
-              <ErrorBoundary>
-                <Footer />
-              </ErrorBoundary>
-            </>
-          )}
-        </div>
-      </WishlistProvider>
-    </CartProvider>
+    <>
+      <ErrorBoundary>
+        {!isLoaderRoute && <Nav handleComponentChange={handleComponentChange} onSearch={onSearch} />}
+        {/* <SearchResults searchTerm="" /> */}
+        <AppRoutes />
+  {/* react-toastify removed — no toast container rendered */}
+        {!isLoaderRoute && <Footer />}
+      </ErrorBoundary>
+    </>
   );
 }
 
-export default App;
+export default App

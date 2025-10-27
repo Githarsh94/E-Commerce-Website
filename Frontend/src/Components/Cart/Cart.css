@@ -1,0 +1,159 @@
+/* Cart styles extracted from App.css */
+.cart {
+  height: auto;
+  width: 80vw;
+  position: relative;
+  margin: 10vh auto;
+  padding: 2vw;
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.2px);
+  -webkit-backdrop-filter: blur(8.2px);
+  border: 1px solid rgba(255, 255, 255, 0.59);
+}
+.cart>h2 {
+  font-family: Supreme-Regular;
+  font-size: 3vw;
+  font-weight: 500;
+  margin-bottom: 2vh;
+  color: #19350c;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+.cart-item {
+  height: fit-content;
+  min-height: 15vh;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 2px solid #5a585855;
+  margin-bottom: 1vh;
+  gap: 2vw;
+  padding: 1vh 0;
+}
+.cart-item:first-of-type {
+  border-top: 2px solid #5a585855;
+}
+.cart-elem-part1 {
+  height: 10vh;
+  width: 10vw;
+}
+.cart-elem-part1 img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+.cart-elem-part2 {
+  height: fit-content;
+  min-height: 10vh;
+  width: 30vw;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.5vh;
+}
+.cart-elem-part2 h2 {
+  font-size: 1.5vw;
+  font-weight: 600;
+  color: #19350c;
+}
+.cart-elem-part2 h4 {
+  font-size: 1vw;
+  font-weight: 400;
+  color: #19350c;
+}
+.cart-elem-part2-last h4:last-of-type {
+  cursor: pointer;
+}
+.cart-elem-part2-last {
+  height: 4vh;
+  width: 30vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.icon-btn {
+  height: 2vw;
+  width: 2vw;
+  border: 1px solid #19350c;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2vw;
+  color: #19350c;
+}
+.icon-btn:hover {
+  color: #CA5655;
+}
+.quantity {
+  font-size: 1.2vw;
+  margin: 0 0.8vw;
+  font-weight: 600;
+  color: #19350c;
+}
+.remove-btn {
+  cursor: pointer;
+  color: #a32222;
+}
+.remove-btn:hover {
+  text-decoration: underline;
+}
+.cart-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3vh;
+  padding-top: 2vh;
+  border-top: 2px solid #5a585855;
+  gap: 2vw;
+}
+.cart-footer h3 {
+  font-family: Supreme-Regular;
+  font-size: 1.8vw;
+  font-weight: 600;
+  color: #19350c;
+  margin: 0;
+  text-transform: uppercase;
+}
+.buy-now-btn {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  border: none;
+  padding: 0.8vw 2vw;
+  font-size: 1.2vw;
+  font-weight: bold;
+  border-radius: 0.8vw;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+  min-width: 10vw;
+}
+.buy-now-btn:hover {
+  background: linear-gradient(135deg, #45a049, #3d8b40);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+.buy-now-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(76, 175, 80, 0.3);
+}
+@media (max-width: 768px) {
+  .cart-footer {
+    flex-direction: column;
+    gap: 2vh;
+    text-align: center;
+  }
+  .cart-footer h3 {
+    font-size: 3.5vw;
+  }
+  .buy-now-btn {
+    font-size: 2.5vw;
+    padding: 1.5vw 4vw;
+    min-width: 18vw;
+  }
+}

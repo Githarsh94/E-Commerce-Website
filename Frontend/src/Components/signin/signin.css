@@ -1,0 +1,362 @@
+/* Shared auth styles from former auth.css (inlined to avoid import mismatches) */
+:root {
+    --purple-1: #212842;
+    --purple-2: #212842;
+    --bg: #f3eefe;
+    --muted: #6b7280;
+}
+
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: linear-gradient(180deg, #efe7fb 0%, #f7f1ff 100%); */
+    font-family: 'Poppins', system-ui, Arial, sans-serif;
+}
+
+.auth-wrapper {
+    width: min(1100px, 92%);
+}
+
+.auth-card {
+    display: flex;
+    background: transparent;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(68, 54, 130, 0.08);
+}
+
+.auth-left {
+    width: 48%;
+    background-color: #212842;
+    position: relative;
+    padding: 34px 28px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.left-gradient {
+    width: 100%;
+    height: 420px;
+    border-radius: 14px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    /* enforce the desired dark/navy base so edits are visible */
+    background-color: #ddd !important;
+}
+
+.sidebar-icons {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.avatar {
+    position: absolute;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #3b1053;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-large {
+    left: 36%;
+    top: -28px;
+}
+
+.avatar-small.top {
+    left: 8%;
+    top: 30px;
+    width: 58px;
+    height: 58px;
+    font-size: 12px;
+}
+
+.avatar-small.bottom {
+    left: 10%;
+    bottom: 16px;
+    width: 58px;
+    height: 58px;
+    font-size: 12px;
+}
+
+.auth-right {
+    width: 52%;
+    background: #fff;
+    padding: 34px 48px;
+    position: relative;
+}
+
+.auth-title {
+    font-size: 28px;
+    margin: 18px 0 6px 0;
+    color: #0f172a;
+}
+
+.auth-sub {
+    margin: 0 0 20px 0;
+    color: var(--muted);
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px
+}
+
+/* Role toggle styles */
+.role-group{
+    display:flex;
+    gap:8px;
+    margin-top:6px;
+    /* background-color: #212842; */
+}
+.role-option{
+    padding:8px 12px;
+    border-radius:8px;
+    border:1px solid rgba(0,0,0,0.06);
+    background:#fff;
+    cursor:pointer;
+    font-weight:600;
+    color:var(--muted);
+    /* background-color: #212842; */
+}
+.role-option.active{
+    /* active state should use the dark navy color */
+    background-color: #212842 !important;
+    color: #fff;
+    /* border-color: rgba(0,0,0,0.08); */
+}
+
+/* keyboard / focus visible state for accessibility */
+.role-option:focus{ outline: 3px solid rgba(33,40,66,0.18); }
+
+.auth-form label {
+    font-size: 13px;
+    /* color: var(--muted); */
+}
+
+.auth-form input {
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #e6e6e6;
+    outline: none;
+    font-size: 14px
+}
+
+.auth-form input:focus {
+    box-shadow: 0 6px 18px rgba(139, 92, 246, 0.08);
+    border-color: rgba(139, 92, 246, 0.3)
+}
+
+.primary-btn {
+    margin-top: 8px;
+    background-color: #212842;
+    /* background: linear-gradient(180deg, var(--purple-1), var(--purple-2)); */
+    color: #fff;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600
+}
+
+.primary-btn:hover {
+    filter: brightness(0.98)
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 10px
+}
+
+.link {
+    color: var(--purple-1);
+    cursor: pointer;
+    font-weight: 600
+}
+
+.error-text {
+    color: #ff6b6b;
+    font-size: 13px;
+    margin-top: 6px
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .auth-card {
+        flex-direction: column
+    }
+
+    .auth-left,
+    .auth-right {
+        width: 100%
+    }
+
+    .left-gradient {
+        height: 220px
+    }
+
+    .avatar-large {
+        left: 8%;
+        top: 12px
+    }
+}
+
+/* Full page setup */
+.signin-page {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(120deg, #e0e0e0, #c9d6ff);
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Side image panels */
+.left-side,
+.right-side {
+    flex: 1;
+    overflow: hidden;
+}
+
+.side-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Center glassmorphic card */
+.signin-container {
+    flex: 1.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.glass-card {
+    width: 400px;
+    padding: 2.5rem;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(20px);
+    color: #fff;
+    text-align: center;
+}
+
+/* Text styles */
+.title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    color: #ddd;
+}
+
+/* Form styling */
+.signin-form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.signin-form label {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    color: #eee;
+}
+
+.signin-form input {
+    padding: 10px 12px;
+    margin-top: 4px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+    transition: 0.3s ease;
+}
+
+.signin-form input::placeholder {
+    color: #eee;
+}
+
+.signin-form input:focus {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* Error text */
+.error-text {
+    color: #ff8080;
+    font-size: 0.85rem;
+    margin-top: 10px;
+}
+
+/* Button */
+.signin-btn {
+    margin-top: 1.5rem;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #2b2b2b;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.signin-btn:hover {
+    background: #000;
+}
+
+/* Sign up navigation */
+.signup-text {
+    margin-top: 1.2rem;
+    font-size: 0.9rem;
+    color: #eee;
+    text-align: center;
+}
+
+.signup-text span {
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.signup-text span:hover {
+    text-decoration: underline;
+}

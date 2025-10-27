@@ -1,0 +1,40 @@
+/* Contact styles extracted from App.css */
+.contact {
+  position: relative;
+  height: fit-content;
+  max-width: 80vw;
+  margin: 25vh auto;
+  padding: 2rem;
+  background-color: whitesmoke;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333333e6;
+  animation: dropIn 3s ease-in-out forwards;
+}
+.contact h1 {
+  font-size: 3.5vw;
+  margin-bottom: 1.5rem;
+  color: #481718;
+}
+.contact p {
+  font-size: 1.5vw;
+  font-weight: 600;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: #CA5655;
+}
+.contact strong {
+  color: #0000eed1;
+}
+@keyframes dropIn {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

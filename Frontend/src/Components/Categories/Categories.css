@@ -1,0 +1,134 @@
+.elem:hover h2 {
+  color: #000;
+  transition: color 0.3s;
+}
+
+/* ====== Container ====== */
+#page5 {
+  height: 85vh;
+  width: 100vw;
+  padding: 0vw 5vw;
+  position: relative;
+  /* z-index: 1; */
+  margin-bottom: 2vw;
+}
+
+#page5 > h1 {
+  text-align: center;
+  font-size: 3vw;
+  font-family: Britney_Regular;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 5vh;
+  width: fit-content;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 0.3s ease-in-out;
+}
+
+/* #page5 > h1:hover {
+  text-decoration: underline;
+  color: rgba(117, 29, 189, 0.863);
+  font-size: 3.5vw;
+  text-shadow: 3px 3px 10px rgba(117, 29, 189, 0.863),
+    0 0 5px rgba(0, 0, 0, 0.3);
+} */
+
+/* ====== Each Category ====== */
+.elem {
+  height: 15vh;
+  width: 100%;
+  border-top: 2px solid #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vw 2vw;
+  position: relative;
+  transition: all ease-in 0.7s;
+  cursor: pointer;
+  /* z-index: 1;  */
+}
+
+.elem:hover {
+  /* background-color: rgba(117, 29, 189, 0.863); */
+  opacity: 0.9;
+  color: #000;
+  /* z-index: 5;  */
+}
+
+.elem img {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+  transition: all ease-in 0.7s;
+  opacity: 0;
+  left: 18%;
+  pointer-events: none; /* prevent blocking hover */
+  z-index: 0;
+  border: 1px solid black;
+  box-shadow: 2px 2px 1.5px black;
+}
+
+/* Last element border fix */
+.elem:nth-last-child(1) {
+  border-bottom: 2px solid #000;
+}
+
+/* Alternate image positioning */
+.elem:nth-of-type(odd) img {
+  left: 35%;
+}
+/* .elem:nth-of-type(even) img {
+  left: 35%;
+} */
+
+/* On hover: show image smoothly */
+.elem:hover img {
+  opacity: 1;
+  left: 30%;
+}
+
+.elem:hover img {
+  scale: 1.1;
+}
+
+/* .elem:hover .elem-part2 h3 {
+  scale: 1.1;
+} */
+
+/* ====== Text ====== */
+.elem h2 {
+  font-family: Supreme_Regular;
+  font-size: 2.2vw;
+  font-weight: 500;
+  text-transform: uppercase;
+  width: 6%;
+  letter-spacing: 2px;
+}
+
+.elem-part2 {
+  width: 45%;
+}
+
+.elem-part2 h3 {
+  font-size: 2.2vw;
+  font-weight: 400;
+  transition: transform 0.3s ease;
+}
+
+.elem-part2 h5 {
+  font-size: 0.8vw;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Ensure everything remains clickable */
+.elem,
+.elem h2,
+.elem-part2 {
+  cursor: pointer !important;
+}

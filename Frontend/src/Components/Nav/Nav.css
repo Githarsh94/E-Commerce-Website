@@ -1,0 +1,316 @@
+/* Nav styles extracted from App.css */
+.navbar {
+  width: 100%;
+  /* keep original solid dark navy so nav/footer remain unchanged */
+  background-color: #212842;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  color: whitesmoke;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2vw;
+  height: 5vw;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Logo Section */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-width: 200px;
+  flex-shrink: 0;
+  /* background-color: aquamarine; */
+  width: 12%;
+}
+
+.nav-logo h1 {
+  font-size: 2.5vw;
+  font-weight: 500;
+  letter-spacing: 2px;
+  font-family: Telma-Regular;
+  /* color: #000; */
+  margin: 0;
+  padding-right: 0.5vw;
+}
+
+.logo-symbol {
+  position: absolute;
+  font-size: 1.5vw;
+  font-weight: 500;
+  /* color: #000; */
+  top: -0.35vw;
+  left: 10.9vw;
+}
+
+.logo-tagline {
+  font-size: 0.75vw;
+  font-family: Supreme-Regular;
+  /* color: #fff; */
+  position: absolute;
+  /* bottom: -0.5vw; */
+  top: 2.8vw;
+  left: 5.5vw;
+  white-space: nowrap;
+  letter-spacing: 2px;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 0;
+  margin-left: 1vw;
+  /* width: 10%; */
+  /* background-color: antiquewhite; */
+}
+
+.nav-right {
+  display: flex;
+  /* width: auto; */
+  align-items: center;
+  gap: 0;
+  position: relative;
+  width: 25.8%;
+  /* background-color: #f0f0f0; */
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.962);
+  font-family: BespokeStencil;
+  font-size: 1.8vw;
+  font-weight: 400;
+  padding: 0 1.5vw;
+  height: 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  /* border-right:  */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  min-width: 80px;
+  white-space: nowrap;
+  letter-spacing: 4px;
+}
+
+.nav-link:first-child {
+  border-right: 2px solid #2e2e2e;;
+}
+
+/* Search Bar */
+.nav-search {
+  flex: 1;
+  max-width: 500px;
+  margin: 0 1.5vw;
+  position: relative;
+  /* background-color: pink; */
+}
+
+.nav-search input {
+  width: 100%;
+  height: 2.5vw;
+  min-height: 35px;
+  padding: 0 1vw;
+  border-radius: 25px;
+  border: 2px solid #333;
+  background-color: #fff;
+  color: #333;
+  font-size: 1vw;
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.nav-search input:focus {
+  border-color: #523d2d;
+  box-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
+}
+
+.nav-search input::placeholder {
+  color: #666;
+  font-size: 0.9vw;
+}
+
+/* Search Dropdown */
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 2px solid #523d2d;
+  border-top: none;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+.search-item:hover {
+  background-color: #f8f9fa;
+}
+
+.search-item:last-child {
+  border-bottom: none;
+}
+
+.search-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.search-item-details {
+  flex: 1;
+}
+
+.search-item-details h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.2;
+}
+
+.search-item-details p {
+  margin: 2px 0 0 0;
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Search No Results */
+.search-no-results {
+  padding: 20px 15px;
+  text-align: center;
+}
+
+.search-no-results p {
+  margin: 0;
+  font-size: 14px;
+  color: #999;
+  font-style: italic;
+}
+
+/* Auth Section */
+.nav-auth {
+  display: flex;
+  align-items: center;
+  /* margin-left: 1vw; */
+  padding-left: 0;
+  /* background-color: #2e2e2e; */
+  /* width: 25%; */
+  position: absolute;
+  /* background-color: #2e2e2e; */
+  right: 0;
+}
+
+.nav-auth-icon {
+  font-size: 1.85vw;
+  font-weight: 200;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.5vw;
+}
+
+/* .nav-auth-icon:hover {
+  color: #00bcd4;
+  transform: scale(1.1);
+} */
+
+/* Account dropdown (shown when user is logged in) */
+.nav-account {
+  position: relative;
+  display: inline-block;
+}
+
+.account-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  background: #f4efe6;
+  color: #333;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 8px;
+  min-width: 160px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+  z-index: 1100;
+  padding: 6px 0;
+}
+
+/* animation */
+.account-dropdown {
+  animation: fadeInDown 160ms ease-out;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.account-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.account-item:hover {
+  background: #f5f5f5;
+  scale: 1.02;
+  border-radius: 5px;
+}
+
+/* Small caret above dropdown */
+.account-dropdown::before {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: -6px;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  transform: rotate(45deg);
+  border-left: 1px solid rgba(0,0,0,0.06);
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .nav-container {
+    padding: 0 1vw;
+  }
+  .nav-auth-icon { font-size: 22px; }
+  .account-dropdown { right: 8px; min-width: 140px; }
+}

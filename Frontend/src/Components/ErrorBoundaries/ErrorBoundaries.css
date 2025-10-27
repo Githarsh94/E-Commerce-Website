@@ -1,0 +1,8 @@
+/* ErrorBoundaries styles */
+.error-boundary-message {
+  color: #CA5655;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 5vh;
+  font-family: Supreme_Regular, Arial, sans-serif;
+}
