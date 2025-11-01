@@ -16,6 +16,8 @@ const cartRoutes = require('./src/routes/cart.routes');
 const wishlistRoutes = require('./src/routes/wishlist.routes');
 const shipmentRoutes = require('./src/routes/shipment.routes');
 const paymentRoutes = require('./src/routes/payment.routes');
+const adminRoutes = require('./src/routes/admin.routes');
+const addressRoutes = require('./src/routes/address.routes');
 
 app.use(express.json());
 
@@ -28,6 +30,8 @@ app.use('/api/cart', cartRoutes);
 app.use('/api/wishlist', wishlistRoutes);
 app.use('/api/shipment', shipmentRoutes);
 app.use('/api/payment', paymentRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/addresses', addressRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

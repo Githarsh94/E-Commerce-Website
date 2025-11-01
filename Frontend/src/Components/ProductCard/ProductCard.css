@@ -1,0 +1,146 @@
+.product-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-card-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  background-color: #f3f4f6;
+  height: 256px;
+}
+
+.product-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-card-content {
+  padding: 16px;
+}
+
+.product-card-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-card-description {
+  font-size: 14px;
+  color: #4b5563;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.product-card-rating-box {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #f9fafb;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.product-card-rating-value {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.product-card-rating-text {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.product-card-price {
+  margin-bottom: 16px;
+}
+
+.product-card-price-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.product-card-buttons {
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+}
+
+.product-card-btn-add-cart {
+  flex: 1;
+  background-color: #212842;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.product-card-btn-add-cart:hover {
+  background-color: #2d3654;
+}
+
+.product-card-btn-wishlist {
+  background-color: #ffffff;
+  border: 2px solid #212842;
+  color: #212842;
+  padding: 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-card-btn-wishlist:hover {
+  background-color: #f3f4f6;
+}
+
+.star-container {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.star-half {
+  position: relative;
+}
+
+.star-half-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 50%;
+}

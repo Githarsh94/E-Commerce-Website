@@ -4,6 +4,8 @@ import Wishlistbutton from '../Components/Wishlistbutton/Wishlistbutton';
 import Hero from '../Components/Hero/Hero'; 
 import Hero2 from '../Components/Hero2/Hero2';
 import useHomeAnimation from '../hooks/useHomeAnimation';
+import Nav from '../Components/Nav/Nav';
+import Footer from '../Components/Footer/Footer';
 
 const Home = () => {
   // Runtime sanity checks to catch undefined imports early

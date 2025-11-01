@@ -15,6 +15,10 @@ const Review = sequelize.define('Review', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  userId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
   ProductId: {
     type: DataTypes.INTEGER,
     allowNull: true, // Ensure it matches the foreign key constraint

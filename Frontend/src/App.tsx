@@ -5,6 +5,8 @@ import ErrorBoundary from './Components/ErrorBoundary/ErrorBoundary';
 import Loader from './Components/Loader/Loader';
 import Nav from './Components/Nav/Nav';
 import Footer from './Components/Footer/Footer';
+import AdminNavbar from './Components/AdminNavbar/AdminNavbar';
+import { useAuth } from './context/AuthContext';
 import SearchResults from './Components/SearchResults/SearchResults';
 import { useLocation } from 'react-router-dom';
 
@@ -15,12 +17,15 @@ const App = () => {
   const handleComponentChange = () => {};
   const onSearch = () => {};
 
+  const { isAuthenticated, role } = useAuth();
+
   const location = useLocation();
-
-  const isLoaderRoute = location.pathname === '/';
-
   const [loading, setLoading] = useState(true);
   const [percent, setPercent] = useState<number>(0);
+
+  // Only consider the root path a 'loader route' while the initial loading animation is active.
+  // After loading completes we want Nav and Footer to render even when at '/'.
+  const isLoaderRoute = location.pathname === '/' && loading;
 
   // Load downloaded fonts from public/fonts at runtime using FontFace API
   useEffect(() => {
@@ -71,7 +76,17 @@ const App = () => {
   return (
     <>
       <ErrorBoundary>
-        {!isLoaderRoute && <Nav handleComponentChange={handleComponentChange} onSearch={onSearch} />}
+  {!isLoaderRoute && (
+          isAuthenticated && role === 'admin' ? (
+            <>
+              <AdminNavbar />
+              {/* spacer to offset the fixed admin navbar height */}
+              <div style={{ height: '5rem' }} aria-hidden />
+            </>
+          ) : (
+            <Nav handleComponentChange={handleComponentChange} onSearch={onSearch} />
+          )
+        )}
         {/* <SearchResults searchTerm="" /> */}
         <AppRoutes />
   {/* react-toastify removed — no toast container rendered */}

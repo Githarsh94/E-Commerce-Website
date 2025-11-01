@@ -1,0 +1,305 @@
+.admin-dashboard {
+    font-family: BespokeStencil, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    max-width: 1400px;
+    margin: 0 auto;
+    /* ensure content sits below the fixed admin navbar */
+    padding: 2rem 2rem 3rem 2rem;
+    /* background-color: #065f46; */
+}
+
+.dashboard-header {
+    margin-bottom: 1.5rem;
+    /* ensure header isn't hidden behind fixed admin navbar */
+    /* margin-top: 0.75rem; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.dashboard-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #212842;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+}
+
+.dashboard-subtitle {
+    font-size: 1.125rem;
+    /* darker subtitle color for better contrast */
+    color: #374151;
+    font-weight: 500;
+}
+
+.dashboard-date {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    color: #212842;
+    font-weight: 600;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    /* background-color: #065f46; */
+    /* reduced bottom margin to bring recent activity closer to the cards */
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.dashboard-card {
+    position: relative;
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* background-color: #3b82f6;
+    z-index: 100000; */
+}
+
+.card-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    opacity: 0.1;
+    filter: blur(40px);
+    transform: translate(30%, -30%);
+    transition: all 0.4s ease;
+}
+
+.dashboard-card:hover .card-background {
+    opacity: 0.15;
+    transform: translate(20%, -20%) scale(1.2);
+}
+
+.dashboard-card-content {
+    position: relative;
+    z-index: 1;
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-card-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+}
+
+.dashboard-card:nth-child(2) .dashboard-card-icon {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    box-shadow: 0 8px 16px rgba(245, 87, 108, 0.3);
+}
+
+.dashboard-card:nth-child(3) .dashboard-card-icon {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    box-shadow: 0 8px 16px rgba(79, 172, 254, 0.3);
+}
+
+.dashboard-card:nth-child(4) .dashboard-card-icon {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    box-shadow: 0 8px 16px rgba(67, 233, 123, 0.3);
+}
+
+.dashboard-card:hover .dashboard-card-icon {
+    transform: rotate(5deg) scale(1.1);
+}
+
+.stat-change {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.375rem 0.75rem;
+    background: #d1fae5;
+    color: #065f46;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.dashboard-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.dashboard-card-value {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #212842;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+
+.dashboard-card-label {
+    font-size: 0.95rem;
+    color: #6b7280;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.recent-activity {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 3rem;
+}
+
+.activity-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid #f3f4f6;
+}
+
+.activity-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #212842;
+}
+
+.activity-title h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.activity-item:hover {
+    background: #f9fafb;
+    transform: translateX(8px);
+}
+
+.activity-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.activity-dot::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: inherit;
+    opacity: 0.2;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.2;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.activity-order {
+    background: #3b82f6;
+}
+
+.activity-product {
+    background: #10b981;
+}
+
+.activity-customer {
+    background: #f59e0b;
+}
+
+.activity-shipment {
+    background: #8b5cf6;
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-action {
+    font-weight: 600;
+    color: #212842;
+    margin-bottom: 0.25rem;
+}
+
+.activity-time {
+    font-size: 0.875rem;
+    color: #9ca3af;
+}
+
+@media (max-width: 640px) {
+    .admin-dashboard {
+        padding: 2rem 1rem;
+    }
+
+    .dashboard-title {
+        font-size: 2rem;
+    }
+
+    .dashboard-date {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Temporary debug styles: force visibility and show outlines so we can identify if cards exist but are hidden by CSS/animations/overlays.
+   Remove after debugging. */
+/* debug styles removed */

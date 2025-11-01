@@ -330,7 +330,7 @@ function Nav({ handleComponentChange, onSearch }: NavProps) {
                   <div id="account-menu" className="account-dropdown" role="menu" aria-label="Account menu" onClick={(e) => e.stopPropagation()}>
                     <button type="button" role="menuitem" className="account-item" onClick={() => { setShowAccountMenu(false); handleNavClick('/profile'); }}>Profile</button>
                     <button type="button" role="menuitem" className="account-item" onClick={() => { setShowAccountMenu(false); handleNavClick('/orders'); }}>Your Orders</button>
-                    <button type="button" role="menuitem" className="account-item" onClick={() => { setShowAccountMenu(false); handleNavClick('/address'); }}>Address</button>
+                    {/* Address moved to Profile page per UX change */}
                     <button type="button" role="menuitem" className="account-item" onClick={() => { setShowAccountMenu(false); logout(); handleNavClick('/home'); }}>Logout</button>
                   </div>
                 )}

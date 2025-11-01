@@ -1,6 +1,7 @@
 // Lightweight fetch wrapper that attaches Authorization header when a JWT is present
 export async function apiFetch(input: string, init?: RequestInit) {
-  const backendUrl = process.env.REACT_APP_BACKEND_URL || '';
+  // Default to local backend if env var not provided
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3002';
   // If path starts with /api, prefix with backend URL
   let url = input;
   if (input.startsWith('/api')) url = `${backendUrl}${input}`;
