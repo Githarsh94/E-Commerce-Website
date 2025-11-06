@@ -5,12 +5,13 @@
 
 /* ====== Container ====== */
 #page5 {
-  height: 85vh;
-  width: 100vw;
+  /* height: 85vh; */
+  /* Use 100% so the component respects its container's padding and doesn't overflow the viewport */
+  width: 100%;
   padding: 0vw 5vw;
   position: relative;
   /* z-index: 1; */
-  margin-bottom: 2vw;
+  /* margin-bottom: 2vw; */
 }
 
 #page5 > h1 {
@@ -71,6 +72,7 @@
   z-index: 0;
   border: 1px solid black;
   box-shadow: 2px 2px 1.5px black;
+  /* text-align: center; */
 }
 
 /* Last element border fix */

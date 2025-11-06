@@ -1,8 +1,9 @@
 .categories-page {
     font-family: BespokeStencil, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     max-width: 1400px;
-    margin: 0 auto;
+    margin: -10vh auto;
     padding: 3rem 2rem;
+    padding-top: 1rem;
 }
 
 .categories-header {
@@ -166,6 +167,7 @@
     transform: translateY(-8px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
+
 
 .category-view,
 .category-edit {

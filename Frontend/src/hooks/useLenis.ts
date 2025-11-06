@@ -16,9 +16,21 @@ export const useLenis = () => {
       requestAnimationFrame(raf);
     };
 
+    // expose lenis instance for other code (e.g., route-based scroll helpers)
+    try {
+      (window as any).__lenis = lenis;
+    } catch (err) {
+      // ignore
+    }
+
     requestAnimationFrame(raf);
 
     return () => {
+      try {
+        (window as any).__lenis = undefined;
+      } catch (err) {
+        // ignore
+      }
       lenis.destroy();
     };
   }, []);

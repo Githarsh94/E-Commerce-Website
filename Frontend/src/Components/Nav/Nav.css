@@ -1,5 +1,6 @@
 /* Nav styles extracted from App.css */
 .navbar {
+  height: auto;
   width: 100%;
   /* keep original solid dark navy so nav/footer remain unchanged */
   background-color: #212842;

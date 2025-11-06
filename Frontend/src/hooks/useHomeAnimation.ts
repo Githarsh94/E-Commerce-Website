@@ -74,8 +74,7 @@ export default function useHomeAnimation() {
 
       // Scroll-triggered stagger for Categories
       try {
-        const root = document.querySelector('#page5');
-        if (categoryItems.length) {
+        if (categoryItems.length > 0) {
           gsap.fromTo(
             categoryItems,
             { autoAlpha: 0, x: 100 },
@@ -88,7 +87,6 @@ export default function useHomeAnimation() {
               scrollTrigger: {
                 trigger: categoryItems[0] as Element,
                 start: 'top 80%',
-                end: 'bottom 20%',
                 // symmetric toggle so it reverses when scrolling back up
                 toggleActions: 'play reverse play reverse',
               },

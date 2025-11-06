@@ -1,7 +1,8 @@
 .add-category-page {
     max-width: 900px;
-    margin: 0 auto;
+    margin: -10vh auto;
     padding: 3rem 1rem;
+    /* padding-top: 1rem; */
 }
 
 .add-category-container {

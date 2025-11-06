@@ -1,9 +1,10 @@
 .admin-dashboard {
     font-family: BespokeStencil, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     max-width: 1400px;
-    margin: 0 auto;
+    margin: -10vh auto;
     /* ensure content sits below the fixed admin navbar */
-    padding: 2rem 2rem 3rem 2rem;
+    padding: 1rem 2rem 3rem 2rem;
+    
     /* background-color: #065f46; */
 }
 
@@ -46,6 +47,8 @@
 }
 
 .dashboard-grid {
+    /* background-color: #065f46; */
+    height: auto;
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;

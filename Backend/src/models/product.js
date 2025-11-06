@@ -25,7 +25,8 @@ const Product = sequelize.define('Product', {
   },
   image_url: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    defaultValue: 'https://via.placeholder.com/400x400?text=No+Image'
   },
   rating: {
     type: DataTypes.FLOAT,

@@ -1,0 +1,59 @@
+.showcard-container {
+    min-height: 100vh;
+    background-color: #f4efe6;
+    padding-bottom: 40px;
+}
+
+.showcard-header {
+    background-color: #ffffff;
+    padding: 20px 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-back {
+    background-color: #212842;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-back:hover {
+    background-color: #2d3654;
+}
+
+.showcard-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+
+.loading-message,
+.empty-message {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.loading-message p,
+.empty-message p {
+    font-size: 18px;
+    color: #6b7280;
+}
+
+@media (max-width: 768px) {
+    .showcard-header {
+        padding: 16px;
+    }
+    
+    .showcard-title {
+        font-size: 20px;
+    }
+}

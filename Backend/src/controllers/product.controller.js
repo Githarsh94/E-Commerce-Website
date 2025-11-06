@@ -49,7 +49,7 @@ exports.getProducts = async (req, res) => {
 
 exports.updateProduct = async (req, res) => {
     try {
-        const { name, description, price, stock, categoryId } = req.body;
+        const { name, description, price, stock, categoryId, image_url } = req.body;
 
         if (!name || !description || !price || !stock || !categoryId) {
             return res.status(400).json({ error: 'All fields are required' });
@@ -61,7 +61,8 @@ exports.updateProduct = async (req, res) => {
         const product = await Product.findByPk(req.params.id);
         if (!product) return res.status(404).json({ error: 'Product not found' });
 
-        await product.update({ name, description, price, stock, categoryId });
+        // include image_url when present so product images can be updated from the frontend
+        await product.update({ name, description, price, stock, categoryId, ...(image_url !== undefined ? { image_url } : {}) });
         res.status(200).json(product);
     } catch (error) {
         res.status(500).json({ error: error.message });

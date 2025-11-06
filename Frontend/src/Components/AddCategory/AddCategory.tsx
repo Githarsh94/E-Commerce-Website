@@ -46,12 +46,12 @@ export default function AddCategory() {
       duration: 0.6,
       ease: 'power3.out'
     })
-    .from('.add-category-header', {
-      y: -20,
-      opacity: 0,
-      duration: 0.5,
-      ease: 'power2.out'
-    }, '-=0.3');
+      .from('.add-category-header', {
+        y: -20,
+        opacity: 0,
+        duration: 0.5,
+        ease: 'power2.out'
+      }, '-=0.3');
 
     const formGroups = formRef.current ? Array.from(formRef.current.querySelectorAll('.form-group')) as HTMLElement[] : [];
     if (formGroups.length > 0) {
@@ -79,7 +79,7 @@ export default function AddCategory() {
               buttonRef.current.style.visibility = 'visible';
               buttonRef.current.style.transform = 'none';
             }
-          } catch (e) {}
+          } catch (e) { }
         }
       }, '-=0.15');
     }
@@ -89,7 +89,7 @@ export default function AddCategory() {
     if (!categoryInput.trim()) {
       try {
         await showError('Input required', 'Please enter a category name or ID');
-      } catch (e) {}
+      } catch (e) { }
       gsap.to(inputRef.current, { x: 10, duration: 0.4, ease: 'power2.inOut' });
       return;
     }
@@ -115,7 +115,7 @@ export default function AddCategory() {
         await loadProducts(category.id);
         try {
           await showSuccess('Category found', `Managing products for "${category.name}"`);
-        } catch (e) {}
+        } catch (e) { }
       } else {
         await createNewCategory();
       }
@@ -123,7 +123,7 @@ export default function AddCategory() {
       const msg = error?.body?.error || error?.message || 'Failed to check category';
       try {
         await showError('Error', msg);
-      } catch (e) {}
+      } catch (e) { }
     } finally {
       setLoading(false);
     }
@@ -138,7 +138,7 @@ export default function AddCategory() {
 
       try {
         await showSuccess('Category created', 'The category was created successfully');
-      } catch (e) {}
+      } catch (e) { }
 
       setCategoryExists(true);
       setCurrentCategory(newCategory);
@@ -147,7 +147,7 @@ export default function AddCategory() {
       const msg = error?.body?.error || error?.message || 'Failed to create category';
       try {
         await showError('Create category failed', msg);
-      } catch (e) {}
+      } catch (e) { }
       throw error;
     }
   };
@@ -168,7 +168,7 @@ export default function AddCategory() {
     if (!productForm.name || !productForm.description || !productForm.price || !productForm.stock) {
       try {
         await showError('Validation error', 'All fields are required');
-      } catch (e) {}
+      } catch (e) { }
       return;
     }
 
@@ -181,7 +181,8 @@ export default function AddCategory() {
         price: parseFloat(productForm.price),
         stock: parseInt(productForm.stock),
         categoryId: currentCategory.id,
-        image_url: productForm.image_url || undefined,
+        // always send a string (empty when not provided) so backend won't receive null
+        image_url: productForm.image_url || '',
       };
 
       if (editingProduct) {
@@ -191,7 +192,7 @@ export default function AddCategory() {
         });
         try {
           await showSuccess('Product updated', 'The product was updated successfully');
-        } catch (e) {}
+        } catch (e) { }
       } else {
         await apiFetch('/api/products', {
           method: 'POST',
@@ -199,7 +200,7 @@ export default function AddCategory() {
         });
         try {
           await showSuccess('Product added', 'The product was added successfully');
-        } catch (e) {}
+        } catch (e) { }
       }
 
       await loadProducts(currentCategory.id);
@@ -208,7 +209,7 @@ export default function AddCategory() {
       const msg = error?.body?.error || error?.message || 'Failed to save product';
       try {
         await showError('Operation failed', msg);
-      } catch (e) {}
+      } catch (e) { }
     } finally {
       setLoading(false);
     }
@@ -248,13 +249,13 @@ export default function AddCategory() {
       });
       try {
         await showSuccess('Product deleted', 'The product was removed successfully');
-      } catch (e) {}
+      } catch (e) { }
       await loadProducts(currentCategory.id);
     } catch (error: any) {
       const msg = error?.body?.error || error?.message || 'Failed to delete product';
       try {
         await showError('Delete failed', msg);
-      } catch (e) {}
+      } catch (e) { }
     } finally {
       setLoading(false);
     }

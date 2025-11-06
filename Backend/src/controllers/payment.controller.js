@@ -1,14 +1,48 @@
-const Payment = require('../models/payment'); // Assuming a Payment model exists
-const Shipment = require('../models/shipment'); // Assuming a Shipment model exists
+const { Payment, Shipment, Order } = require('../models');
 
 exports.processPayment = async (req, res) => {
     try {
-        const { orderId, amount } = req.body;
-        const payment = await Payment.create({ orderId, amount, status: 'Processing' });
+        let { orderId, amount, method } = req.body;
+
+        // Ensure a valid method is provided; default to 'Cash on delivery' if missing
+        const allowed = ["debit card", "credit card", "UPI", "Cash on delivery"];
+        if (!method || !allowed.includes(method)) method = 'Cash on delivery';
+
+        // Create payment record (status starts as Processing)
+        const payment = await Payment.create({ orderId, amount, method, status: 'Pending' });
+
         // Simulate payment processing logic here
         payment.status = 'Completed';
         await payment.save();
-        res.status(201).json(payment);
+
+        // Update order status to 'processing' (keeps compatibility with existing enum)
+        if (orderId) {
+            try {
+                const order = await Order.findByPk(orderId);
+                if (order) {
+                    order.status = 'processing';
+                    await order.save();
+                }
+            } catch (err) {
+                // Log but don't fail the payment response because shipment/order update is best-effort
+                console.error('Failed to update order status after payment:', err);
+            }
+        }
+
+        // Return payment and the order (with items) so frontend can show details
+        let orderWithItems = null;
+        if (orderId) {
+            try {
+                orderWithItems = await Order.findByPk(orderId, {
+                    include: [{ model: require('../models').OrderItem, as: 'orderItems' }]
+                });
+            } catch (err) {
+                // ignore failures to fetch order
+                console.error('failed to load order after payment', err);
+            }
+        }
+
+        res.status(201).json({ payment, order: orderWithItems });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

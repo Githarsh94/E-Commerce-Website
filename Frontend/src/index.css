@@ -20,3 +20,12 @@ code {
 .swal2-popup {
   z-index: 100001 !important;
 }
+
+/* Layout offset for the fixed navbar is handled via .app-content padding-top in App.css
+   and dynamically updated by App.tsx (it measures the header and sets --header-height).
+   Avoid setting body padding here to prevent conflicts and double-spacing. */
+
+/* :root {
+  default header height used before JS measures the real value 
+   --header-height: 5rem;
+} */

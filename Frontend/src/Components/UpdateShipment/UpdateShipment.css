@@ -1,6 +1,6 @@
 .shipment-page {
   max-width: 1400px;
-  margin: 0 auto;
+  margin: -10vh auto;
   padding: 3rem 2rem;
 }
 
@@ -343,6 +343,25 @@
 .update-button:active {
   transform: translateY(-1px);
   box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+}
+
+.show-more-wrapper{
+  /* background-color: #065f46; */
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.show-more-button{
+  padding: 1.2vh 2.5vh;
+  font-size: 1vw;
+  border-radius: 10px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

@@ -30,7 +30,7 @@ export default function CategoryDescription() {
 	const [adding, setAdding] = useState<boolean>(false);
 	const [newProduct, setNewProduct] = useState<{ name: string; description: string; price: string; stock: string }>({ name: '', description: '', price: '', stock: '' });
 	const [editingId, setEditingId] = useState<number | null>(null);
-	const [editValues, setEditValues] = useState<{ name: string; description: string; price: string; stock: string }>({ name: '', description: '', price: '', stock: '' });
+	// edit values removed — editing is handled with newProduct + editingId
 
 	useEffect(() => {
 		if (!categoryId) return;
@@ -46,7 +46,7 @@ export default function CategoryDescription() {
 				setProducts(Array.isArray(res) ? res : []);
 			} catch (err: any) {
 				console.error('Failed to load products', err);
-				try { await showError('Load failed', err?.message || 'Failed to load products'); } catch (e) {}
+				try { await showError('Load failed', err?.message || 'Failed to load products'); } catch (e) { }
 			} finally {
 				setLoading(false);
 			}
@@ -84,54 +84,36 @@ export default function CategoryDescription() {
 	const handleCreateProduct = async (e?: React.FormEvent) => {
 		if (e) e.preventDefault();
 		if (!newProduct.name.trim()) {
-			try { await showError('Validation', 'Product name is required'); } catch (e) {}
+			try { await showError('Validation', 'Product name is required'); } catch (e) { }
 			return;
 		}
 		setLoading(true);
 		try {
-			const body = { name: newProduct.name, description: newProduct.description, price: parseFloat(newProduct.price || '0') || 0, stock: parseInt(newProduct.stock || '0', 10) || 0, categoryId };
+			const body = { name: newProduct.name, description: newProduct.description, price: parseFloat(newProduct.price || '0') || 0, stock: parseInt(newProduct.stock || '0', 10) || 0, categoryId, image_url: (newProduct as any).image_url || '' };
 			if (editingId) {
 				// update existing product
 				await apiFetch(`/api/products/${editingId}`, { method: 'PUT', body: JSON.stringify(body) });
 				setProducts((p) => p.map(item => item.id === editingId ? { ...item, ...body } as Product : item));
-				try { await showSuccess('Product updated', 'Product was updated successfully'); } catch (e) {}
+				try { await showSuccess('Product updated', 'Product was updated successfully'); } catch (e) { }
 				setEditingId(null);
 			} else {
 				const created: any = await apiFetch('/api/products', { method: 'POST', body: JSON.stringify(body) });
 				setProducts((p) => [created, ...p]);
-				try { await showSuccess('Product added', 'Product was created successfully'); } catch (e) {}
+				try { await showSuccess('Product added', 'Product was created successfully'); } catch (e) { }
 			}
 			setAdding(false);
 			setNewProduct({ name: '', description: '', price: '', stock: '' });
 		} catch (err: any) {
 			console.error('Create/Update failed', err);
-			try { await showError('Operation failed', err?.body?.error || err?.message || 'Failed to save product'); } catch (e) {}
+			try { await showError('Operation failed', err?.body?.error || err?.message || 'Failed to save product'); } catch (e) { }
 		} finally {
 			setLoading(false);
 		}
 	};
 
-	const startEdit = (p: Product) => {
-		setEditingId(p.id);
-		setEditValues({ name: p.name || '', description: p.description || '', price: String(p.price || ''), stock: String(p.stock || '') });
-	};
-
-	const cancelEdit = () => {
-		setEditingId(null);
-	};
-
-	const saveEdit = async (productId: number) => {
-		try {
-			const body = { name: editValues.name, description: editValues.description, price: parseFloat(editValues.price || '0') || 0, stock: parseInt(editValues.stock || '0', 10) || 0 };
-			const updated: any = await apiFetch(`/api/products/${productId}`, { method: 'PUT', body: JSON.stringify(body) });
-			setProducts((p) => p.map(item => item.id === productId ? { ...item, ...body } as Product : item));
-			try { await showSuccess('Product updated', 'Product details updated'); } catch (e) {}
-			setEditingId(null);
-		} catch (err: any) {
-			console.error('Update failed', err);
-			try { await showError('Update failed', err?.body?.error || err?.message || 'Failed to update product'); } catch (e) {}
-		}
-	};
+	// Note: Edit flow for category products uses the Add/Edit form via
+	// `handleEditProduct` / `handleCreateProduct` and `editingId` state above.
+	// Removed duplicate unused helpers to avoid unused-variable warnings.
 
 	const handleDelete = async (productId: number) => {
 		const res = await showConfirm({ title: 'Delete product', text: 'Are you sure you want to delete this product?', confirmButtonText: 'Delete', cancelButtonText: 'Cancel' });
@@ -139,10 +121,10 @@ export default function CategoryDescription() {
 		try {
 			await apiFetch(`/api/products/${productId}`, { method: 'DELETE' });
 			setProducts((p) => p.filter(item => item.id !== productId));
-			try { await showSuccess('Product deleted', 'Product removed'); } catch (e) {}
+			try { await showSuccess('Product deleted', 'Product removed'); } catch (e) { }
 		} catch (err: any) {
 			console.error('Delete failed', err);
-			try { await showError('Delete failed', err?.body?.error || err?.message || 'Failed to delete product'); } catch (e) {}
+			try { await showError('Delete failed', err?.body?.error || err?.message || 'Failed to delete product'); } catch (e) { }
 		}
 	};
 
@@ -214,7 +196,7 @@ export default function CategoryDescription() {
 					</div>
 
 					<div className="form-group">
-						<label className="form-label">Image URL (optional)</label>
+						<label className="form-label">Image URL</label>
 						<input
 							type="text"
 							value={(newProduct as any).image_url || ''}

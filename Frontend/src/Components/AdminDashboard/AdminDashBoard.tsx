@@ -14,80 +14,62 @@ export default function AdminDashboard() {
   }, []);
 
   useEffect(() => {
-    // Debug: log refs to help track visibility issues in the browser console
-    // If any GSAP call throws due to null targets it could abort animations and leave elements hidden.
-    // Make GSAP calls defensive so we don't break rendering.
-    // eslint-disable-next-line no-console
-    // console.log('AdminDashboard mounted', {
-    //   header: headerRef.current,
-    //   cardsCount: cardsRef.current.length,
-    //   cards: cardsRef.current,
-    //   recentActivity: recentActivityRef.current
-    // });
-
+    // Simple, readable GSAP timeline using fromTo so start/end are explicit.
+    // Avoid passing undefined as a position; use explicit branches.
+    const listeners: Array<{ card: HTMLDivElement; onEnter: () => void; onLeave: () => void }> = [];
     const tl = gsap.timeline();
 
-    // header animation
-    if (headerRef.current) {
-      tl.from(headerRef.current, {
-        y: -30,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out'
-      });
+    const header = headerRef.current;
+    if (header) {
+      tl.fromTo(header, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' });
     }
 
-    // cards animation: only target actual elements
     const cardEls = cardsRef.current.filter(Boolean) as HTMLDivElement[];
     if (cardEls.length > 0) {
-      tl.from(cardEls, {
-        y: 50,
-        opacity: 0,
-        duration: 0.7,
-        stagger: 0.12,
-        ease: 'back.out(1.2)'
-      }, headerRef.current ? '-=0.4' : undefined);
+      const fromVars = { y: 50, opacity: 0 };
+      const toVars = { y: 0, opacity: 1, duration: 0.6, stagger: 0.12, ease: 'back.out(1.2)' } as any;
+      if (header) tl.fromTo(cardEls, fromVars, toVars, '-=0.3');
+      else tl.fromTo(cardEls, fromVars, toVars);
     }
 
     if (recentActivityRef.current) {
-      tl.from(recentActivityRef.current, {
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        ease: 'power3.out'
-      }, '-=0.3');
+      if (header) {
+        tl.fromTo(recentActivityRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' }, '-=0.25');
+      } else {
+        tl.fromTo(recentActivityRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' });
+      }
     }
 
-    // attach hover animations safely and ensure cleanup on unmount
-    const listeners: Array<{ card: HTMLDivElement; onEnter: () => void; onLeave: () => void }> = [];
+    // Hover interactions
     cardEls.forEach((card) => {
-      const onEnter = () => {
-        gsap.to(card, {
-          y: -8,
-          scale: 1.02,
-          duration: 0.3,
-          ease: 'power2.out'
-        });
-      };
-
-      const onLeave = () => {
-        gsap.to(card, {
-          y: 0,
-          scale: 1,
-          duration: 0.3,
-          ease: 'power2.out'
-        });
-      };
-
+      const onEnter = () => gsap.to(card, { y: -8, scale: 1.02, duration: 0.25, ease: 'power2.out' });
+      const onLeave = () => gsap.to(card, { y: 0, scale: 1, duration: 0.25, ease: 'power2.out' });
       card.addEventListener('mouseenter', onEnter);
       card.addEventListener('mouseleave', onLeave);
       listeners.push({ card, onEnter, onLeave });
     });
 
+    // Small fallback: if any card still computes to opacity 0 after 400ms,
+    // force visibility. This protects against the timeline failing to run
+    // (simple and safe).
+    const fallback = setTimeout(() => {
+      cardEls.forEach((el) => {
+        try {
+          if (window.getComputedStyle(el).opacity === '0') {
+            el.style.opacity = '1';
+            el.style.transform = '';
+          }
+        } catch (e) {
+          // ignore
+        }
+      });
+    }, 400);
+
     return () => {
+      clearTimeout(fallback);
+      try { tl.kill && tl.kill(); } catch (e) { /* ignore */ }
       listeners.forEach(({ card, onEnter, onLeave }) => {
-        card.removeEventListener('mouseenter', onEnter);
-        card.removeEventListener('mouseleave', onLeave);
+        try { card.removeEventListener('mouseenter', onEnter); card.removeEventListener('mouseleave', onLeave); } catch (e) { /* ignore */ }
       });
     };
   }, []);
@@ -95,16 +77,30 @@ export default function AdminDashboard() {
   // dynamic data
   const [productsCount, setProductsCount] = useState<number | null>(null);
   const [categoriesCount, setCategoriesCount] = useState<number | null>(null);
+  const [ordersCount, setOrdersCount] = useState<number | null>(null);
+  const [revenue, setRevenue] = useState<number | null>(null);
+  const [customersCount, setCustomersCount] = useState<number | null>(null);
   const [recentProducts, setRecentProducts] = useState<Array<{ id: number; name: string }>>([]);
 
   useEffect(() => {
     const load = async () => {
       try {
         const stats: any = await apiFetch('/api/admin/stats');
-        setProductsCount(typeof stats.productsCount === 'number' ? stats.productsCount : 0);
-        setCategoriesCount(typeof stats.categoriesCount === 'number' ? stats.categoriesCount : 0);
-        if (Array.isArray(stats.recentProducts)) {
-          setRecentProducts(stats.recentProducts.map((p: any) => ({ id: p.id, name: p.name || p.title || `Product ${p.id}` })));
+        // Debug: log the received payload so we can confirm the frontend sees the same data
+        // This is non-invasive and can be removed once verified.
+        // eslint-disable-next-line no-console
+        console.log('Admin stats payload:', stats);
+
+  setProductsCount(typeof stats.productsCount === 'number' ? stats.productsCount : 0);
+  setCategoriesCount(typeof stats.categoriesCount === 'number' ? stats.categoriesCount : 0);
+  setOrdersCount(typeof stats.ordersCount === 'number' ? stats.ordersCount : 0);
+  setRevenue(typeof stats.revenue === 'number' ? stats.revenue : 0);
+  setCustomersCount(typeof stats.customersCount === 'number' ? stats.customersCount : 0);
+
+        // be tolerant: recentProducts might be under different keys or be undefined
+        const recent = stats.recentProducts || stats.recent || stats.latestProducts || [];
+        if (Array.isArray(recent)) {
+          setRecentProducts(recent.map((p: any) => ({ id: p.id, name: p.name || p.title || `Product ${p.id}` })));
         }
       } catch (err: any) {
         // eslint-disable-next-line no-console
@@ -117,12 +113,15 @@ export default function AdminDashboard() {
 
   const stats = [
     { icon: Package, label: 'Total Products', value: productsCount !== null ? String(productsCount) : '—', change: '+12%', color: '#3b82f6', bgGradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' },
-    { icon: ShoppingCart, label: 'Total Orders', value: '—', change: '+8%', color: '#10b981', bgGradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' },
+    { icon: ShoppingCart, label: 'Total Orders', value: ordersCount !== null ? String(ordersCount) : '—', change: '+8%', color: '#10b981', bgGradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' },
     { icon: Users, label: 'Categories', value: categoriesCount !== null ? String(categoriesCount) : '—', change: '+23%', color: '#f59e0b', bgGradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' },
-    { icon: TrendingUp, label: 'Revenue', value: '$—', change: '+18%', color: '#8b5cf6', bgGradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)' }
+    { icon: TrendingUp, label: 'Revenue', value: revenue !== null ? `₹${Number(revenue).toLocaleString('en-IN')}` : '—', change: '+18%', color: '#8b5cf6', bgGradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)' }
   ];
 
-  const recentActivity = recentProducts.length > 0 ? recentProducts.map((p, i) => ({ id: p.id + i, action: `Product added: ${p.name}`, time: 'recent', type: 'product' })) : [];
+  // Use a stable but guaranteed-unique key for activity items. Previously we used `p.id + i` which
+  // could collide (e.g. p.id=60,i=0 and p.id=59,i=1 both produce 60). Use a string composed of
+  // product id and index so React keys are unique and warnings disappear.
+  const recentActivity = recentProducts.length > 0 ? recentProducts.map((p, i) => ({ id: `${p.id}-${i}`, action: `Product added: ${p.name}`, time: 'recent', type: 'product' })) : [];
 
   return (
     <div className="admin-dashboard">

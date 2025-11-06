@@ -20,10 +20,16 @@ Product.belongsTo(Category, { foreignKey: { allowNull: true }, onDelete: 'SET NU
 Category.hasMany(Product);
 Order.belongsTo(User);
 User.hasMany(Order);
-OrderItem.belongsTo(Order);
-Order.hasMany(OrderItem);
-OrderItem.belongsTo(Product);
-Product.hasMany(OrderItem);
+// Order <-> OrderItem associations
+OrderItem.belongsTo(Order, { as: 'order', foreignKey: 'orderId' });
+Order.hasMany(OrderItem, { as: 'orderItems', foreignKey: 'orderId' });
+// OrderItem <-> Product associations (keeps product reference on each order item)
+OrderItem.belongsTo(Product, { as: 'product', foreignKey: 'productId' });
+Product.hasMany(OrderItem, { as: 'orderItems', foreignKey: 'productId' });
+// Payment belongs to Order
+Payment.belongsTo(Order, { foreignKey: { name: 'orderId', allowNull: false }, onDelete: 'CASCADE' });
+Order.hasMany(Payment, { foreignKey: { name: 'orderId', allowNull: false }, onDelete: 'CASCADE' });
+// Shipment model kept independent (no automatic association to Order)
 Review.belongsTo(Product, { foreignKey: { allowNull: true }, onDelete: 'CASCADE' });
 Product.hasMany(Review);
 Review.belongsTo(User);

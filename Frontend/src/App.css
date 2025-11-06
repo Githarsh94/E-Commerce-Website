@@ -1,6 +1,6 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .App-logo {
   height: 40vmin;
@@ -17,6 +17,11 @@ html, body, #root {
   height: 100%;
   width: 100%;
 }
+
+/* Ensure browser scroll behavior accounts for fixed header height (anchors, focus, programmatic scrolls) */
+/* html {
+  scroll-padding-top: var(--header-height, 5rem);
+} */
 
 body{
   background-color: #f4efe6 !important;
@@ -68,4 +73,14 @@ body{
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+/* Reserve space for fixed footer so page content isn't hidden behind it */
+.app-content {
+  /* Reserve space for fixed header and fixed footer so page content isn't hidden.
+     --header-height is set dynamically by App.tsx (measured from .navbar or .admin-navbar).
+     Fallback for header is 5rem. Footer padding remains 88px as before. */
+  /* padding-top: var(--header-height, 5rem); */
+  padding-top: 10vh;
+  padding-bottom: 7vh; /* slightly larger than footer height to avoid overlap */
 }

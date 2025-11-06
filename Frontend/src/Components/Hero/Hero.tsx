@@ -25,8 +25,8 @@ const HeroSection: React.FC = () => {
                     <h3>Min. 35-70% Off</h3>
                 </div>
                 <div className="hero-buttons">
-                    <button className="btn-primary">Shop Now</button>
-                    <button className="btn-secondary" onClick={()=>handleLearn()}>Learn More</button>
+                    <button className="hero-btn-primary">Shop Now</button>
+                    <button className="hero-btn-secondary" onClick={()=>handleLearn()}>Learn More</button>
                 </div>
             </div>
 

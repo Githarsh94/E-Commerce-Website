@@ -1,12 +1,6 @@
 /* Profile Page Styles */
 .profile-page {
-  /* add extra bottom padding so content (saved addresses / forms) isn't covered by the fixed footer */
-  padding: 40px 20px 140px;
-  /* max-height: 80vh; */
-  /* background-color: #0066cc; */
-  /* z-index: 10; */
-  /* margin-bottom: 4vh; */
-  margin-top: 2vh;
+  padding: 0px 20px;
 }
 
 .profile-container {
@@ -523,8 +517,13 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-state p {
@@ -622,6 +621,13 @@
   .profile-page {
     padding-bottom: 220px;
   }
+
+  /* On very small screens allow the form to expand more before scrolling
+     so the UX feels natural while still preventing content from being hidden */
+  .address-form-card {
+    max-height: calc(100vh - 120px);
+  }
+
   .profile-title {
     font-size: 1.5rem;
   }

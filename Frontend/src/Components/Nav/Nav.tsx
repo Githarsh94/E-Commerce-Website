@@ -43,75 +43,34 @@ function Nav({ handleComponentChange, onSearch }: NavProps) {
   useEffect(() => {
     const fetchAllProducts = async () => {
       try {
-        // Check if backend URL is available
-        const backendUrl = process.env.REACT_APP_BACKEND_URL;
-        
-        if (backendUrl) {
-          // Try to fetch from API first
-          const categoriesData: any = await apiFetch('/api/categories');
-          if (Array.isArray(categoriesData)) {
-            let allProductsList: Product[] = [];
-            for (const category of categoriesData) {
-              try {
-                const productsData: any = await apiFetch(`/api/products/${category.id}`);
-                if (Array.isArray(productsData)) {
-                  allProductsList = [...allProductsList, ...productsData];
-                }
-              } catch (error) {
-                console.warn(`Failed to fetch products for category ${category.id}:`, error);
-              }
+        // Fetch categories and their products from backend only
+        const categoriesData: any = await apiFetch('/api/categories');
+        if (!Array.isArray(categoriesData)) {
+          setAllProducts([]);
+          return;
+        }
+
+        let allProductsList: Product[] = [];
+        for (const category of categoriesData) {
+          try {
+            const productsData: any = await apiFetch(`/api/products/${category.id}`);
+            if (Array.isArray(productsData)) {
+              allProductsList = [...allProductsList, ...productsData];
             }
-
-            // Remove duplicates based on product name (case-insensitive) and keep the first occurrence
-            const uniqueProducts = allProductsList.filter((product, index, self) => 
-              index === self.findIndex(p => p.name.toLowerCase() === product.name.toLowerCase())
-            );
-
-            setAllProducts(uniqueProducts);
-            return; // Success, exit early
+          } catch (error) {
+            console.warn(`Failed to fetch products for category ${category.id}:`, error);
           }
         }
-        
-        // Fallback to local data if backend is not available
-        const response = await fetch('/data/categories.json');
-        const data = await response.json();
-        let allProductsList: Product[] = [];
-        
-        data.forEach((categoryData: any) => {
-          if (categoryData.products) {
-            allProductsList = [...allProductsList, ...categoryData.products];
-          }
-        });
-        
+
         // Remove duplicates based on product id
         const uniqueProducts = allProductsList.filter((product, index, self) => 
           index === self.findIndex(p => p.id === product.id)
         );
-        
+
         setAllProducts(uniqueProducts);
       } catch (error) {
         console.error('Error fetching products for search:', error);
-        // Fallback to local data
-        try {
-          const response = await fetch('/data/categories.json');
-          const data = await response.json();
-          let allProductsList: Product[] = [];
-          
-          data.forEach((categoryData: any) => {
-            if (categoryData.products) {
-              allProductsList = [...allProductsList, ...categoryData.products];
-            }
-          });
-          
-          // Remove duplicates based on product id
-          const uniqueProducts = allProductsList.filter((product, index, self) => 
-            index === self.findIndex(p => p.id === product.id)
-          );
-          
-          setAllProducts(uniqueProducts);
-        } catch (fallbackError) {
-          console.error('Error loading fallback data:', fallbackError);
-        }
+        setAllProducts([]);
       }
     };
 
@@ -329,7 +288,7 @@ function Nav({ handleComponentChange, onSearch }: NavProps) {
                 {showAccountMenu && (
                   <div id="account-menu" className="account-dropdown" role="menu" aria-label="Account menu" onClick={(e) => e.stopPropagation()}>
                     <button type="button" role="menuitem" className="account-item" onClick={() => { setShowAccountMenu(false); handleNavClick('/profile'); }}>Profile</button>
-                    <button type="button" role="menuitem" className="account-item" onClick={() => { setShowAccountMenu(false); handleNavClick('/orders'); }}>Your Orders</button>
+                    <button type="button" role="menuitem" className="account-item" onClick={() => { setShowAccountMenu(false); handleNavClick('/your-order'); }}>Your Orders</button>
                     {/* Address moved to Profile page per UX change */}
                     <button type="button" role="menuitem" className="account-item" onClick={() => { setShowAccountMenu(false); logout(); handleNavClick('/home'); }}>Logout</button>
                   </div>

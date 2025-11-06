@@ -21,10 +21,18 @@ function Footer() {
             <div className="footer-bottom">
                 <p>&copy; {new Date().getFullYear()} EazyCart. All rights reserved.</p>
                 <div className="social-icons">
-                    <a href="#"><i className="fab fa-facebook-f" /></a>
-                    <a href="#"><i className="fab fa-twitter" /></a>
-                    <a href="#"><i className="fab fa-instagram" /></a>
-                    <a href="#"><i className="fab fa-linkedin-in" /></a>
+                    <button type="button" className="social-link" aria-label="Facebook">
+                        <i className="fab fa-facebook-f" />
+                    </button>
+                    <button type="button" className="social-link" aria-label="Twitter">
+                        <i className="fab fa-twitter" />
+                    </button>
+                    <button type="button" className="social-link" aria-label="Instagram">
+                        <i className="fab fa-instagram" />
+                    </button>
+                    <button type="button" className="social-link" aria-label="LinkedIn">
+                        <i className="fab fa-linkedin-in" />
+                    </button>
                 </div>
             </div>
         </footer>

@@ -32,6 +32,12 @@
     /* object-position: top; */
 }
 
+/* .part1:hover{
+    transition: transform 0.28s ease-in;
+    transform: scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.438);
+} */
+
 .part1-text{
     height: 100%;
     width: 50%;
@@ -219,7 +225,7 @@
 }
 
 .part2-one h2{
-    font-size: 2.6vw;
+    font-size: 2.2vw;
     font-weight: 600;
     letter-spacing: 2px;
 }
@@ -227,6 +233,7 @@
 #min{
     font-size: 1.3vw;
     font-weight: 500;
+    text-align: left;
 }
 
 #shop{
@@ -234,6 +241,7 @@
     font-weight: 600;
     margin-top: 1vw;
     text-decoration: underline;
+    text-align: left;
 }
 
 .part2-one-image{
@@ -263,5 +271,6 @@
 
 .part2-one-image-text p{
     font-size: 2vw;
-    font-weight: 600;
+    font-weight: 400;
+    letter-spacing: 1px;
 }

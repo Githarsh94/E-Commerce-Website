@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import Home from '../Pages/Home';
 import Carts from '../Pages/Carts';
 import Loader from '../Components/Loader/Loader';
-import { useNavigate } from 'react-router-dom';
 import About from '../Pages/About';
 import Contact from '../Pages/Contact';
 import Wishlist from '../Pages/Wishlist';
@@ -15,14 +14,14 @@ import AdminCategories from '../Pages/AdminCategories';
 import AdminShipment from "../Pages/AdminShipment";
 import AddCategory from "../Pages/AddCategory";
 import CategoryDescription from "../Pages/categoryDescription";
+import ShowCard from '../Pages/ShowCard';
+import OrderSummary from "../Pages/OrderSummary";
+import YourOrder from "../Pages/YourOrder";
 import React from 'react'
 
 // Application routes
 const AppRoutes = () => {
-  const navigate = useNavigate();
-  const handleLoaderComplete = () => {
-    navigate('/home');
-  };
+  // loader navigation removed — not used here
   // Read auth state at top-level so hooks are called in the same order every render
   const { isAuthenticated, role } = useAuth();
   // Debug: log component types to spot undefined imports causing 'Element type is invalid'
@@ -56,7 +55,10 @@ const AppRoutes = () => {
       <Route path="/admin/AddCategory" element={<AddCategory />} />
       <Route path="/admin/categories" element={<AdminCategories />} />
       <Route path="/admin/shipments" element={<AdminShipment />} />
-      <Route path="/admin/category-description" element={<CategoryDescription />} />
+    <Route path="/admin/category-description" element={<CategoryDescription />} />
+    <Route path="/show-card/:slug" element={<ShowCard />} />
+    <Route path="/order-summary" element={<OrderSummary />} />
+    <Route path="/your-order" element={<YourOrder />} />
     </Routes>
   );
 }

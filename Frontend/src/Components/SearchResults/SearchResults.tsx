@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./SearchResults.css";
-import { useWishlist } from "../../context/WishlistContext";
-import { useCart } from "../../context/CartContext";
 import apiFetch from '../../utils/apiFetch';
 
 interface Product {
@@ -19,8 +17,6 @@ interface SearchResultsProps {
 function SearchResults({ searchTerm }: SearchResultsProps) {
     const [searchResults, setSearchResults] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
-    const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
-    const { addToCart: addProductToCart } = useCart();
 
     useEffect(() => {
         let cancelled = false;

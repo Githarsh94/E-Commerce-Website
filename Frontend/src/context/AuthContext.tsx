@@ -36,26 +36,30 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const logout = () => {
-    setToken(null);
-    setRole(null);
+    // Dispatch a global event so other providers (cart/wishlist) can persist user data to server
     try {
-      // Force a full refresh so all providers and cached state reset on logout.
-      // Use small timeout so React state has a chance to settle and localStorage updates run.
       if (typeof window !== 'undefined') {
-        setTimeout(() => {
-          try {
-            // replace current URL with home then reload to clear any in-memory caches
-            window.location.href = '/';
-            window.location.reload();
-          } catch (e) {
-            // as a fallback, do a plain reload
-            window.location.reload();
-          }
-        }, 60);
+        const ev = new CustomEvent('app:before-logout', { detail: { token } });
+        window.dispatchEvent(ev);
       }
     } catch (e) {
       // ignore
     }
+
+    // Give listeners a short time to start network synces before clearing auth state
+    setTimeout(() => {
+      setToken(null);
+      setRole(null);
+      try {
+        // replace current URL with home then reload to clear any in-memory caches
+        if (typeof window !== 'undefined') {
+          window.location.href = '/';
+          window.location.reload();
+        }
+      } catch (e) {
+        try { window.location.reload(); } catch (e2) { /* ignore */ }
+      }
+    }, 700);
   };
 
   const value: AuthContextType = {

@@ -4,10 +4,10 @@ import AppRoutes from './Routing/Routes';
 import ErrorBoundary from './Components/ErrorBoundary/ErrorBoundary';
 import Loader from './Components/Loader/Loader';
 import Nav from './Components/Nav/Nav';
+import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
 import Footer from './Components/Footer/Footer';
 import AdminNavbar from './Components/AdminNavbar/AdminNavbar';
 import { useAuth } from './context/AuthContext';
-import SearchResults from './Components/SearchResults/SearchResults';
 import { useLocation } from 'react-router-dom';
 
 const App = () => {
@@ -69,6 +69,23 @@ const App = () => {
     return undefined;
   }, [percent]);
 
+  // Measure the header (nav/admin) height and expose it as a CSS variable
+  useEffect(() => {
+    const setHeaderHeight = () => {
+      try {
+        const el = document.querySelector('.navbar, .admin-navbar') as HTMLElement | null;
+        const h = el ? Math.ceil(el.getBoundingClientRect().height) : 0;
+        document.documentElement.style.setProperty('--header-height', `${h}px`);
+      } catch (err) {
+        // ignore
+      }
+    };
+
+    setHeaderHeight();
+    window.addEventListener('resize', setHeaderHeight);
+    return () => window.removeEventListener('resize', setHeaderHeight);
+  }, [isAuthenticated, role]);
+
   // Safe render: ToastContainer can sometimes be undefined if the package failed to load
 
   if (loading) return <Loader percent={percent} />;
@@ -88,9 +105,12 @@ const App = () => {
           )
         )}
         {/* <SearchResults searchTerm="" /> */}
-        <AppRoutes />
+        <main className="app-content">
+          <AppRoutes />
+        </main>
   {/* react-toastify removed — no toast container rendered */}
         {!isLoaderRoute && <Footer />}
+        <ScrollToTop />
       </ErrorBoundary>
     </>
   );

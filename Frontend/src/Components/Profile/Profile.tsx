@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+// useNavigate removed (not used in this component currently)
 import { useAuth } from '../../context/AuthContext';
 import apiFetch from '../../utils/apiFetch';
 import { showSuccess, showError, showConfirm } from '../../utils/alert';
+import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import './Profile.css';
 
@@ -27,8 +28,7 @@ const emptyAddress = (): AddressType => ({
 });
 
 const Profile: React.FC = () => {
-  const navigate = useNavigate();
-  const { token, role, logout } = useAuth();
+  const { token, role } = useAuth();
 
   const [addresses, setAddresses] = useState<AddressType[]>([]);
   const [loading, setLoading] = useState(false);
@@ -61,13 +61,13 @@ const Profile: React.FC = () => {
       gsap.fromTo(
         cards,
         { opacity: 0, y: 20, scale: 0.95 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          scale: 1, 
-          duration: 0.5, 
-          stagger: 0.1, 
-          ease: 'back.out(1.2)' 
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: 'back.out(1.2)'
         }
       );
     }
@@ -79,21 +79,18 @@ const Profile: React.FC = () => {
       gsap.fromTo(
         formRef.current,
         { opacity: 0, height: 0, y: -20 },
-        { 
-          opacity: 1, 
-          height: 'auto', 
-          y: 0, 
-          duration: 0.6, 
-          ease: 'power3.out' 
+        {
+          opacity: 1,
+          height: 'auto',
+          y: 0,
+          duration: 0.6,
+          ease: 'power3.out'
         }
       );
     }
   }, [showAddForm]);
 
-  const handleLogout = () => {
-    logout();
-    navigate('/home');
-  };
+  // logout handler removed because header logout button is currently commented out
 
   const fetchAddresses = async () => {
     try {
@@ -256,6 +253,7 @@ const Profile: React.FC = () => {
           <div className="header-content">
             <h1 className="profile-title">Your Profile</h1>
             <div className="role-badge">{role}</div>
+            {/* <button className="btn-logout" onClick={handleLogout} aria-label="Logout">Logout</button> */}
           </div>
         </div>
 
@@ -281,9 +279,9 @@ const Profile: React.FC = () => {
               <div className="form-grid">
                 <div className="form-group full-width">
                   <label>Full Name <span className="required">*</span></label>
-                  <input 
-                    name="name" 
-                    value={form.name} 
+                  <input
+                    name="name"
+                    value={form.name}
                     onChange={(e) => handleChange('name', e.target.value)}
                     className={errors.name ? 'error' : ''}
                   />
@@ -292,9 +290,9 @@ const Profile: React.FC = () => {
 
                 <div className="form-group">
                   <label>Mobile Number <span className="required">*</span></label>
-                  <input 
-                    name="mobileNo" 
-                    value={form.mobileNo} 
+                  <input
+                    name="mobileNo"
+                    value={form.mobileNo}
                     onChange={(e) => handleChange('mobileNo', e.target.value)}
                     className={errors.mobileNo ? 'error' : ''}
                     placeholder="10-digit number"
@@ -304,18 +302,18 @@ const Profile: React.FC = () => {
 
                 <div className="form-group">
                   <label>Alternate Phone</label>
-                  <input 
-                    name="alternatePhone" 
-                    value={form.alternatePhone || ''} 
+                  <input
+                    name="alternatePhone"
+                    value={form.alternatePhone || ''}
                     onChange={(e) => handleChange('alternatePhone', e.target.value)}
                   />
                 </div>
 
                 <div className="form-group">
                   <label>Pincode <span className="required">*</span></label>
-                  <input 
-                    name="pincode" 
-                    value={form.pincode} 
+                  <input
+                    name="pincode"
+                    value={form.pincode}
                     onChange={(e) => handleChange('pincode', e.target.value)}
                     className={errors.pincode ? 'error' : ''}
                   />
@@ -324,18 +322,18 @@ const Profile: React.FC = () => {
 
                 <div className="form-group">
                   <label>Locality</label>
-                  <input 
-                    name="locality" 
-                    value={form.locality || ''} 
+                  <input
+                    name="locality"
+                    value={form.locality || ''}
                     onChange={(e) => handleChange('locality', e.target.value)}
                   />
                 </div>
 
                 <div className="form-group full-width">
                   <label>Address (Area and Street) <span className="required">*</span></label>
-                  <textarea 
-                    name="addressLine" 
-                    value={form.addressLine} 
+                  <textarea
+                    name="addressLine"
+                    value={form.addressLine}
                     onChange={(e) => handleChange('addressLine', e.target.value)}
                     className={errors.addressLine ? 'error' : ''}
                     rows={3}
@@ -345,9 +343,9 @@ const Profile: React.FC = () => {
 
                 <div className="form-group">
                   <label>City/District/Town <span className="required">*</span></label>
-                  <input 
-                    name="city" 
-                    value={form.city} 
+                  <input
+                    name="city"
+                    value={form.city}
                     onChange={(e) => handleChange('city', e.target.value)}
                     className={errors.city ? 'error' : ''}
                   />
@@ -356,9 +354,9 @@ const Profile: React.FC = () => {
 
                 <div className="form-group">
                   <label>State <span className="required">*</span></label>
-                  <input 
-                    name="state" 
-                    value={form.state} 
+                  <input
+                    name="state"
+                    value={form.state}
                     onChange={(e) => handleChange('state', e.target.value)}
                     className={errors.state ? 'error' : ''}
                   />
@@ -367,9 +365,9 @@ const Profile: React.FC = () => {
 
                 <div className="form-group full-width">
                   <label>Landmark</label>
-                  <input 
-                    name="landmark" 
-                    value={form.landmark || ''} 
+                  <input
+                    name="landmark"
+                    value={form.landmark || ''}
                     onChange={(e) => handleChange('landmark', e.target.value)}
                   />
                 </div>
@@ -378,30 +376,30 @@ const Profile: React.FC = () => {
                   <div className="radio-checkbox-group">
                     <div className="address-type-group">
                       <label className="radio-label">
-                        <input 
-                          type="radio" 
-                          name="addressType" 
-                          checked={form.addressType === 'home'} 
-                          onChange={() => handleChange('addressType', 'home')} 
+                        <input
+                          type="radio"
+                          name="addressType"
+                          checked={form.addressType === 'home'}
+                          onChange={() => handleChange('addressType', 'home')}
                         />
                         <span>🏠 Home</span>
                       </label>
                       <label className="radio-label">
-                        <input 
-                          type="radio" 
-                          name="addressType" 
-                          checked={form.addressType === 'work'} 
-                          onChange={() => handleChange('addressType', 'work')} 
+                        <input
+                          type="radio"
+                          name="addressType"
+                          checked={form.addressType === 'work'}
+                          onChange={() => handleChange('addressType', 'work')}
                         />
                         <span>💼 Work</span>
                       </label>
                     </div>
                     <label className="checkbox-label">
-                      <input 
-                        type="checkbox" 
-                        name="isDefault" 
-                        checked={!!form.isDefault} 
-                        onChange={(e) => handleChange('isDefault', e.target.checked)} 
+                      <input
+                        type="checkbox"
+                        name="isDefault"
+                        checked={!!form.isDefault}
+                        onChange={(e) => handleChange('isDefault', e.target.checked)}
                       />
                       <span>Set as default address</span>
                     </label>
