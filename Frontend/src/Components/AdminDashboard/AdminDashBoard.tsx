@@ -89,13 +89,12 @@ export default function AdminDashboard() {
         // Debug: log the received payload so we can confirm the frontend sees the same data
         // This is non-invasive and can be removed once verified.
         // eslint-disable-next-line no-console
-        console.log('Admin stats payload:', stats);
 
-  setProductsCount(typeof stats.productsCount === 'number' ? stats.productsCount : 0);
-  setCategoriesCount(typeof stats.categoriesCount === 'number' ? stats.categoriesCount : 0);
-  setOrdersCount(typeof stats.ordersCount === 'number' ? stats.ordersCount : 0);
-  setRevenue(typeof stats.revenue === 'number' ? stats.revenue : 0);
-  setCustomersCount(typeof stats.customersCount === 'number' ? stats.customersCount : 0);
+        setProductsCount(typeof stats.productsCount === 'number' ? stats.productsCount : 0);
+        setCategoriesCount(typeof stats.categoriesCount === 'number' ? stats.categoriesCount : 0);
+        setOrdersCount(typeof stats.ordersCount === 'number' ? stats.ordersCount : 0);
+        setRevenue(typeof stats.revenue === 'number' ? stats.revenue : 0);
+        setCustomersCount(typeof stats.customersCount === 'number' ? stats.customersCount : 0);
 
         // be tolerant: recentProducts might be under different keys or be undefined
         const recent = stats.recentProducts || stats.recent || stats.latestProducts || [];
