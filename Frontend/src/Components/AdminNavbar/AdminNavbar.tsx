@@ -39,26 +39,27 @@ export default function AdminNavbar({ activeRoute, onNavigate }: AdminNavbarProp
 
           <div className="admin-nav-desktop">
             {navItems.map((item) => {
-                const routeMap: Record<string, string> = {
-                  // Dashboard should navigate to AdminHome
-                  dashboard: '/admin',
-                  categories: '/admin/categories',
-                  'add-category': '/admin/AddCategory',
-                  shipments: '/admin/shipments'
-                };
-                const path = routeMap[item.id] || '/admin';
-                return (
+              const routeMap: Record<string, string> = {
+                // Dashboard should navigate to AdminHome
+                dashboard: '/admin',
+                categories: '/admin/categories',
+                'add-category': '/admin/AddCategory',
+                shipments: '/admin/shipments'
+              };
+              const path = routeMap[item.id] || '/admin';
+              return (
                 <button
                   key={item.id}
                   onClick={() => {
                     onNavigate?.(item.id);
                     navigate(path);
                   }}
-                  className={`admin-nav-link ${ (activeRoute ?? '') === item.id ? 'active' : ''}`}
+                  className={`admin-nav-link ${(activeRoute ?? '') === item.id ? 'active' : ''}`}
                 >
                   {item.label}
                 </button>
-              )})}
+              )
+            })}
             <div className="admin-actions">
               <button
                 className="admin-logout"
@@ -94,18 +95,19 @@ export default function AdminNavbar({ activeRoute, onNavigate }: AdminNavbarProp
               };
               const path = routeMap[item.id] || '/admin';
               return (
-              <button
-                key={item.id}
-                onClick={() => {
-                  onNavigate?.(item.id);
-                  setIsMobileMenuOpen(false);
-                  navigate(path);
-                }}
-                className={`admin-nav-mobile-link ${(activeRoute ?? '') === item.id ? 'active' : ''}`}
-              >
-                {item.label}
-              </button>
-            )})}
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    onNavigate?.(item.id);
+                    setIsMobileMenuOpen(false);
+                    navigate(path);
+                  }}
+                  className={`admin-nav-mobile-link ${(activeRoute ?? '') === item.id ? 'active' : ''}`}
+                >
+                  {item.label}
+                </button>
+              )
+            })}
             <button
               onClick={() => {
                 try { logout(); } finally { setIsMobileMenuOpen(false); navigate('/'); }

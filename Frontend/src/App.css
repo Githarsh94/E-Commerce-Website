@@ -7,13 +7,46 @@
   pointer-events: none;
 }
 
-*{
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   width: 100%;
 }
@@ -23,7 +56,7 @@ html, body, #root {
   scroll-padding-top: var(--header-height, 5rem);
 } */
 
-body{
+body {
   background-color: #f4efe6 !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -32,35 +65,654 @@ body{
 
 @font-face {
   font-family: Telma-Regular;
-  src: url(D:\WorkSpace\E-Commerce-Website\Frontend\public\fonts\Telma_Complete\Fonts\OTF\Telma-Regular.otf);
+  src: url(../public/fonts/Telma_Complete/Fonts/OTF/Telma-Regular.otf);
 }
 
 @font-face {
   font-family: Supreme-Regular;
-  src: url(D:\WorkSpace\E-Commerce-Website\Frontend\public\fonts\Supreme_Complete\Fonts\OTF\Supreme-Regular.otf);
+  src: url(../public/fonts/Supreme_Complete/Fonts/OTF/Supreme-Regular.otf);
 }
 
 @font-face {
   font-family: Cabinet-Regular;
-  src: url(D:\WorkSpace\E-Commerce-Website\Frontend\public\fonts\CabinetGrotesk_Complete\Fonts\OTF\CabinetGrotesk-Bold.otf);
+  src: url(../public/fonts/CabinetGrotesk_Complete/Fonts/OTF/CabinetGrotesk-Bold.otf);
+}
+
+@font-face {
+  font-family: BespokeStencil_Complete;
+  src: url(../public/fonts/BespokeStencil_Complete/Fonts/OTF/BespokeStencil-Regular.otf);
+}
+
+#nav-parent {
+  height: 5vw;
+  width: 100%;
+  /* margin-top: 1.5vw; */
+  background-color: #161616;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+}
+
+#nav-parent h1 {
+  width: 15vw;
+  padding: 0.5vw;
+  font-size: 2.5vw;
+  font-weight: 500;
+  letter-spacing: 2px;
+  font-family: Telma-Regular;
+  src: url(../public/fonts/Supreme_Complete/Fonts/OTF/Supreme-Regular.otf);
+}
+
+@font-face {
+  font-family: Cabinet-Regular;
+  src: url(../public/fonts/CabinetGrotesk_Complete/Fonts/OTF/CabinetGrotesk-Bold.otf);
 }
 
 @font-face {
   font-family: Sharpie;
-  src: url(D:\WorkSpace\E-Commerce-Website\Frontend\public\fonts\Sharpie_Complete\Fonts\OTF\Sharpie-Light.otf);
+  src: url(../public/fonts/Sharpie_Complete/Fonts/OTF/Sharpie-Light.otf);
 }
 
 @font-face {
   font-family: BespokeStencil;
-  src: url(D:\WorkSpace\E-Commerce-Website\Frontend\public\fonts\BespokeStencil_Complete\Fonts\OTF\BespokeStencil-Regular.otf);
+  src: url(../public/fonts/BespokeStencil_Complete/Fonts/OTF/BespokeStencil-Regular.otf);
 }
 
 @font-face {
   font-family: Britney;
-  src: url(D:\WorkSpace\E-Commerce-Website\Frontend\public\fonts\Britney_Complete\Fonts\OTF\Britney-Regular.otf);
+  src: url(../public/fonts/Britney_Complete/Fonts/OTF/Britney-Regular.otf);
 }
 
-/* All CSS has been modularized into component-specific files. This file is intentionally left blank. */
+#nav-parent h2 {
+  position: absolute;
+  top: 10.5%;
+  left: 13.2%;
+  font-weight: 500;
+  font-size: 1.5vw
+}
+
+#nav-parent h3 {
+  font-size: 0.8vw;
+  font-family: Supreme-Regular;
+  position: absolute;
+  bottom: 4%;
+  left: 8.8%;
+}
+
+#nav-parent h4 {
+  /* padding: 2vw; */
+  height: 100%;
+  /* width: 15%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid #2e2e2e;
+  cursor: pointer;
+  font-family: BespokeStencil_Complete;
+  font-size: 1.7vw;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.962);
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s linear;
+}
+
+#nav-parent h4::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  background-color: cyan;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: -1;
+  transition: all 0.75s linear;
+  opacity: 0.8;
+}
+
+#nav-parent h4:hover {
+  color: black;
+  /* border: 2px solid rgb(189, 23, 23); */
+}
+
+#nav-parent h4:hover::after {
+  transform: translate(-50%, -50%) scale(2);
+}
+
+#nav-parent h5 {
+  cursor: pointer;
+  font-size: 2.5vw;
+  font-weight: 400;
+}
+
+#nav-parent h4:nth-last-of-type(1) {
+  width: 10%;
+  font-size: 1.5vw;
+}
+
+#nav-parent h4:nth-last-of-type(2) {
+  width: 8%;
+}
+
+#nav-parent h4:nth-last-of-type(3) {
+  border-right: none;
+  width: 8%;
+}
+
+#nav-parent h4:nth-last-of-type(4) {
+  /* border-right: none; */
+  width: 8%;
+}
+
+#nav-parent i {
+  font-size: 3vw;
+  color: #fff;
+  /* margin-right: 1vw; */
+  width: 8%;
+  cursor: pointer;
+}
+
+#nav-parent input {
+  height: 2.5vw;
+  width: 38%;
+  padding: 0.5vw;
+  border-radius: 2vw;
+  border: none;
+  outline: none;
+  margin-right: 2%;
+}
+
+#blurBackground {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 0;
+  /* padding: 4vw; */
+}
+
+#blurBackground video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: blur(5px);
+}
+
+#footer {
+  height: 10%;
+  width: 100%;
+  background-color: #161616;
+  color: #fff;
+  /* padding: 3vw 3vw; */
+  /* font-family: 'Arial', sans-serif; */
+  position: fixed;
+  bottom: 0;
+}
+
+.footer-container {
+  height: 60%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* gap: 3vw; */
+
+}
+
+.footer-section {
+  height: 100%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1vw 2vw;
+}
+
+.footer-section h2 {
+  font-family: Telma-Regular;
+  letter-spacing: 2px;
+  letter-spacing: 4px;
+}
+
+.footer-section p {
+  font-size: 0.6vw;
+  letter-spacing: 2px;
+  font-family: Supreme-Regular;
+}
+
+.footer-section-Details {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 2vw;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.footer-section-Details h4 {
+  font-family: Supreme-Regular;
+  letter-spacing: 2px;
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: BespokeStencil;
+  src: url(../public/fonts/BespokeStencil_Complete/Fonts/OTF/BespokeStencil-Regular.otf);
+}
+
+.card p {
+  display: flex;
+  height: auto;
+  width: 100%;
+  white-space: normal;
+  text-align: start;
+  font-size: 0.8vw;
+  font-weight: 500;
+  /* overflow: scroll; */
+  margin-bottom: 0.5vw;
+}
+
+.card:hover {
+  height: 65vh;
+  width: 23vw;
+  background-color: #000;
+  color: #fff;
+  transition: all ease-in 0.5s;
+  z-index: 2;
+}
+
+.card h3 {
+  font-family: Britney_Regular;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.cursor-bubble {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(0, 123, 255, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.5s ease-out;
+  z-index: 5;
+}
+
+.cart {
+  height: auto;
+  width: 80vw;
+  position: relative;
+  /* background-color: rgb(255, 34, 0); */
+  margin: 10vh auto;
+  padding: 2vw;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.2px);
+  -webkit-backdrop-filter: blur(8.2px);
+  border: 1px solid rgba(255, 255, 255, 0.59);
+}
+
+.cart>h2 {
+  font-family: Supreme-Regular;
+  font-size: 3vw;
+  font-weight: 500;
+  margin-bottom: 2vh;
+  color: #19350c;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+
+.cart-item {
+  height: 18vh;
+  width: 100%;
+  /* background-color: #19350c; */
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  border-bottom: 2px solid #5a585855;
+  margin-bottom: 1vh;
+  gap: 2vw;
+}
+
+.cart-item:first-of-type {
+  border-top: 2px solid #5a585855;
+}
+
+.cart-elem-part1 {
+  height: 10vh;
+  width: 10vw;
+}
+
+.cart-elem-part1 img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+.cart-elem-part2 {
+  height: 10vh;
+  width: 30vw;
+  /* background-color: burlywood; */
+  text-align: start;
+}
+
+.cart-elem-part2 h2 {
+  font-size: 1.5vw;
+  font-weight: 600;
+  color: #19350c;
+}
+
+.cart-elem-part2 h4 {
+  font-size: 1vw;
+  font-weight: 400;
+  color: #19350c;
+}
+
+.cart-elem-part2-last h4:last-of-type {
+  cursor: pointer;
+}
+
+.cart-elem-part2-last {
+  height: 4vh;
+  width: 30vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon-btn {
+  height: 2vw;
+  width: 2vw;
+  border: 1px solid #19350c;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2vw;
+  color: #19350c;
+}
+
+.icon-btn:hover {
+  color: #CA5655;
+}
+
+.quantity {
+  font-size: 1.2vw;
+  margin: 0 0.8vw;
+  font-weight: 600;
+  color: #19350c;
+}
+
+.remove-btn {
+  cursor: pointer;
+  color: #a32222;
+}
+
+.remove-btn:hover {
+  text-decoration: underline;
+}
+
+.wishlist-wrapper {
+  height: 2.5vw;
+  width: 2.5vw;
+  border: 2px solid #000000de;
+  position: fixed;
+  top: 14vh;
+  right: 2vw;
+  border-radius: 10px;
+  background-color: #ffffffbe;
+  z-index: 3;
+}
+
+.wishlist-wrapper i {
+  font-size: 2vw;
+  color: rgba(255, 0, 0, 0.795);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.wishlist {
+  height: auto;
+  width: 80vw;
+  position: relative;
+  margin: 25vh auto;
+  padding: 2vw;
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.2px);
+  -webkit-backdrop-filter: blur(8.2px);
+  border: 1px solid rgba(255, 255, 255, 0.59);
+  opacity: 0;
+  /* z-index: 10; */
+}
+
+.wishlist>h2 {
+  font-family: Supreme-Regular;
+  font-size: 3vw;
+  font-weight: 500;
+  margin-bottom: 2vh;
+  color: #19350c;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+
+.wishlist-item {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #5a585855;
+  margin-bottom: 1vh;
+  gap: 2vw;
+}
+
+.wishlist-item:first-of-type {
+  border-top: 2px solid #5a585855;
+}
+
+.wishlist-elem-part1 {
+  height: 10vh;
+  width: 10vw;
+}
+
+.wishlist-elem-part1 img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+.wishlist-elem-part2 {
+  height: 10vh;
+  width: 30vw;
+  text-align: start;
+}
+
+.wishlist-elem-part2 h2 {
+  font-size: 1.5vw;
+  font-weight: 600;
+  color: #19350c;
+}
+
+.wishlist-elem-part2 p,
+.wishlist-elem-part2 h4 {
+  font-size: 1vw;
+  font-weight: 400;
+  color: #19350c;
+}
+
+.wishlist-elem-part2-last {
+  height: 4vh;
+  width: 30vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Set height to 100% to provide space for the video */
+  background-color: transparent;
+  /* z-index: 1; Ensure the loader appears above all other content */
+}
+
+.loader-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  /* Initially set height to 0% */
+  object-fit: cover;
+  z-index: -1;
+  /* Keep video in the background */
+  animation: videoSlide 1.6s ease-out forwards;
+  /* Add animation */
+}
+
+@keyframes videoSlide {
+  0% {
+    height: 0%;
+  }
+
+  100% {
+    height: 100%;
+    /* Expand to full height */
+  }
+}
+
+.loader-overlay {
+  position: absolute;
+  bottom: 30%;
+  /* Center the overlay vertically */
+  left: 50%;
+  /* Center the overlay horizontally */
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: 19350C;
+  /* Red color for the text */
+  font-size: 2rem;
+  font-weight: bold;
+  z-index: 2;
+  /* Overlay should be above video */
+}
+
+.loader-overlay h1 {
+  font-family: BespokeStencil_Complete;
+  font-size: 3vw;
+  font-weight: 800;
+  color: #19350c;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.about {
+  position: relative;
+  height: fit-content;
+  max-width: 80vw;
+  margin: 25vh auto;
+  padding: 2rem;
+  background-color: transparent;
+  /* Semi-transparent background */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333333e6;
+  animation: dropIn 3s ease-in-out forwards;
+}
+
+.about h1 {
+  font-size: 3.5vw;
+  margin-bottom: 1.5rem;
+  color: #481718;
+}
+
+.about p {
+  font-size: 1.5vw;
+  font-weight: 600;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: #CA5655;
+}
+
+/* Drop-in animation */
+@keyframes dropIn {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.contact {
+  position: relative;
+  height: fit-content;
+  max-width: 80vw;
+  margin: 25vh auto;
+  padding: 2rem;
+  background-color: transparent;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333333e6;
+  animation: dropIn 3s ease-in-out forwards;
+}
+
+.contact h1 {
+  font-size: 3.5vw;
+  margin-bottom: 1.5rem;
+  color: #481718;
+  /* You can match the tone with your theme */
+}
+
+.contact p {
+  font-size: 1.5vw;
+  font-weight: 600;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: #CA5655;
+  /* Match your accent or brand color */
+}
+
+.contact strong {
+  color: #0000eed1
+}
 
 /* Drop-in animation already declared in your global CSS */
 @keyframes dropIn {
@@ -82,5 +734,6 @@ body{
      Fallback for header is 5rem. Footer padding remains 88px as before. */
   /* padding-top: var(--header-height, 5rem); */
   padding-top: 10vh;
-  padding-bottom: 7vh; /* slightly larger than footer height to avoid overlap */
+  padding-bottom: 7vh;
+  /* slightly larger than footer height to avoid overlap */
 }
