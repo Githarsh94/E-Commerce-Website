@@ -51,13 +51,13 @@ const Payment: React.FC = () => {
 
   const handleProceed = async () => {
     if (!isAuthenticated) {
-      try { await showError('Please sign in to proceed'); } catch(e){}
+      try { await showError('Please sign in to proceed'); } catch (e) { }
       navigate('/auth?mode=signin');
       return;
     }
 
     if (!selectedAddress || !selectedAddress.id) {
-      try { await showError('Please select a shipping address before continuing'); } catch(e){}
+      try { await showError('Please select a shipping address before continuing'); } catch (e) { }
       return;
     }
 
@@ -82,10 +82,10 @@ const Payment: React.FC = () => {
 
       // NOTE: callWithFallback is also used by the amount loader effect below.
 
-  // 1) fetch cart rows from backend (rows have productId and quantity)
-  const cartRows: any = await callWithFallback(['/api/cart', '/api/carts']);
+      // 1) fetch cart rows from backend (rows have productId and quantity)
+      const cartRows: any = await callWithFallback(['/cart', '/carts']);
       if (!Array.isArray(cartRows) || cartRows.length === 0) {
-        try { await showError('Your cart is empty'); } catch(e){}
+        try { await showError('Your cart is empty'); } catch (e) { }
         setLoading(false);
         return;
       }
@@ -93,7 +93,7 @@ const Payment: React.FC = () => {
       // 2) build items payload and compute total by fetching product details
       const detailed = await Promise.all(cartRows.map(async (row: any) => {
         try {
-          const p = await callWithFallback([`/api/products/single/${row.productId}`, `/api/products/${row.productId}`]);
+          const p = await callWithFallback([`/products/single/${row.productId}`, `/products/${row.productId}`]);
           return {
             productId: row.productId,
             quantity: row.quantity,
@@ -104,34 +104,34 @@ const Payment: React.FC = () => {
         }
       }));
 
-  // Include price on each item because backend OrderItem.price is non-nullable
-  const items = detailed.map(d => ({ productId: d.productId, quantity: d.quantity, price: d.price || 0 }));
-  const computedAmount = detailed.reduce((s, d) => s + (d.price || 0) * (d.quantity || 0), 0);
+      // Include price on each item because backend OrderItem.price is non-nullable
+      const items = detailed.map(d => ({ productId: d.productId, quantity: d.quantity, price: d.price || 0 }));
+      const computedAmount = detailed.reduce((s, d) => s + (d.price || 0) * (d.quantity || 0), 0);
 
       // 3) create order first (server expects items in req.body)
-  const orderBody = { items, shippingAddress: selectedAddress, totalAmount: computedAmount };
-  // 3) create order. backend may register route as /api/orders or /api/order
-  const order: any = await callWithFallback(['/api/orders', '/api/order'], { method: 'POST', body: JSON.stringify(orderBody) });
+      const orderBody = { items, shippingAddress: selectedAddress, totalAmount: computedAmount };
+      // 3) create order. backend may register route as /orders or /order
+      const order: any = await callWithFallback(['/orders', '/order'], { method: 'POST', body: JSON.stringify(orderBody) });
 
-    // 4) process payment for the created order (call server controller)
-    try {
-      const paymentBody = { orderId: order.id, amount: computedAmount, method: paymentMethod };
-      await callWithFallback(['/api/payments/process', '/api/payment/process'], { method: 'POST', body: JSON.stringify(paymentBody) });
-    } catch (payErr) {
-      console.error('payment call failed', payErr);
-      try { await showError('Payment processing failed. Order created but payment could not be completed.'); } catch(e){}
-      // still navigate to orders page so the user can see their order
+      // 4) process payment for the created order (call server controller)
+      try {
+        const paymentBody = { orderId: order.id, amount: computedAmount, method: paymentMethod };
+        await callWithFallback(['/payments/process', '/payment/process'], { method: 'POST', body: JSON.stringify(paymentBody) });
+      } catch (payErr) {
+        console.error('payment call failed', payErr);
+        try { await showError('Payment processing failed. Order created but payment could not be completed.'); } catch (e) { }
+        // still navigate to orders page so the user can see their order
+        navigate('/your-order');
+        setLoading(false);
+        return;
+      }
+
+      await showSuccess('Payment completed <br /> and order placed');
+      // Optionally navigate to orders page or order details
       navigate('/your-order');
-      setLoading(false);
-      return;
-    }
-
-    await showSuccess('Payment completed <br /> and order placed');
-    // Optionally navigate to orders page or order details
-    navigate('/your-order');
     } catch (err: any) {
       console.error('checkout failed', err);
-      try { await showError('Checkout failed', err?.body?.error || err?.message || 'Unknown error'); } catch(e){}
+      try { await showError('Checkout failed', err?.body?.error || err?.message || 'Unknown error'); } catch (e) { }
     } finally {
       setLoading(false);
     }
@@ -158,7 +158,7 @@ const Payment: React.FC = () => {
       };
 
       try {
-        const cartRows: any = await callWithFallback(['/api/cart', '/api/carts']);
+        const cartRows: any = await callWithFallback(['/cart', '/carts']);
         if (!Array.isArray(cartRows) || cartRows.length === 0) {
           if (mounted) setAmount(0);
           return;
@@ -166,7 +166,7 @@ const Payment: React.FC = () => {
 
         const detailed = await Promise.all(cartRows.map(async (row: any) => {
           try {
-            const p = await callWithFallback([`/api/products/single/${row.productId}`, `/api/products/${row.productId}`]);
+            const p = await callWithFallback([`/products/single/${row.productId}`, `/products/${row.productId}`]);
             return { productId: row.productId, quantity: row.quantity, price: p.price || 0 };
           } catch (err) {
             return { productId: row.productId, quantity: row.quantity, price: 0 };

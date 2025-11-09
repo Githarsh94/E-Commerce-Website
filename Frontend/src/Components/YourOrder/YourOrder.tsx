@@ -31,7 +31,7 @@ const YourOrder: React.FC = () => {
       setLoading(true);
       setError(null);
       try {
-        const res: any = await apiFetch('/api/orders?limit=50&offset=0');
+        const res: any = await apiFetch('/orders?limit=50&offset=0');
         const data = (res && res.data) || [];
         setOrders(Array.isArray(data) ? data : []);
       } catch (err: any) {
@@ -60,8 +60,8 @@ const YourOrder: React.FC = () => {
     const r = rating[itemId] || 5;
     const c = comment[itemId] || '';
     try {
-      // Attempt to post to /api/reviews - if your backend has a different path, adjust accordingly.
-      await apiFetch('/api/reviews', {
+      // Attempt to post to /reviews - if your backend has a different path, adjust accordingly.
+      await apiFetch('/reviews', {
         method: 'POST',
         body: JSON.stringify({ productId: item.productId, orderId, rating: r, comment: c })
       });
@@ -91,7 +91,7 @@ const YourOrder: React.FC = () => {
                   <strong>Order #{o.id}</strong>
                   <div className="order-date">{o.createdAt ? new Date(o.createdAt).toLocaleString() : '—'}</div>
                 </div>
-                <div className={`status status-${(o.status || '').replace(/\s+/g, '-')}`}>{(o.status || '').split(' ').map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' ')}</div>
+                <div className={`status status-${(o.status || '').replace(/\s+/g, '-')}`}>{(o.status || '').split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}</div>
               </div>
 
               <div className="order-items-cart">

@@ -25,7 +25,7 @@ const Signup: React.FC = () => {
       return;
     }
     try {
-      const regData: any = await apiFetch('/api/auth/register', {
+      const regData: any = await apiFetch('/auth/register', {
         method: 'POST',
         body: JSON.stringify({ username, email, password, role }),
       });
@@ -40,7 +40,7 @@ const Signup: React.FC = () => {
 
       // Otherwise attempt to login (fallback) and navigate
       try {
-        const data = await apiFetch('/api/auth/login', {
+        const data = await apiFetch('/auth/login', {
           method: 'POST',
           body: JSON.stringify({ email, password, role }),
         });

@@ -45,7 +45,7 @@ export default function UpdateShipment() {
   // Calls backend admin list endpoint with pagination
   const getAllOrders = async (search?: string, limit = 5, offset = 0) => {
     const q = search ? `?search=${encodeURIComponent(search)}&limit=${limit}&offset=${offset}` : `?limit=${limit}&offset=${offset}`;
-    const res: any = await apiFetch(`/api/orders/all${q}`);
+    const res: any = await apiFetch(`/orders/all${q}`);
     return (res && res.data) || [];
   };
 
@@ -55,7 +55,7 @@ export default function UpdateShipment() {
   };
 
   const updateOrderStatusApi = async (id: number, status: string) => {
-    const res: any = await apiFetch(`/api/orders/${id}/status`, {
+    const res: any = await apiFetch(`/orders/${id}/status`, {
       method: 'PUT',
       body: JSON.stringify({ status })
     });
@@ -93,7 +93,7 @@ export default function UpdateShipment() {
       }
     } catch (err: any) {
       console.error('loadOrders error', err);
-      try { await Swal.fire({ icon: 'error', title: 'Error', text: err?.message || 'Failed to load orders.' }); } catch (e) {}
+      try { await Swal.fire({ icon: 'error', title: 'Error', text: err?.message || 'Failed to load orders.' }); } catch (e) { }
       setShipments([]);
     }
   };
@@ -116,9 +116,9 @@ export default function UpdateShipment() {
       return;
     }
 
-  // Use the simplified loader which calls the admin list endpoint (search resets pagination)
-  await loadOrders(term, 5, 0);
-  setVisibleCount(5);
+    // Use the simplified loader which calls the admin list endpoint (search resets pagination)
+    await loadOrders(term, 5, 0);
+    setVisibleCount(5);
   };
 
   const handleSelectShipment = (shipment: Shipment) => {

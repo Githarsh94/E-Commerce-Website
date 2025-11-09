@@ -44,7 +44,7 @@ function Nav({ handleComponentChange, onSearch }: NavProps) {
     const fetchAllProducts = async () => {
       try {
         // Fetch categories and their products from backend only
-        const categoriesData: any = await apiFetch('/api/categories');
+        const categoriesData: any = await apiFetch('/categories');
         if (!Array.isArray(categoriesData)) {
           setAllProducts([]);
           return;
@@ -53,7 +53,7 @@ function Nav({ handleComponentChange, onSearch }: NavProps) {
         let allProductsList: Product[] = [];
         for (const category of categoriesData) {
           try {
-            const productsData: any = await apiFetch(`/api/products/${category.id}`);
+            const productsData: any = await apiFetch(`/products/${category.id}`);
             if (Array.isArray(productsData)) {
               allProductsList = [...allProductsList, ...productsData];
             }
@@ -63,7 +63,7 @@ function Nav({ handleComponentChange, onSearch }: NavProps) {
         }
 
         // Remove duplicates based on product id
-        const uniqueProducts = allProductsList.filter((product, index, self) => 
+        const uniqueProducts = allProductsList.filter((product, index, self) =>
           index === self.findIndex(p => p.id === product.id)
         );
 
@@ -89,11 +89,11 @@ function Nav({ handleComponentChange, onSearch }: NavProps) {
       // Filter products that start with the search term (case-insensitive)
       // Keep products unique by ID, but allow same names with different IDs
       const filtered = allProducts
-        .filter(product => 
+        .filter(product =>
           product.name.toLowerCase().startsWith(value.toLowerCase())
         )
         .slice(0, 5); // Just limit to 5, keeping ID-based uniqueness
-      
+
       setSearchResults(filtered);
       setShowDropdown(true);
     }
@@ -108,11 +108,11 @@ function Nav({ handleComponentChange, onSearch }: NavProps) {
     } else {
       // If there's already a search term, filter and show results
       const filtered = allProducts
-        .filter(product => 
+        .filter(product =>
           product.name.toLowerCase().startsWith(searchTerm.toLowerCase())
         )
         .slice(0, 5);
-      
+
       setSearchResults(filtered);
       setShowDropdown(true);
     }
@@ -177,10 +177,10 @@ function Nav({ handleComponentChange, onSearch }: NavProps) {
           Shery.default.makeMagnet(".magnet-target", {
             ease: "cubic-bezier(0.23, 1, 0.320, 1)",
             duration: 1,
-             strength: 3,   // default is ~1, increase for stronger pull
-             distance: 200  // increase area of effect (default is ~100)
+            strength: 3,   // default is ~1, increase for stronger pull
+            distance: 200  // increase area of effect (default is ~100)
           });
-          
+
         }).catch((error) => {
           // Shery.js failed to load
         });
@@ -191,7 +191,7 @@ function Nav({ handleComponentChange, onSearch }: NavProps) {
 
     // Add a small delay to ensure DOM is ready
     const timer = setTimeout(initializeSheryEffects, 500);
-    
+
     return () => clearTimeout(timer);
   }, []);
 

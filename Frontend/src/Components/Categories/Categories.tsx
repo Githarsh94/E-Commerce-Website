@@ -3,11 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import apiFetch from '../../utils/apiFetch';
 import "./Categories.css";
 
-interface CategoryData {
-  category: string;
-  products: any[];
-}
-
 interface Category {
   name: string;
   description: string;
@@ -33,7 +28,7 @@ function Categories() {
   useEffect(() => {
     const load = async () => {
       try {
-        const cats: any = await apiFetch('/api/categories');
+        const cats: any = await apiFetch('/categories');
         if (Array.isArray(cats)) {
           // For each category, try to load its products and use the first product's image
           const transformedCategories: Category[] = await Promise.all(
@@ -41,8 +36,8 @@ function Categories() {
               let imageUrl = item.image_url || item.image || '';
               let date = '';
               try {
-                // backend: GET /api/products/:id returns products for a category id
-                const prods: any = await apiFetch(`/api/products/${item.id}`);
+                // backend: GET /products/:id returns products for a category id
+                const prods: any = await apiFetch(`/products/${item.id}`);
                 if (Array.isArray(prods) && prods.length) {
                   const first = prods[0];
                   imageUrl = first.image_url || first.image || imageUrl;
@@ -54,7 +49,7 @@ function Categories() {
 
               return {
                 name: item.name || item.category || `Category ${item.id}`,
-                description: `Explore our ${ (item.name || item.category || '').toLowerCase() } collection`,
+                description: `Explore our ${(item.name || item.category || '').toLowerCase()} collection`,
                 image: imageUrl || (`https://images.unsplash.com/photo-151${1000000 + index}7171634-5f897ff02aa9?w=400&h=300&fit=crop`),
                 updatedAt: date || item.updatedAt || item.updated_at || undefined,
               } as Category;
@@ -70,7 +65,7 @@ function Categories() {
       }
     };
     load();
-  }, []);
+  }, [categoriesData]);
 
   return (
     <div id="page5">

@@ -52,6 +52,10 @@ syncDB().then(() => {
   process.exit(1); // Exit if DB sync fails
 });
 
+// app.listen(process.env.PORT || 3002, () => {
+//   console.log(`Server is running on port ${process.env.PORT || 3002}`);
+// });
+
 // Export the app for Vercel
 module.exports = app;
 

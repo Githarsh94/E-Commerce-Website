@@ -38,11 +38,11 @@ export default function CategoryDescription() {
 			setLoading(true);
 			try {
 				// load category name (backend doesn't provide single category endpoint)
-				const cats: any = await apiFetch('/api/categories');
+				const cats: any = await apiFetch('/categories');
 				const found = Array.isArray(cats) ? cats.find((c: any) => c.id === categoryId) : null;
 				setCategoryName(found ? found.name : `Category ${categoryId}`);
 
-				const res: any = await apiFetch(`/api/products/${categoryId}`);
+				const res: any = await apiFetch(`/products/${categoryId}`);
 				setProducts(Array.isArray(res) ? res : []);
 			} catch (err: any) {
 				console.error('Failed to load products', err);
@@ -92,12 +92,12 @@ export default function CategoryDescription() {
 			const body = { name: newProduct.name, description: newProduct.description, price: parseFloat(newProduct.price || '0') || 0, stock: parseInt(newProduct.stock || '0', 10) || 0, categoryId, image_url: (newProduct as any).image_url || '' };
 			if (editingId) {
 				// update existing product
-				await apiFetch(`/api/products/${editingId}`, { method: 'PUT', body: JSON.stringify(body) });
+				await apiFetch(`/products/${editingId}`, { method: 'PUT', body: JSON.stringify(body) });
 				setProducts((p) => p.map(item => item.id === editingId ? { ...item, ...body } as Product : item));
 				try { await showSuccess('Product updated', 'Product was updated successfully'); } catch (e) { }
 				setEditingId(null);
 			} else {
-				const created: any = await apiFetch('/api/products', { method: 'POST', body: JSON.stringify(body) });
+				const created: any = await apiFetch('/products', { method: 'POST', body: JSON.stringify(body) });
 				setProducts((p) => [created, ...p]);
 				try { await showSuccess('Product added', 'Product was created successfully'); } catch (e) { }
 			}
@@ -119,7 +119,7 @@ export default function CategoryDescription() {
 		const res = await showConfirm({ title: 'Delete product', text: 'Are you sure you want to delete this product?', confirmButtonText: 'Delete', cancelButtonText: 'Cancel' });
 		if (!res || !res.isConfirmed) return;
 		try {
-			await apiFetch(`/api/products/${productId}`, { method: 'DELETE' });
+			await apiFetch(`/products/${productId}`, { method: 'DELETE' });
 			setProducts((p) => p.filter(item => item.id !== productId));
 			try { await showSuccess('Product deleted', 'Product removed'); } catch (e) { }
 		} catch (err: any) {

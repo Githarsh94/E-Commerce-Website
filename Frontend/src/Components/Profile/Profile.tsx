@@ -95,7 +95,7 @@ const Profile: React.FC = () => {
   const fetchAddresses = async () => {
     try {
       setLoading(true);
-      const res: any = await apiFetch('/api/addresses');
+      const res: any = await apiFetch('/addresses');
       setAddresses(Array.isArray(res.addresses) ? res.addresses : res);
     } catch (err: any) {
       console.error('fetchAddresses', err);
@@ -169,13 +169,13 @@ const Profile: React.FC = () => {
     try {
       setLoading(true);
       if (editingAddress && editingAddress.id) {
-        await apiFetch(`/api/addresses/${editingAddress.id}`, {
+        await apiFetch(`/addresses/${editingAddress.id}`, {
           method: 'PUT',
           body: JSON.stringify(form)
         });
         await showSuccess('Address updated');
       } else {
-        await apiFetch('/api/addresses', { method: 'POST', body: JSON.stringify(form) });
+        await apiFetch('/addresses', { method: 'POST', body: JSON.stringify(form) });
         await showSuccess('Address added');
       }
       await fetchAddresses();
@@ -193,7 +193,7 @@ const Profile: React.FC = () => {
     const confirmed = await showConfirm({ title: 'Delete address?', text: 'This action cannot be undone.' });
     if (!confirmed.isConfirmed) return;
     try {
-      await apiFetch(`/api/addresses/${id}`, { method: 'DELETE' });
+      await apiFetch(`/addresses/${id}`, { method: 'DELETE' });
       await showSuccess('Address deleted');
       await fetchAddresses();
     } catch (err: any) {

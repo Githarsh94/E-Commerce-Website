@@ -27,7 +27,7 @@ export default function ShowCard() {
             setLoading(true);
             try {
                 // Fetch categories from backend to resolve slug -> id
-                const cats: any = await apiFetch('/api/categories');
+                const cats: any = await apiFetch('/categories');
                 const foundCat = Array.isArray(cats)
                     ? cats.find((c: any) => (c.name || c.category || '').toLowerCase().replace(/\s+/g, '-') === (slug || ''))
                     : null;
@@ -36,7 +36,7 @@ export default function ShowCard() {
                     setCategoryName(foundCat.name || foundCat.category || `Category ${foundCat.id}`);
                     // fetch products for this category using backend controller
                     try {
-                        const prods: any = await apiFetch(`/api/products/${foundCat.id}`);
+                        const prods: any = await apiFetch(`/products/${foundCat.id}`);
                         setProducts(Array.isArray(prods) ? prods : []);
                     } catch (e) {
                         console.warn('Failed to load products for category from backend', e);

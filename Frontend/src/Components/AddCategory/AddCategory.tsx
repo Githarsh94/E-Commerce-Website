@@ -101,9 +101,9 @@ export default function AddCategory() {
       let category;
 
       if (isNumeric) {
-        category = await apiFetch(`/api/categories/${categoryInput}`);
+        category = await apiFetch(`/categories/${categoryInput}`);
       } else {
-        const categories = await apiFetch('/api/categories');
+        const categories = await apiFetch('/categories');
         category = categories.find((cat: any) =>
           cat.name.toLowerCase() === categoryInput.trim().toLowerCase()
         );
@@ -131,7 +131,7 @@ export default function AddCategory() {
 
   const createNewCategory = async () => {
     try {
-      const newCategory = await apiFetch('/api/categories/add', {
+      const newCategory = await apiFetch('/categories/add', {
         method: 'POST',
         body: JSON.stringify({ name: categoryInput }),
       });
@@ -154,7 +154,7 @@ export default function AddCategory() {
 
   const loadProducts = async (categoryId: number) => {
     try {
-      const allProducts = await apiFetch('/api/products');
+      const allProducts = await apiFetch('/products');
       const categoryProducts = allProducts.filter((p: Product) => p.categoryId === categoryId);
       setProducts(categoryProducts);
     } catch (error) {
@@ -186,7 +186,7 @@ export default function AddCategory() {
       };
 
       if (editingProduct) {
-        await apiFetch(`/api/products/${editingProduct.id}`, {
+        await apiFetch(`/products/${editingProduct.id}`, {
           method: 'PUT',
           body: JSON.stringify(productData),
         });
@@ -194,7 +194,7 @@ export default function AddCategory() {
           await showSuccess('Product updated', 'The product was updated successfully');
         } catch (e) { }
       } else {
-        await apiFetch('/api/products', {
+        await apiFetch('/products', {
           method: 'POST',
           body: JSON.stringify(productData),
         });
@@ -244,7 +244,7 @@ export default function AddCategory() {
     setLoading(true);
 
     try {
-      await apiFetch(`/api/products/${productId}`, {
+      await apiFetch(`/products/${productId}`, {
         method: 'DELETE',
       });
       try {

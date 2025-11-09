@@ -3,7 +3,7 @@ import './ProductCard.css';
 import { showSuccess, showConfirm, showError } from '../../utils/alert';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:3002/api';
+import apiFetch from '../../utils/apiFetch';
 
 interface ProductCardProps {
     id: number;
@@ -81,12 +81,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 return;
             }
 
-            const resp = await fetch(`${API_BASE}/cart/add`, {
+            await apiFetch('/cart/add', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
-                },
                 body: JSON.stringify({
                     productId: id,
                     quantity: 1,
@@ -94,15 +90,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 })
             });
 
-            if (!resp.ok) {
-                const txt = await resp.text();
-                try { await showError(txt || 'Failed to add to cart'); } catch (_) {}
-                return;
-            }
-
-            try { await showSuccess('Added to cart'); } catch (_) {}
+            try { await showSuccess('Added to cart'); } catch (_) { }
         } catch (err: any) {
-            try { await showError(err?.message || 'Failed to add to cart'); } catch (_) {}
+            try { await showError(err?.message || 'Failed to add to cart'); } catch (_) { }
             // eslint-disable-next-line no-console
             console.error('Add to cart failed', err);
         }
@@ -118,18 +108,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
             }
 
             // add to wishlist (server is source-of-truth)
-            const resp = await fetch(`${API_BASE}/wishlist/add`, {
+            await apiFetch('/wishlist/add', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json', ...(token ? { 'Authorization': `Bearer ${token}` } : {}) },
                 body: JSON.stringify({ productId: id, product: { name, description, price, image_url: image } })
             });
-            if (!resp.ok) {
-                const txt = await resp.text();
-                try { await showError(txt || 'Failed to update wishlist'); } catch (_) {}
-                return;
-            }
-            try { await showSuccess('Wishlist updated'); } catch (_) {}
-        } catch (err) {
+            try { await showSuccess('Wishlist updated'); } catch (_) { }
+        } catch (err: any) {
+            try { await showError(err?.message || 'Failed to update wishlist'); } catch (_) { }
             // eslint-disable-next-line no-console
             console.error('Wishlist toggle failed', err);
         }

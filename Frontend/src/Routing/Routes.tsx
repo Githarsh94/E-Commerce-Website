@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Home from '../Pages/Home';
 import Carts from '../Pages/Carts';
-import Loader from '../Components/Loader/Loader';
 import About from '../Pages/About';
 import Contact from '../Pages/Contact';
 import Wishlist from '../Pages/Wishlist';
@@ -17,7 +16,6 @@ import CategoryDescription from "../Pages/categoryDescription";
 import ShowCard from '../Pages/ShowCard';
 import OrderSummary from "../Pages/OrderSummary";
 import YourOrder from "../Pages/YourOrder";
-import React from 'react'
 
 // Application routes
 const AppRoutes = () => {
@@ -26,16 +24,16 @@ const AppRoutes = () => {
   const { isAuthenticated, role } = useAuth();
   // Debug: log component types to spot undefined imports causing 'Element type is invalid'
   // eslint-disable-next-line no-console
-  console.warn('Routes debug:', {
-    HomeType: typeof Home,
-    CartsType: typeof Carts,
-    LoaderType: typeof Loader,
-    AboutType: typeof About,
-    ContactType: typeof Contact,
-    WishlistType: typeof Wishlist,
-    AuthType: typeof Auth,
-    ProfileType: typeof Profile,
-  });
+  // console.warn('Routes debug:', {
+  //   HomeType: typeof Home,
+  //   CartsType: typeof Carts,
+  //   LoaderType: typeof Loader,
+  //   AboutType: typeof About,
+  //   ContactType: typeof Contact,
+  //   WishlistType: typeof Wishlist,
+  //   AuthType: typeof Auth,
+  //   ProfileType: typeof Profile,
+  // });
   const rootElement = isAuthenticated && role === 'admin' ? <AdminHome /> : <Home />;
 
   return (
@@ -51,14 +49,14 @@ const AppRoutes = () => {
       <Route path="/signin" element={<Navigate to="/auth?mode=signin" replace />} />
       <Route path="/signup" element={<Navigate to="/auth?mode=signup" replace />} />
       <Route path="/profile" element={<Profile />} />
-  <Route path="/admin" element={<AdminHome />} />
+      <Route path="/admin" element={<AdminHome />} />
       <Route path="/admin/AddCategory" element={<AddCategory />} />
       <Route path="/admin/categories" element={<AdminCategories />} />
       <Route path="/admin/shipments" element={<AdminShipment />} />
-    <Route path="/admin/category-description" element={<CategoryDescription />} />
-    <Route path="/show-card/:slug" element={<ShowCard />} />
-    <Route path="/order-summary" element={<OrderSummary />} />
-    <Route path="/your-order" element={<YourOrder />} />
+      <Route path="/admin/category-description" element={<CategoryDescription />} />
+      <Route path="/show-card/:slug" element={<ShowCard />} />
+      <Route path="/order-summary" element={<OrderSummary />} />
+      <Route path="/your-order" element={<YourOrder />} />
     </Routes>
   );
 }

@@ -35,7 +35,7 @@ const CheckAddress: React.FC = () => {
       }
       setLoading(true);
       try {
-        const res: any = await apiFetch('/api/addresses');
+        const res: any = await apiFetch('/addresses');
         const list = Array.isArray(res.addresses) ? res.addresses : res;
         setAddresses(list || []);
         if (Array.isArray(list) && list.length) {
@@ -117,16 +117,16 @@ const CheckAddress: React.FC = () => {
             <div className="checkout-address-grid">
               {addresses.map((addr) => (
                 <label key={addr.id} className="checkout-address-card">
-                  <input 
-                    type="radio" 
-                    name="selectedAddress" 
+                  <input
+                    type="radio"
+                    name="selectedAddress"
                     className="checkout-address-radio"
-                    checked={selectedId === addr.id} 
-                    onChange={() => setSelectedId(addr.id as number)} 
+                    checked={selectedId === addr.id}
+                    onChange={() => setSelectedId(addr.id as number)}
                   />
                   <div className="checkout-address-content">
                     <div className="checkout-address-name-row">
-                      <strong className="checkout-address-name">{addr.name}</strong> 
+                      <strong className="checkout-address-name">{addr.name}</strong>
                       {addr.isDefault && <span className="checkout-address-default-tag">DEFAULT</span>}
                     </div>
                     <div className="checkout-address-text">{addr.addressLine}, {addr.locality}</div>
@@ -136,15 +136,15 @@ const CheckAddress: React.FC = () => {
                 </label>
               ))}
               <div className="checkout-address-actions">
-                <button 
-                  className="checkout-address-btn-continue" 
-                  onClick={handleContinue} 
+                <button
+                  className="checkout-address-btn-continue"
+                  onClick={handleContinue}
                   disabled={!selectedId}
                 >
                   Use selected address
                 </button>
-                <button 
-                  className="checkout-address-btn-add-new" 
+                <button
+                  className="checkout-address-btn-add-new"
                   onClick={handleAddAddress}
                 >
                   Add new address

@@ -11,7 +11,7 @@ const Signin: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [role, setRole] = useState<'customer'|'admin'>('customer');
+  const [role, setRole] = useState<'customer' | 'admin'>('customer');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ const Signin: React.FC = () => {
     }
 
     try {
-      const data = await apiFetch("/api/auth/login", {
+      const data = await apiFetch("/auth/login", {
         method: "POST",
         body: JSON.stringify({ email, password, role }),
       });

@@ -3,19 +3,18 @@ import "./wishlistbutton.css";
 import 'remixicon/fonts/remixicon.css';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import apiFetch from '../../utils/apiFetch';
+
 const Wishlistbutton = () => {
   const navigate = useNavigate();
   const { token, isAuthenticated } = useAuth();
   const [count, setCount] = useState(0);
-  const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:3002/api';
 
   useEffect(() => {
     const load = async () => {
       if (!isAuthenticated || !token) { setCount(0); return; }
       try {
-        const res = await fetch(`${API_BASE}/wishlist`, { headers: { 'Authorization': `Bearer ${token}` } });
-        if (!res.ok) { setCount(0); return; }
-        const rows = await res.json();
+        const rows: any = await apiFetch('/wishlist');
         setCount(Array.isArray(rows) ? rows.length : 0);
       } catch (e) { setCount(0); }
     };

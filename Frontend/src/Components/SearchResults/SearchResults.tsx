@@ -24,12 +24,12 @@ function SearchResults({ searchTerm }: SearchResultsProps) {
         const fetchSearchResults = async () => {
             setLoading(true);
             try {
-                const categoriesData: any = await apiFetch('/api/categories');
+                const categoriesData: any = await apiFetch('/categories');
                 if (Array.isArray(categoriesData)) {
                     let allProducts: Product[] = [];
                     for (const category of categoriesData) {
                         try {
-                            const productsData: any = await apiFetch(`/api/products/${category.id}`);
+                            const productsData: any = await apiFetch(`/products/${category.id}`);
                             if (Array.isArray(productsData)) {
                                 allProducts = [...allProducts, ...productsData];
                             }

@@ -23,12 +23,12 @@ export default function CategoryProducts() {
         const load = async () => {
             setLoading(true);
             try {
-                const cats: any = await apiFetch('/api/categories');
+                const cats: any = await apiFetch('/categories');
                 const found = Array.isArray(cats) ? cats.find((c: any) => (c.name || c.category || '').toLowerCase().replace(/\s+/g, '-') === (slug || '')) : null;
                 if (found) {
                     setCategoryName(found.name || found.category || `Category ${found.id}`);
                     try {
-                        const prods: any = await apiFetch(`/api/products/${found.id}`);
+                        const prods: any = await apiFetch(`/products/${found.id}`);
                         setProducts(Array.isArray(prods) ? prods : []);
                     } catch (e) {
                         console.warn('Failed to load products for category from backend', e);

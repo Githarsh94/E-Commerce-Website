@@ -4,11 +4,12 @@ import { useLenis } from '../../hooks/useLenis';
 import { showError, showSuccess } from '../../utils/alert';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import apiFetch from '../../utils/apiFetch';
+
 
 const Cart: React.FC = () => {
   useLenis();
   const { token, isAuthenticated } = useAuth();
-  const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:3002/api';
 
   const [cartItems, setCartItems] = useState<any[]>([]);
   const navigate = useNavigate();
@@ -19,15 +20,11 @@ const Cart: React.FC = () => {
       return;
     }
     try {
-      const res = await fetch(`${API_BASE}/cart`, { headers: { 'Authorization': `Bearer ${token}` } });
-      if (!res.ok) { setCartItems([]); return; }
-      const rows = await res.json();
+      const rows: any = await apiFetch('/cart');
       // rows contain cart row { id, productId, quantity }
       const detailed = await Promise.all(rows.map(async (row: any) => {
         try {
-          const pRes = await fetch(`${API_BASE}/products/single/${row.productId}`, { headers: { 'Authorization': `Bearer ${token}` } });
-          if (!pRes.ok) return null;
-          const prod = await pRes.json();
+          const prod: any = await apiFetch(`/products/single/${row.productId}`);
           return {
             id: row.id,
             productId: row.productId,
@@ -82,15 +79,11 @@ const Cart: React.FC = () => {
   const removeFromCart = async (id: number) => {
     if (!isAuthenticated || !token) return;
     try {
-      const res = await fetch(`${API_BASE}/cart/remove/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
-      if (!res.ok) {
-        try { showError('Failed to remove item'); } catch (_) {}
-        return;
-      }
+      await apiFetch(`/cart/remove/${id}`, { method: 'DELETE' });
       await loadCart();
-      try { showSuccess('Removed from cart'); } catch (_) {}
+      try { showSuccess('Removed from cart'); } catch (_) { }
     } catch (e) {
-      // ignore
+      try { showError('Failed to remove item'); } catch (_) { }
     }
   };
 
@@ -102,7 +95,7 @@ const Cart: React.FC = () => {
         return;
       }
       const action = quantity > (cartItems.find(it => it.id === id)?.quantity || 0) ? 'increase' : 'decrease';
-      await fetch(`${API_BASE}/cart/${action}/${id}`, { method: 'POST', headers: { 'Authorization': `Bearer ${token}` } });
+      await apiFetch(`/cart/${action}/${id}`, { method: 'POST' });
       await loadCart();
     } catch (e) {
       // ignore

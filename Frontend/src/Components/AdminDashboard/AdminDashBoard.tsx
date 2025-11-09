@@ -85,7 +85,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     const load = async () => {
       try {
-        const stats: any = await apiFetch('/api/admin/stats');
+        const stats: any = await apiFetch('/admin/stats');
         // Debug: log the received payload so we can confirm the frontend sees the same data
         // This is non-invasive and can be removed once verified.
         // eslint-disable-next-line no-console

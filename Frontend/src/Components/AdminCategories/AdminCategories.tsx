@@ -38,21 +38,21 @@ export default function Categories() {
         duration: 0.6,
         ease: 'power3.out'
       })
-      .from(cardsRef.current.filter(Boolean) as HTMLDivElement[], {
-        scale: 0.9,
-        opacity: 0,
-        y: 30,
-        duration: 0.5,
-        stagger: 0.08,
-        ease: 'back.out(1.4)',
-        clearProps: 'all'
-      }, '-=0.3');
+        .from(cardsRef.current.filter(Boolean) as HTMLDivElement[], {
+          scale: 0.9,
+          opacity: 0,
+          y: 30,
+          duration: 0.5,
+          stagger: 0.08,
+          ease: 'back.out(1.4)',
+          clearProps: 'all'
+        }, '-=0.3');
     }
   }, [categories, loading]);
 
   const fetchCategories = async () => {
     try {
-      const data: any = await apiFetch('/api/categories');
+      const data: any = await apiFetch('/categories');
       setCategories(Array.isArray(data) ? data : []);
     } catch (err: any) {
       // eslint-disable-next-line no-console
@@ -70,7 +70,7 @@ export default function Categories() {
 
     const card = cardsRef.current[index];
     try {
-      await apiFetch(`/api/categories/remove/${id}`, { method: 'DELETE' });
+      await apiFetch(`/categories/remove/${id}`, { method: 'DELETE' });
       if (card) {
         gsap.to(card, {
           scale: 0.8,
@@ -105,7 +105,7 @@ export default function Categories() {
     }
 
     try {
-      const updated: any = await apiFetch(`/api/categories/update/${id}`, {
+      const updated: any = await apiFetch(`/categories/update/${id}`, {
         method: 'PUT',
         body: JSON.stringify({ newName: editValue })
       });

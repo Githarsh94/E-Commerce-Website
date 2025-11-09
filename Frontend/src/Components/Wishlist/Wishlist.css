@@ -13,7 +13,7 @@
   pointer-events: auto;
 }
 
-.wishlist > h2 {
+.wishlist>h2 {
   font-family: Supreme-Regular;
   font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 500;
@@ -191,6 +191,7 @@
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -211,7 +212,7 @@
     margin: 4vw auto;
   }
 
-  .wishlist > h2 {
+  .wishlist>h2 {
     font-size: 1.5rem;
   }
 
