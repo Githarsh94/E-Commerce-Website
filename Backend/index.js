@@ -44,29 +44,16 @@ app.use('*', (req, res) => {
   res.status(404).json({ error: 'Route not found' });
 });
 
-const startServer = async () => {
-  try {
-    await syncDB();
-    const port = process.env.PORT || 3002;
-    const server = app.listen(port, () => {
-      console.log(`🚀 Server successfully started and listening on port ${port}`);
-    });
+// Synchronize database and then export the app
+syncDB().then(() => {
+  console.log("Database synced successfully for serverless environment.");
+}).catch(err => {
+  console.error("Failed to sync database:", err);
+  process.exit(1); // Exit if DB sync fails
+});
 
-    server.on('error', (error) => {
-      console.error('Server error:', error);
-    });
-
-  } catch (error) {
-    console.error('Failed to start server:', error);
-    // Don't exit the process, keep trying
-    setTimeout(() => {
-      console.log('Retrying server start...');
-      startServer();
-    }, 5000);
-  }
-};
-
-startServer();
+// Export the app for Vercel
+module.exports = app;
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (reason, promise) => {

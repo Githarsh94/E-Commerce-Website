@@ -1,4 +1,7 @@
 const { Sequelize } = require("sequelize");
+
+const mysql2 = require("mysql2");
+
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -9,6 +12,7 @@ const sequelize = new Sequelize(process.env.SQL_DATABASE, process.env.SQL_USER, 
   host: process.env.SQL_HOST ? process.env.SQL_HOST : "localhost", // Use "mysql" host in CI/CD environment
   port: 3306,
   dialect: "mysql",
+  dialectModule: mysql2,
   logging: false
 });
 

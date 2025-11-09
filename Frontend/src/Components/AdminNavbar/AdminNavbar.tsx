@@ -66,6 +66,7 @@ export default function AdminNavbar({ activeRoute, onNavigate }: AdminNavbarProp
                 onClick={() => {
                   try {
                     logout();
+                    localStorage.removeItem('token');
                   } finally {
                     navigate('/');
                   }
